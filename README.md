@@ -41,4 +41,4 @@ Include `sovereign` in your node's `run_list`:
 
 ## License and Authors
 
-Author:: Rackspace (<YOUR_EMAIL>)
+Author:: Michael Burns (michael@mirwin.net)
