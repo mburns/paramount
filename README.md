@@ -1,6 +1,8 @@
-# sovereign-cookbook-cookbook
+# Sovereign
 
-TODO: Enter the cookbook description here.
+A Chef cookbook for running a personal computer stack.
+
+Inspired by https://github.com/al3x/sovereign
 
 ## Supported Platforms
 
@@ -16,7 +18,7 @@ TODO: List your supported platforms.
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['sovereign-cookbook']['bacon']</tt></td>
+    <td><tt>['sovereign']['bacon']</tt></td>
     <td>Boolean</td>
     <td>whether to include bacon</td>
     <td><tt>true</tt></td>
@@ -25,14 +27,14 @@ TODO: List your supported platforms.
 
 ## Usage
 
-### sovereign-cookbook::default
+### sovereign::default
 
-Include `sovereign-cookbook` in your node's `run_list`:
+Include `sovereign` in your node's `run_list`:
 
 ```json
 {
   "run_list": [
-    "recipe[sovereign-cookbook::default]"
+    "recipe[sovereign::default]"
   ]
 }
 ```

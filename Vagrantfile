@@ -18,7 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.omnibus.chef_version = 'latest'
   end
 
-  config.vm.hostname = 'sovereign-cookbook-berkshelf'
+  config.vm.hostname = 'sovereign-berkshelf'
 
   config.vm.box = "boxcutter/ubuntu1404"
 
@@ -38,7 +38,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     }
 
     chef.run_list = [
-      'recipe[sovereign-cookbook::default]'
+      'recipe[sovereign::default]'
     ]
   end
 end
