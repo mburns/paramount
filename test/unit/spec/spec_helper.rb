@@ -1,6 +1,7 @@
-# Added by ChefSpec
+require 'rspec/expectations'
 require 'chefspec'
 require 'chefspec/berkshelf'
+require 'chef/application'
 
 # Uncomment to use ChefSpec's Berkshelf extension
 require 'chefspec/berkshelf'
@@ -20,3 +21,8 @@ RSpec.configure do |config|
   # Specify the operating version to mock Ohai data from
   config.version = '14.04'
 end
+
+def stub_resources
+end
+
+at_exit { ChefSpec::Coverage.report! }
