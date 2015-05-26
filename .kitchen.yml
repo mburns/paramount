@@ -1,14 +1,38 @@
 ---
 driver:
   name: vagrant
+  network:
+  - ["forwarded_port", {guest: 80,   host: 8080, auto_correct: true}]
+  customize:
+    memory: 1024
+
+driver_config:
+  require_chef_omnibus: true
 
 provisioner:
-  name: chef_solo
+  name: chef_zero
+  environments_path: test/integration/environments
+  client_rb:
+    environment: dev
+  attributes:
+    openssh:
+      server:
+        permit_root_login: 'no'
+    authorization:
+      sudo:
+        users: ['vagrant']
+        passwordless: true
 
 platforms:
   - name: ubuntu-14.04
+    run_list:
+    - recipe[apt]
+  - name: centos-6.6
+    run_list:
+    - recipe[yum]
 
 suites:
   - name: default
-    run_list: recipe[sovereign]
-    attributes:
+    run_list:
+      - recipe[sovereign::default]
+    exclude: ['centos-6.6']
