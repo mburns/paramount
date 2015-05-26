@@ -1,4 +1,6 @@
-# encoding: utf-8
+# encoding: UTF-8
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
 
 require 'bundler'
 require 'bundler/setup'

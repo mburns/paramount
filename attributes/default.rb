@@ -6,4 +6,4 @@
 # License:: Apache License, Version 2.0
 #
 
-default['sovereign'] = {}
+# default['sovereign'] = {}

@@ -4,13 +4,11 @@ driver:
   network:
   - ["forwarded_port", {guest: 80,   host: 8080, auto_correct: true}]
   customize:
-    memory: 1024
-
-driver_config:
-  require_chef_omnibus: true
+    memory: 2048
 
 provisioner:
-  name: chef_zero
+  require_chef_omnibus: true
+  name: chef_solo
   environments_path: test/integration/environments
   client_rb:
     environment: dev
@@ -25,14 +23,47 @@ provisioner:
 
 platforms:
   - name: ubuntu-14.04
+    driver_config:
+      box: boxcutter/ubuntu1404
     run_list:
     - recipe[apt]
-  - name: centos-6.6
-    run_list:
-    - recipe[yum]
+  # - name: ubuntu-15.04
+  #   driver_config:
+  #     box: boxcutter/ubuntu1504
+  #   run_list:
+  #   - recipe[apt]
+  # - name: debian-8.0
+  #   driver_config:
+  #     box: boxcutter/debian80
+  #   run_list:
+  #   - recipe[apt]
+  # - name: centos-7.1
+  #   driver_config:
+  #     box: boxcutter/centos71
+  #   run_list:
+  #   - recipe[yum]
+  # - name: centos-6.6
+  #   driver_config:
+  #     box: boxcutter/centos66
+  #   run_list:
+  #   - recipe[yum]
+  # - name: fedora-21
+  #   driver_config:
+  #     box: boxcutter/fedora21
+  #   run_list:
+  #   - recipe[yum]
 
 suites:
   - name: default
+    # sudo: true
     run_list:
-      - recipe[sovereign::default]
-    exclude: ['centos-6.6']
+      - recipe[sovereign]
+  #   exclude:
+  #   - ubuntu-15.04
+  #   - debian-8.0
+  #   - centos-7.0
+  #   - centos-6.6
+  #   - fedora-21
+  # - name: all
+  #   run_list:
+  #   - recipe[sovereign]
