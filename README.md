@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mburns/paramount.svg?branch=master)](https://travis-ci.org/mburns/paramount)
+
 # Paramount Cookbook
 
 A Chef cookbook for running a personal computer stack.
