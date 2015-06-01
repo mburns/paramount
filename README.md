@@ -1,4 +1,4 @@
-# Sovereign
+# Paramount Cookbook
 
 A Chef cookbook for running a personal computer stack.
 

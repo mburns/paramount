@@ -6,7 +6,7 @@ name 'paramount'
 maintainer 'Michael Burns'
 maintainer_email 'michael@mirwin.net'
 license 'Apache 2.0'
-description 'Installs/Configures a Sovereign software stack'
+description 'Installs/Configures a complete online software stack'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version '0.1.1'
 
