@@ -32,4 +32,4 @@ suites:
   - name: default
     sudo: true
     run_list:
-      - recipe[sovereign]
+      - recipe[paramount]
