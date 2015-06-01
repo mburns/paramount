@@ -15,7 +15,7 @@ Vagrant.configure('2') do |config|
     config.omnibus.chef_version = '12.3.0'
   end
 
-  config.vm.hostname = 'sovereign.local'
+  config.vm.hostname = 'paramount.local'
 
   config.vm.box = 'boxcutter/ubuntu1404'
 
@@ -33,7 +33,7 @@ Vagrant.configure('2') do |config|
 
     chef.run_list = %w(
       recipe[apt]
-      recipe[sovereign::default]
+      recipe[paramount::default]
     )
   end
 end

@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: sovereign
+# Cookbook Name:: paramount
 # Attributes:: packages
 #
 # Copyright 2015, Michael Burns

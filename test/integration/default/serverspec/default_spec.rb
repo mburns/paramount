@@ -1,5 +1,5 @@
-require 'spec_helper'
+# encoding: UTF-8
+# License:: Apache License, Version 2.0
+#
 
-describe service('sshd') do
-  it { should be_running   }
-end
+require_relative 'spec_helper'

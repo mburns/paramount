@@ -1,9 +1,9 @@
 #
 # Cookbook Name:: paramount
-# Attributes:: default
+# Attributes:: rkhunter
 #
 # Copyright 2015, Michael Burns
 # License:: Apache License, Version 2.0
 #
 
-# default['paramount'] = {}
+default['rkhunter']['report_email'] = 'michael@mirwin.net'

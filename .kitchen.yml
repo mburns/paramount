@@ -27,43 +27,9 @@ platforms:
       box: boxcutter/ubuntu1404
     run_list:
     - recipe[apt]
-  # - name: ubuntu-15.04
-  #   driver_config:
-  #     box: boxcutter/ubuntu1504
-  #   run_list:
-  #   - recipe[apt]
-  # - name: debian-8.0
-  #   driver_config:
-  #     box: boxcutter/debian80
-  #   run_list:
-  #   - recipe[apt]
-  # - name: centos-7.1
-  #   driver_config:
-  #     box: boxcutter/centos71
-  #   run_list:
-  #   - recipe[yum]
-  # - name: centos-6.6
-  #   driver_config:
-  #     box: boxcutter/centos66
-  #   run_list:
-  #   - recipe[yum]
-  # - name: fedora-21
-  #   driver_config:
-  #     box: boxcutter/fedora21
-  #   run_list:
-  #   - recipe[yum]
 
 suites:
   - name: default
-    # sudo: true
+    sudo: true
     run_list:
       - recipe[sovereign]
-  #   exclude:
-  #   - ubuntu-15.04
-  #   - debian-8.0
-  #   - centos-7.0
-  #   - centos-6.6
-  #   - fedora-21
-  # - name: all
-  #   run_list:
-  #   - recipe[sovereign]

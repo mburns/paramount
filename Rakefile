@@ -20,6 +20,10 @@ end
 desc 'Run all style checks'
 task style: %w(style:chef style:ruby)
 
+task :unit do
+  sh "bundle exec 'rspec ./test/unit/spec/ --color --format documentation'"
+end
+
 desc 'Run Test Kitchen integration tests'
 task :integration do
   require 'kitchen'
