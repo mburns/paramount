@@ -4,7 +4,7 @@
 
 A Chef cookbook for running a personal computer stack.
 
-Inspired by https://github.com/al3x/paramount
+Inspired by https://github.com/al3x/sovereign
 
 ## Supported Platforms
 
