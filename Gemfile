@@ -15,10 +15,15 @@ group :style do
   gem 'rubocop', '~> 0.24'
 end
 
-group :unit do
+group :test do
   gem 'berkshelf', '~> 3'
   gem 'chefspec', '~> 4'
   gem 'chef-sugar'
+end
+
+group :maintain do
+  gem 'rake'
+  gem 'stove'
 end
 
 group :integration do

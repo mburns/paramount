@@ -8,7 +8,6 @@ require_relative 'spec_helper'
 describe 'paramount::security' do
   before(:each) do
     stub_command('which sudo').and_return(false)
-    stub_resources
   end
 
   context 'common case' do

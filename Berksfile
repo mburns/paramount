@@ -10,6 +10,7 @@ cookbook 'ark', '~> 0.9.0'
 # cookbook 'chef-solo', '~> 0.1.2'
 cookbook 'chef-solo-search', '~> 0.5.1'
 cookbook 'chef-sugar', '~> 3.1.0'
+cookbook 'chef-vault', '~> 1.3.0'
 cookbook 'database', '~> 4.0.6'
 cookbook 'hostsfile', '~> 2.4.5'
 # cookbook 'locales', git: 'git@github.com:redguide/locales.git'
@@ -29,9 +30,9 @@ cookbook 'dovecot', '~> 2.1.0'
 # cookbook 'dspam'
 cookbook 'opendkim', '~> 0.1.0'
 cookbook 'solr_app', '~> 0.0.3'
-# cookbook 'spamassassin', '~> 0.1.2'
-# cookbook 'roundcube', git: 'git@github.com:TheSerapher/chef-roundcube.git'
-cookbook 'postfix', '~> 3.6.2'
+cookbook 'onddo-spamassassin', '~> 1.0.0'
+# cookbook 'roundcube', git: 'git@github.com:mburns/roundcube.git'
+cookbook 'postfix-full', '~> 0.1.2'
 cookbook 'postfixadmin', '~> 2.0.0'
 
 ## Monitoring & Logs
@@ -43,8 +44,8 @@ cookbook 'logrotate', '~> 1.9.1'
 cookbook 'rsyslog', '~> 2.0.0'
 
 ## Web
-cookbook 'nginx', '~> 2.7.6'
-# cookbook 'apache2'
+# cookbook 'httpd'
+cookbook 'nginx'
 
 ## Security
 cookbook 'aide', git: 'git@github.com:mburns/chef-aide.git'
@@ -59,7 +60,7 @@ cookbook 'selinux', '~> 0.9.0'
 # cookbook 'ssh-hardening', '~> 1.1.0'
 cookbook 'rkhunter', git: 'git@github.com:gregpalmier/rkhunter-cookbook.git'
 cookbook 'openldap', '~> 2.1'
-cookbook 'openssl', '~> 4.0.0'
+cookbook 'openssl', '~> 4.1.1'
 cookbook 'ssl_certificate', '~> 1.5.0'
 
 ## System

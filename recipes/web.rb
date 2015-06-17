@@ -6,5 +6,8 @@
 # License:: Apache License, Version 2.0
 #
 
-# include_recipe 'apache2'
 include_recipe 'nginx'
+
+service 'nginx' do
+  action [:enable, :start]
+end

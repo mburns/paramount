@@ -9,7 +9,7 @@
 # include_recipe 'locales'
 include_recipe 'ntp'
 include_recipe 'openssh'
-# include_recipe 'build-essential'
+include_recipe 'build-essential'
 include_recipe 'packages'
 include_recipe 'sudo'
 include_recipe 'sysctl'
