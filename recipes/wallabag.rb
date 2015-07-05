@@ -1,0 +1,32 @@
+#
+# Cookbook Name:: paramount
+# Recipe:: wallabag
+#
+# Copyright (C) 2015 Michael Burns
+# License:: Apache License, Version 2.0
+#
+
+# package 'wallabag'
+
+%w(
+  curl
+  php5-tidy
+  php-xml-parser
+).each do |pkg|
+  package pkg
+end
+
+# include_recipe 'php-fpm'
+
+ark 'wallabag' do
+  url 'http://wllbg.org/latest'
+  path '/var/www/html/wallabag'
+  owner 'www-data'
+  action :install
+end
+
+nginx_site 'wallabag' do
+  enable true
+end
+
+# db

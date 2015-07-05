@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: paramount
-# Recipe:: default
+# Recipe:: amavis
 #
 # Copyright (C) 2015 Michael Burns
 #
@@ -17,8 +17,36 @@
 # limitations under the License.
 #
 
-include_recipe 'paramount::_security'
-include_recipe 'paramount::_system'
-include_recipe 'paramount::_email'
-include_recipe 'paramount::_web'
-include_recipe 'paramount::_cloud'
+package 'amavisd-new'
+
+%w(
+  01-debian
+  05-domain_id
+  05-node_id
+  15-av_scanners
+  15-content_filter_mode
+  20-debian_defaults
+  21-ubuntu_defaults
+  25-amavis_helpers
+  30-template_localization
+  40-policy_banks
+  50-user
+).each do |filename|
+  file "/etc/amavis/conf.d/#{filename}" do
+    action :delete
+    notifies :restart, 'service[amavis]', :delayed
+  end
+end
+
+template '/etc/amavis/conf.d/01-basic' do
+  source 'amavis.erb'
+  owner 'root'
+  group 'root'
+  mode 0644
+  notifies :restart, 'service[amavis]'
+end
+
+service 'amavis' do
+  supports [:restart]
+  action [:enable, :start]
+end

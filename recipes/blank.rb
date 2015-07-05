@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: paramount
-# Recipe:: default
+# Recipe:: blank
 #
 # Copyright (C) 2015 Michael Burns
 #
@@ -16,9 +16,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-include_recipe 'paramount::_security'
-include_recipe 'paramount::_system'
-include_recipe 'paramount::_email'
-include_recipe 'paramount::_web'
-include_recipe 'paramount::_cloud'

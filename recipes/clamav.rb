@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: paramount
-# Recipe:: default
+# Recipe:: blank
 #
 # Copyright (C) 2015 Michael Burns
 #
@@ -17,8 +17,18 @@
 # limitations under the License.
 #
 
-include_recipe 'paramount::_security'
-include_recipe 'paramount::_system'
-include_recipe 'paramount::_email'
-include_recipe 'paramount::_web'
-include_recipe 'paramount::_cloud'
+include_recipe 'paramount::amavis'
+
+package 'clamav-daemon'
+
+# Add user clamav to amavis group to make them play together!
+group 'amavis' do
+  members ['clamav']
+  append true
+end
+
+service 'clamav' do
+  service_name 'clamav-daemon'
+  supports status: true, restart: true, reload: true
+  action [:enable, :restart]
+end

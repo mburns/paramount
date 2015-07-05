@@ -8,7 +8,6 @@
 
 # include_recipe 'selinux'
 # include_recipe 'os-hardening'
-include_recipe 'aide'
 include_recipe 'firewall'
 include_recipe 'fail2ban'
 include_recipe 'rkhunter'
@@ -18,9 +17,16 @@ node.set['aide']['paths'] = {
   '/data/.*' => '!'
 }
 
+include_recipe 'aide'
+
 # selinux_state "SELinux #{node['selinux']['state'].capitalize}" do
 #   action node['selinux']['state'].downcase.to_sym
 # end
+
+directory '/etc/httpd/ssl' do
+  owner 'root'
+  recursive true
+end
 
 openssl_x509 '/etc/httpd/ssl/unemployable.pem' do
   common_name 'unemployable.me'
