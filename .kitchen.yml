@@ -25,16 +25,27 @@ platforms:
   - name: centos-6.6
     run_list:
     - recipe[yum]
+  - name: centos-7.0
+    run_list:
+    - recipe[yum]
+  - name: debian-7.8
+    run_list:
+    - recipe[apt]
+  - name: ubuntu-12.04
+    run_list:
+    - recipe[apt]
   - name: ubuntu-14.04
-    driver_config:
-      box: boxcutter/ubuntu1404
+    run_list:
+    - recipe[apt]
+  - name: ubuntu-14.10
     run_list:
     - recipe[apt]
 
 suites:
   - name: default
     sudo: true
-    excludes: ["centos-6.6"]
     run_list:
     - recipe[paramount]
+    - recipe[test]
+    - recipe[test::email]
 
