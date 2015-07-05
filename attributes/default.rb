@@ -6,4 +6,6 @@
 # License:: Apache License, Version 2.0
 #
 
-# default['paramount'] = {}
+default['paramount']['contact'] = 'admin@example.com'
+default['paramount']['domain'] = 'example.com'
+default['paramount']['user'] = 'admin'

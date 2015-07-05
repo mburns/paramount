@@ -1,16 +1,9 @@
 #
 # Cookbook Name:: paramount
-# Attributes:: packages
+# Attributes:: postgresql
 #
 # Copyright 2015, Michael Burns
 # License:: Apache License, Version 2.0
 #
 
-default['packages'] = %w(
-  vim
-  htop
-  nmap
-  unzip
-  zip
-  dos2unix
-)
+default['postgresql']['email'] = 'admin@example.com'

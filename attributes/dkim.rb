@@ -1,16 +1,9 @@
 #
 # Cookbook Name:: paramount
-# Attributes:: packages
+# Attributes:: opendkim
 #
 # Copyright 2015, Michael Burns
 # License:: Apache License, Version 2.0
 #
 
-default['packages'] = %w(
-  vim
-  htop
-  nmap
-  unzip
-  zip
-  dos2unix
-)
+default['paramount']['dkim_port'] = 8891

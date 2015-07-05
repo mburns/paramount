@@ -8,4 +8,4 @@
 
 default['postfixadmin']['web_server'] = 'nginx'
 default['postfixadmin']['database']['type'] = 'postgresql'
-default['postfixadmin']['common_name'] = 'postfixadmin.unemployable.me'
+default['postfixadmin']['common_name'] = 'postfixadmin.example.com'
