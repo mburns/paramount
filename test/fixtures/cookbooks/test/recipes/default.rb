@@ -7,5 +7,5 @@
 
 node.set['packages'] = %w(htop iftop iotop iostat lsof netstat tcpdump vmstat)
 
-include_recipe 'paramount::security'
-include_recipe 'paramount::system'
+include_recipe 'paramount::_security'
+include_recipe 'paramount::_system'
