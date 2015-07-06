@@ -8,7 +8,6 @@ metadata
 
 cookbook 'ark', '~> 0.9.0'
 cookbook 'build-essential'
-# cookbook 'chef-solo', '~> 0.1.2'
 cookbook 'chef-solo-search', '~> 0.5.1'
 cookbook 'chef-sugar', '~> 3.1.0'
 cookbook 'chef-vault', '~> 1.3.0'
@@ -31,7 +30,7 @@ cookbook 'ucspi-tcp'
 
 ## Email
 cookbook 'dovecot', '~> 2.1.0'
-# cookbook 'dspam'
+cookbook 'dspam', git: 'git@github.com:mburns/chef-dspam.git'
 cookbook 'opendkim', git: 'git@github.com:mburns/opendkim-cookbook.git'
 cookbook 'onddo-spamassassin', '~> 1.0.0'
 cookbook 'postfix-full', '~> 0.1.2'
@@ -52,7 +51,7 @@ cookbook 'rsyslog', '~> 2.0.0'
 cookbook 'nginx'
 
 ## Security
-cookbook 'aide', git: 'git@github.com:mburns/chef-aide.git', branch: 'more-platforms'
+cookbook 'aide', git: 'git@github.com:mburns/chef-aide.git'
 cookbook 'encfs', '~> 0.2.0', git: 'git@github.com:mburns/encfs.git'
 cookbook 'fail2ban', '~> 2.2.1'
 cookbook 'firewall', '~> 1.1.2'
