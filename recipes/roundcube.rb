@@ -9,8 +9,6 @@
 Chef::Recipe.send(:include, OpenSSLCookbook::RandomPassword)
 roundcube_passwd = random_password(length: 50, mode: :base64, encoding: 'ASCII')
 
-node.default['roundcube']['version'] = '1.1.2'
-node.default['roundcube']['download_checksum'] = '237afc9807291efd7c3550c83ca82677a9af72855b6f48733d9e55d6d84fdae1'
 node.default['roundcube']['default_host'] = ''
 
 # node.default['roundcube']['support_url'] = ''
