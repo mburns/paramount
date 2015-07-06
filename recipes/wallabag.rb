@@ -6,8 +6,6 @@
 # License:: Apache License, Version 2.0
 #
 
-# package 'wallabag'
-
 %w(
   curl
   php5-tidy
@@ -16,17 +14,19 @@
   package pkg
 end
 
-# include_recipe 'php-fpm'
+include_recipe 'php-fpm'
+
+version = '1.9'
 
 ark 'wallabag' do
-  url 'http://wllbg.org/latest'
+  url "https://github.com/wallabag/wallabag/archive/#{version}.zip"
   path '/var/www/html/wallabag'
   owner 'www-data'
   action :install
 end
 
-nginx_site 'wallabag' do
-  enable true
-end
+# nginx_site 'wallabag' do
+#   enable true
+# end
 
 # db

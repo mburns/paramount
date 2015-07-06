@@ -49,6 +49,7 @@ cookbook 'rsyslog', '~> 2.0.0'
 ## Web
 # cookbook 'httpd'
 cookbook 'nginx'
+cookbook 'php-fpm'
 
 ## Security
 cookbook 'aide', git: 'git@github.com:mburns/chef-aide.git'
