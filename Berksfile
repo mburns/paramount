@@ -53,6 +53,7 @@ cookbook 'php-fpm'
 
 ## Security
 cookbook 'aide', git: 'git@github.com:mburns/chef-aide.git'
+cookbook 'automatic_updates'
 cookbook 'encfs', '~> 0.2.0', git: 'git@github.com:mburns/encfs.git'
 cookbook 'fail2ban', '~> 2.2.1'
 cookbook 'firewall', '~> 1.1.2'

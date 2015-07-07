@@ -14,6 +14,7 @@ source_url 'https://github.com/mburns/cookbook-paramount' if respond_to?(:source
 issues_url 'https://github.com/mburns/cookbook-paramount/issues' if respond_to?(:issues_url)
 
 depends 'aide'
+depends 'automatic_updates'
 depends 'apt'
 depends 'ark'
 depends 'build-essential'
