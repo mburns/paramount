@@ -14,3 +14,5 @@ end
 # wallabag
 # plex
 # znc
+
+include_recipe 'paramount::prosody'
