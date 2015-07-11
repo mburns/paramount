@@ -35,6 +35,5 @@ include_recipe 'paramount::dovecot'
 # TODO : z-push
 include_recipe 'paramount::spamassassin'
 include_recipe 'paramount::postfix'
-# TODO : postgrey
 include_recipe 'paramount::dkim'
 # include_recipe 'paramount::roundcube'

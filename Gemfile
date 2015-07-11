@@ -10,9 +10,9 @@ group :plugins do
   gem 'vagrant-cachier', github: 'fgrehm/vagrant-cachier'
 end
 
-group :style do
-  gem 'foodcritic', '~> 3.0'
-  gem 'rubocop', '~> 0.24'
+group :maintain do
+  gem 'rake'
+  gem 'stove'
 end
 
 group :test do
@@ -21,20 +21,12 @@ group :test do
   gem 'chef-sugar'
 end
 
-group :maintain do
-  gem 'rake'
-  gem 'stove'
+group :style do
+  gem 'foodcritic', '~> 3.0'
+  gem 'rubocop', '~> 0.24'
 end
 
 group :integration do
   gem 'test-kitchen', '~> 1.4.0'
   gem 'kitchen-vagrant', '~> 0.18.0'
-end
-
-group :guard do
-  gem 'guard', '~> 2.12.5'
-  gem 'guard-foodcritic', '>= 1.0'
-  gem 'guard-kitchen', '~> 0.0.2'
-  gem 'guard-rubocop', '~> 1.2.0'
-  gem 'guard-rspec', '~> 4.5.0'
 end

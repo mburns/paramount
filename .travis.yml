@@ -5,4 +5,4 @@ rvm:
 bundler_args: --without development
 gemfile:
   - Gemfile
-script: bundle exec rake travis:ci
+script: bundle exec rake ci

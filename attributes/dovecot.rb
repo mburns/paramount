@@ -12,7 +12,7 @@ default['dovecot']['conf']['ssl'] = true
 default['dovecot']['auth']['checkpassword'] = {}
 
 # https://github.com/onddo/dovecot-cookbook#namespaces-example
-node.default['dovecot']['namespaces'] = [
+default['dovecot']['namespaces'] = [
   {
     'separator' => '/',
     'prefix' => '"#mbox/"',

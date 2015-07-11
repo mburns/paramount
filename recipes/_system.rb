@@ -28,4 +28,3 @@ include_recipe 'rsyslog'
 # include_recipe 'xml'
 
 include_recipe 'openssh'
-
