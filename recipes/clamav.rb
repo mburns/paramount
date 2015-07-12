@@ -19,6 +19,13 @@
 
 include_recipe 'paramount::amavis'
 
+node.default['clamav']['clamd']['enabled'] = true
+node.default['clamav']['freshclam']['enabled'] = true
+node.default['clamav']['scan']['script']['enable'] = true
+node.default['clamav']['scan']['minimal']['enable'] = true
+
+include_recipe 'clamav'
+
 package 'clamav-daemon'
 
 # Add user clamav to amavis group to make them play together!

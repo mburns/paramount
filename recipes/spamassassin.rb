@@ -6,6 +6,8 @@
 # License:: Apache License, Version 2.0
 #
 
+include_recipe 'paramount::amavis'
+
 # Required_score is set to 5 by default, change it:
 node.default['spamassassin']['conf']['required_score'] = 4
 node.default['spamassassin']['spamd']['enabled'] = true
