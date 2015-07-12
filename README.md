@@ -8,7 +8,7 @@ Inspired by https://github.com/al3x/sovereign
 
 ## Supported Platforms
 
-TODO: List your supported platforms.
+ * Ubuntu 14.04 LTS
 
 ## Attributes
 
@@ -20,10 +20,22 @@ TODO: List your supported platforms.
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['paramount']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
+    <td><tt>['paramount']['domain']</tt></td>
+    <td>String</td>
+    <td>FQDN</td>
+    <td><tt>example.com</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['paramount']['user']</tt></td>
+    <td>String</td>
+    <td>Username</td>
+    <td><tt>admin</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['paramount']['contact']</tt></td>
+    <td>String</td>
+    <td>E-Mail address</td>
+    <td><tt>*computed*</tt></td>
   </tr>
 </table>
 
