@@ -32,13 +32,10 @@ platforms:
   - name: debian-7.8
     run_list:
     - recipe[apt]
-  - name: ubuntu-12.04
-    run_list:
-    - recipe[apt]
   - name: ubuntu-14.04
     run_list:
     - recipe[apt]
-  - name: ubuntu-14.10
+  - name: ubuntu-15.04
     run_list:
     - recipe[apt]
 
@@ -47,5 +44,16 @@ suites:
     sudo: true
     run_list:
     - recipe[paramount]
-    - recipe[test]
-
+  - name: cloud
+    run_list:
+    - recipe[test::cloud]
+  - name: email
+    run_list:
+    - recipe[test::email]
+  - name: host
+    run_list:
+    - recipe[test::system]
+    - recipe[test::security]
+  - name: web
+    run_list:
+    - recipe[test::web]
