@@ -16,6 +16,18 @@ node.default['postfix']['main']['non_smtpd_milters'] = "inet:localhost:#{opendki
 
 node.default['postgresql']['password']['postgres'] = random_password(length: 50, mode: :base64, encoding: 'ASCII')
 
+user 'postfix' do
+  shell '/bin/false'
+  supports manage_home: true
+  system true
+end
+
+group 'postfix' do
+  members ['postfix']
+  system true
+  append true
+end
+
 include_recipe 'postgresql::server'
 
 connection_info = {
@@ -42,6 +54,19 @@ end
 
 # include_recipe 'postfix-full'
 
+node.default['postfixadmin']['database']['type'] = 'postgresql'
+
 include_recipe 'postfixadmin'
+include_recipe 'postfixadmin::map_files'
+
+postfixadmin_admin node['paramount']['contact'] do
+  password 'hunter2' # TODO : encypted dbag? attr?
+  action :create
+end
+
+postfixadmin_domain node['paramount']['domain'] do
+  login_username node['paramount']['contact']
+  login_password 'sup3r-s3cr3t-p4ss'
+end
 
 include_recipe 'paramount::dkim'

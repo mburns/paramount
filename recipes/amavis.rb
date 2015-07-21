@@ -19,6 +19,15 @@
 
 package 'amavisd-new'
 
+user 'amavis' do
+  system true
+end
+
+group 'amavis' do
+  members ['amavis']
+  append true
+end
+
 %w(
   01-debian
   05-domain_id
@@ -34,19 +43,20 @@ package 'amavisd-new'
 ).each do |filename|
   file "/etc/amavis/conf.d/#{filename}" do
     action :delete
-    notifies :restart, 'service[amavis]', :delayed
+    # notifies :restart, 'poise_service[amavis]', :delayed
   end
 end
 
 template '/etc/amavis/conf.d/01-basic' do
   source 'amavis.erb'
-  owner 'root'
-  group 'root'
+  owner 'amavis'
+  group 'amavis'
   mode 0644
-  notifies :restart, 'service[amavis]'
+  # notifies :restart, 'poise_service[amavis]', :delayed
 end
 
-service 'amavis' do
-  supports [:restart]
-  action [:enable, :start]
-end
+# poise_service 'amavis' do
+#   command 'amavisd'
+#   supports [:restart]
+#   action [:enable, :start]
+# end
