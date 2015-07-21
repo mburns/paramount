@@ -23,10 +23,10 @@ cookbook 'ohai', '~> 2.0.1'
 ## Cloud
 cookbook 'djbdns', '~> 1.1.0'
 cookbook 'plexapp', '~> 1.0.0'
-# cookbook 'prosody', '~> 0.5.1'
 # cookbook 'owncloud', '~> 0.5.0'
 # cookbook 'znc', '~> 0.0.1'
 cookbook 'ucspi-tcp'
+cookbook 'prosody', git: 'git@github.com:mburns/chef-prosody.git'
 
 ## Email
 cookbook 'clamav', '~> 1.2.0'
