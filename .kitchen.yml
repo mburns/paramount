@@ -50,6 +50,9 @@ suites:
   - name: email
     run_list:
     - recipe[test::email]
+  - name: multimedia
+    run_list:
+    - recipe[test::multimedia]
   - name: web
     run_list:
     - recipe[test::web]

@@ -22,7 +22,6 @@ cookbook 'ohai', '~> 2.0.1'
 
 ## Cloud
 cookbook 'djbdns', '~> 1.1.0'
-cookbook 'plexapp', '~> 1.0.0'
 # cookbook 'owncloud', '~> 0.5.0'
 # cookbook 'znc', '~> 0.0.1'
 cookbook 'ucspi-tcp'
@@ -47,8 +46,13 @@ cookbook 'logrotate', '~> 1.9.1'
 # cookbook 'rackspace_monitoring', '~ 1.0.0'
 cookbook 'rsyslog', '~> 2.0.0'
 
+## Multimedia
+cookbook 'sabnzbd', git: 'git@github.com:multimedia-chef/sabnzbd.git'
+cookbook 'sickbeard', git: 'git@github.com:multimedia-chef/sickbeard.git'
+cookbook 'couchpotato', git: 'git@github.com:multimedia-chef/couchpotato.git'
+cookbook 'plexapp', '~> 1.0.0'
+
 ## Web
-# cookbook 'httpd'
 cookbook 'nginx'
 cookbook 'php-fpm'
 
