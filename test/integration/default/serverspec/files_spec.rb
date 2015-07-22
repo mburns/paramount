@@ -17,15 +17,7 @@ require_relative 'spec_helper'
   describe file(f) do
     it { should be_file }
     it { should be_mode 644 }
-  end
-end
-
-%w(
-).each do |f|
-  describe file(f) do
-    it { should be_file }
-    it { should be_mode 644 }
-    it { should be_readable.by_user('vagrant') }
+    # it { should be_readable.by_user('vagrant') }
     it { should_not be_writable.by_user('root') }
   end
 end
