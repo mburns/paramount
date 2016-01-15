@@ -5,11 +5,11 @@
 require_relative 'spec_helper'
 
 describe service('sshd') do
-  it { should be_running   }
+  it { should be_running }
 end
 
 describe package('htop') do
-  it { should be_installed   }
+  it { should be_installed }
 end
 
 describe file('/etc/ssh/sshd_config') do
