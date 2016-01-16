@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: paramount
-# Recipe:: system
+# Recipe:: _system
 #
 # Copyright (C) 2015 Michael Burns
 # License:: Apache License, Version 2.0

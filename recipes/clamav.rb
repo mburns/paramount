@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: paramount
-# Recipe:: blank
+# Recipe:: clamav
 #
 # Copyright (C) 2015 Michael Burns
 #
@@ -37,5 +37,5 @@ end
 service 'clamav' do
   service_name 'clamav-daemon'
   supports status: true, restart: true, reload: true
-  action [:enable, :restart]
+  action %i(enable restart)
 end
