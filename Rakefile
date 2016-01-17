@@ -57,4 +57,6 @@ end
 desc 'Run tests on Travis'
 task ci: %w(style)
 
-task default: %w(style unit integration)
+task test: %w(style unit integration)
+
+task default: %w(test)
