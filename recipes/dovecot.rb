@@ -125,12 +125,12 @@ execute 'sievec sieve_global_path' do
   action :nothing
 end
 
-directory ::File.dirname(sieve_global_path) do
+directory File.dirname(sieve_global_path) do
   owner 'root'
   group 'root'
   mode '00755'
   recursive true
-  not_if { ::File.exist?(::File.dirname(sieve_global_path)) }
+  not_if { File.exist? File.dirname(sieve_global_path) }
 end
 
 # This will be the default sieve script:

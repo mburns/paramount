@@ -16,9 +16,10 @@ group :maintain do
 end
 
 group :test do
-  gem 'berkshelf', '~> 3'
+  gem 'berkshelf', '~> 4'
   gem 'chefspec', '~> 4'
   gem 'chef-sugar'
+  gem 'pry'
 end
 
 group :style do
