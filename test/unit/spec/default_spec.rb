@@ -15,9 +15,6 @@ describe 'paramount::default' do
   %w(
     paramount::_security
     paramount::_system
-    paramount::_web
-    paramount::_email
-    paramount::_cloud
   ).each do |cb|
     it "includes recipe: #{cb}" do
       expect(chef_run).to include_recipe(cb)

@@ -6,13 +6,15 @@
 # License:: Apache License, Version 2.0
 #
 
+include_recipe 'paramount::default'
+
 ssl_certificate 'owncloud-cert' do
   namespace 'owncloud'
 end
 
 # include_recipe 'owncloud'
-# wallabag
-# plex
-# znc
+# include_recipe 'wallabag'
+# include_recipe 'plex'
+# include_recipe 'znc'
 
 include_recipe 'paramount::prosody'

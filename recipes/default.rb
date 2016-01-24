@@ -19,6 +19,7 @@
 
 include_recipe 'paramount::_security'
 include_recipe 'paramount::_system'
-include_recipe 'paramount::_email'
-include_recipe 'paramount::_web'
-include_recipe 'paramount::_cloud'
+
+# include_recipe 'paramount::_email'
+# include_recipe 'paramount::_web'
+# include_recipe 'paramount::_cloud'

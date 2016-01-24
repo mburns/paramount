@@ -6,6 +6,8 @@
 # License:: Apache License, Version 2.0
 #
 
+include_recipe 'paramount::default'
+
 include_recipe 'openssl::upgrade'
 Chef::Recipe.send(:include, OpenSSLCookbook::RandomPassword)
 node.default['paramount']['encfs_passwd'] = random_password(length: 50, mode: :base64, encoding: 'ASCII')
@@ -41,4 +43,5 @@ include_recipe 'paramount::dkim'
 
 include_recipe 'dspam'
 
+# TODO : optionally include if `paramount::_web` is in run_list
 # include_recipe 'paramount::roundcube'
