@@ -39,4 +39,6 @@ include_recipe 'paramount::spamassassin'
 include_recipe 'paramount::postfix'
 include_recipe 'paramount::dkim'
 
+include_recipe 'dspam'
+
 # include_recipe 'paramount::roundcube'
