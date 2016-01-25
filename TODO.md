@@ -1,5 +1,3 @@
-# TODO
-
 ## Features and Services
 
 ### Cloud

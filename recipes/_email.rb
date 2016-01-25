@@ -34,7 +34,6 @@ group 'vmail' do
 end
 
 include_recipe 'paramount::dovecot'
-# TODO : z-push
 include_recipe 'paramount::amavis'
 include_recipe 'paramount::clamav'
 include_recipe 'paramount::spamassassin'
