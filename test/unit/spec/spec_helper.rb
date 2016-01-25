@@ -6,6 +6,9 @@ require 'rspec/expectations'
 require 'chefspec'
 require 'chefspec/berkshelf'
 require 'chef/application'
+require 'coveralls'
+
+Coveralls.wear!
 
 # at_exit { ChefSpec::Coverage.report! }
 

@@ -20,6 +20,7 @@ group :test do
   gem 'chefspec', '~> 4'
   gem 'chef-sugar'
   gem 'pry'
+  gem 'coveralls', require: false
 end
 
 group :style do

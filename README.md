@@ -1,4 +1,12 @@
+[![Cookbook Version](https://img.shields.io/cookbook/v/paramount.svg)](https://community.opscode.com/cookbooks/paramount)
 [![Build Status](https://travis-ci.org/mburns/paramount.svg?branch=master)](https://travis-ci.org/mburns/paramount)
+[![Coverage Status](https://coveralls.io/repos/github/mburns/paramount/badge.svg?branch=master)](https://coveralls.io/github/mburns/paramount?branch=master)
+[![Code Climate](https://codeclimate.com/github/mburns/paramount/badges/gpa.svg)](https://codeclimate.com/github/mburns/paramount)
+[![Issue Count](https://codeclimate.com/github/mburns/paramount/badges/issue_count.svg)](https://codeclimate.com/github/mburns/paramount)
+[![Inline docs](http://inch-ci.org/github/mburns/paramount.svg?branch=master)](http://inch-ci.org/github/mburns/paramount)
+[![Dependency Status](https://gemnasium.com/mburns/paramount.svg)](https://gemnasium.com/mburns/paramount)
+[![Gitter Chat](https://badges.gitter.im/mburns/paramount.svg)](https://gitter.im/mburns/paramount?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 
 # Paramount Cookbook
 
@@ -56,3 +64,5 @@ Include `paramount` in your node's `run_list`:
 ## License and Authors
 
 Author:: Michael Burns (michael@mirwin.net)
+
+[![Support via Gratipay](https://cdn.rawgit.com/gratipay/gratipay-badge/2.3.0/dist/gratipay.svg)](https://gratipay.com/mburns/)
