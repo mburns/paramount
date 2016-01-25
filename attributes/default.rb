@@ -12,4 +12,8 @@ default['paramount']['user'] = 'admin'
 default['paramount']['organization'] = 'Example'
 default['paramount']['organization_unit'] = 'Paramount'
 
-default['paramount']['contact'] = node['paramount']['user'] + '@' + node['paramount']['domain'] rescue 'postmaster@example.com'
+default['paramount']['contact'] = begin
+                                    node['paramount']['user'] + '@' + node['paramount']['domain']
+                                  rescue
+                                    'postmaster@example.com'
+                                  end
