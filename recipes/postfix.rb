@@ -61,14 +61,16 @@ node.default['postfixadmin']['database']['type'] = 'postgresql'
 include_recipe 'postfixadmin'
 include_recipe 'postfixadmin::map_files'
 
+node.default['paramount']['postfix_passwd'] = random_password(length: 50, mode: :base64, encoding: 'ASCII')
+
 postfixadmin_admin node['paramount']['contact'] do
-  password 'hunter2' # TODO : encypted dbag? attr?
+  password node['paramount']['postfix_passwd']
   action :create
 end
 
 postfixadmin_domain node['paramount']['domain'] do
   login_username node['paramount']['contact']
-  login_password 'sup3r-s3cr3t-p4ss'
+  login_password node['paramount']['postfix_passwd']
 end
 
 include_recipe 'paramount::dkim'

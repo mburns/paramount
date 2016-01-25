@@ -7,26 +7,21 @@
 #
 
 Chef::Recipe.send(:include, OpenSSLCookbook::RandomPassword)
-roundcube_passwd = random_password(length: 50, mode: :base64, encoding: 'ASCII')
 
-node.default['roundcube']['default_host'] = ''
+# node.default['roundcube']['default_host'] = ''
 
 # node.default['roundcube']['support_url'] = ''
 # node.default['roundcube']['product_name'] = ''
 # node.default['roundcube']['listen_port'] = ''
 
-node.default['roundcube']['database']['user'] = 'roundcube_db'
-node.default['roundcube']['database']['password'] = roundcube_passwd
-# node.default['roundcube']['database']['schema'] = ''
-
-node.default['roundcube']['smtp']['server'] = 'mail.unemployable.me'
-# node.default['roundcube']['smtp']['port'] = ''
-node.default['roundcube']['smtp']['user'] = 'postfix'
-node.default['roundcube']['smtp']['password'] = roundcube_passwd # TODO : fix
-
 node.default['roundcube']['database']['host'] = '127.0.0.1'
 node.default['roundcube']['database']['user'] = 'roundcube_db'
-node.default['roundcube']['database']['password'] = roundcube_passwd
+node.default['roundcube']['database']['password'] = random_password(length: 50, mode: :base64, encoding: 'ASCII')
+# node.default['roundcube']['database']['schema'] = ''
+
+node.default['roundcube']['smtp']['server'] = "mail.#{node['paramount']['domain']}"
+node.default['roundcube']['smtp']['user'] = 'postfix'
+node.default['roundcube']['smtp']['password'] = random_password(length: 50, mode: :base64, encoding: 'ASCII')
 
 postgresql_connection_info = {
   host: '127.0.0.1',
@@ -47,9 +42,9 @@ postgresql_database 'roundcube_db' do
 end
 
 openssl_x509 '/etc/httpd/ssl/roundcube.pem' do
-  common_name 'roundcube.unemployable.me'
+  common_name "webmail.#{node['paramount']['domain']}"
   org 'Mirwin'
-  org_unit 'Unemployable'
+  org_unit 'Paramount'
   country 'US'
 end
 
