@@ -12,7 +12,7 @@ Vagrant.configure('2') do |config|
   end
 
   if Vagrant.has_plugin?('vagrant-omnibus')
-    config.omnibus.chef_version = '12.3.0'
+    config.omnibus.chef_version = :latest
   end
 
   config.vm.hostname = 'paramount.local'
@@ -21,10 +21,14 @@ Vagrant.configure('2') do |config|
 
   config.vm.network :private_network, type: 'dhcp'
   config.vm.network 'forwarded_port', guest: 80, host: 8080
+  config.vm.network 'forwarded_port', guest: 443, host: 8443
 
   config.berkshelf.enabled = true
+  config.chef_zero.enabled = true
 
-  config.vm.provision :chef_solo do |chef|
+  config.vm.provision :chef_client do |chef|
+    config.chef_zero.cookbooks = 'test/fixtures/cookbooks'
+
     chef.formatter = ENV.fetch('CHEF_FORMAT', 'null').downcase.to_sym
     chef.log_level = ENV.fetch('CHEF_LOG', 'info').downcase.to_sym
 
@@ -33,7 +37,7 @@ Vagrant.configure('2') do |config|
 
     chef.run_list = %w(
       recipe[apt]
-      recipe[paramount::default]
+      recipe[test]
     )
   end
 end

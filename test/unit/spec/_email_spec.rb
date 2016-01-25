@@ -2,7 +2,7 @@ require 'chefspec'
 require_relative 'spec_helper'
 
 describe 'paramount::_email' do
-  let(:chef_run) { ChefSpec::SoloRunner.converge(described_recipe) }
+  let(:chef_run) { ChefSpec::ServerRunner.converge(described_recipe) }
 
   before do
     stub_command('ls /var/lib/postgresql/9.3/main/recovery.conf').and_return true

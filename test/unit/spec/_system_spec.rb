@@ -10,7 +10,7 @@ describe 'paramount::_system' do
     stub_command('which sudo').and_return false
   end
 
-  let(:chef_run) { ChefSpec::SoloRunner.new.converge(described_recipe) }
+  let(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
 
   %w(ntp build-essential packages sysctl ubuntu sudo rsyslog openssh sysctl).each do |recipe|
     it "Includes recipe: #{recipe}" do
