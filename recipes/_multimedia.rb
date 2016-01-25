@@ -17,6 +17,8 @@
 # limitations under the License.
 #
 
+include_recipe 'paramount::default'
+
 include_recipe 'couchpotato'
 include_recipe 'plexapp'
 include_recipe 'sabnzbd'

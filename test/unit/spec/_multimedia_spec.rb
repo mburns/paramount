@@ -9,6 +9,10 @@ describe 'paramount::_multimedia' do
   context 'common case' do
     let(:chef_run) { ChefSpec::SoloRunner.new.converge(described_recipe) }
 
+    it 'includes default recipe' do
+      expect(chef_run).to include_recipe 'paramount::default'
+    end
+
     %w(couchpotato sabnzbd sickbeard plexapp).each do |cb|
       it "includes recipe #{cb}" do
         expect(chef_run).to include_recipe(cb)
