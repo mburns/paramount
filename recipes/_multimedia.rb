@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: paramount
-# Recipe:: default
+# Recipe:: multimedia
 #
 # Copyright (C) 2015 Michael Burns
 #
@@ -17,5 +17,9 @@
 # limitations under the License.
 #
 
-include_recipe 'paramount::_security'
-include_recipe 'paramount::_system'
+include_recipe 'paramount::default'
+
+include_recipe 'couchpotato'
+include_recipe 'plexapp'
+include_recipe 'sabnzbd'
+include_recipe 'sickbeard'

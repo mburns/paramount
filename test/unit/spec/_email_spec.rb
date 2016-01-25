@@ -17,7 +17,7 @@ describe 'paramount::_email' do
     end
   end
 
-  %w(dovecot amavis clamav spamassassin postfix dkim).each do |recipe|
+  %w(default dovecot amavis clamav spamassassin postfix dkim).each do |recipe|
     it "includes #{recipe} recipe" do
       expect(chef_run).to include_recipe("paramount::#{recipe}")
     end
