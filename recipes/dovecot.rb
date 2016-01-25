@@ -45,8 +45,8 @@ node.default['dovecot']['services']['auth']['listeners'] = [
 ]
 
 # 15-lda.conf
-node.default['dovecot']['conf']['postmaster_address'] = 'postmaster@unemployable.me'
-node.default['dovecot']['conf']['hostname'] = 'mail.unemployable.me'
+node.default['dovecot']['conf']['postmaster_address'] = "postmaster@#{node['paramount']['domain']}"
+node.default['dovecot']['conf']['hostname'] = "mail.#{node['paramount']['domain']}"
 
 node.default['dovecot']['conf']['lda_mailbox_autocreate'] = true
 node.default['dovecot']['conf']['lda_mailbox_autosubscribe'] = true
