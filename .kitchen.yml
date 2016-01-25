@@ -43,17 +43,13 @@ suites:
   - name: default
     sudo: true
     run_list:
-    - recipe[paramount]
+    - recipe[test::default]
   - name: cloud
     run_list:
     - recipe[test::cloud]
   - name: email
     run_list:
     - recipe[test::email]
-  - name: host
-    run_list:
-    - recipe[test::system]
-    - recipe[test::security]
   - name: web
     run_list:
     - recipe[test::web]
