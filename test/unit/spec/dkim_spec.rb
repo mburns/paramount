@@ -3,7 +3,7 @@ require_relative 'spec_helper'
 
 describe 'paramount::dkim' do
   let(:chef_run) do
-    ChefSpec::SoloRunner.new.tap do |runner|
+    ChefSpec::ServerRunner.new.tap do |runner|
       runner.node.set['paramount']['domain'] = 'you-should-write-more-specs.com'
     end.converge described_recipe
   end

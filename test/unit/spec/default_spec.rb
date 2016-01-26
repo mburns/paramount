@@ -10,7 +10,7 @@ describe 'paramount::default' do
     stub_command('test -d /etc/php5/fpm/pool.d || mkdir -p /etc/php5/fpm/pool.d').and_return true
   end
 
-  let(:chef_run) { ChefSpec::SoloRunner.new.converge(described_recipe) }
+  let(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
 
   %w(
     paramount::_security

@@ -6,8 +6,9 @@ source 'https://rubygems.org'
 
 group :plugins do
   gem 'vagrant-berkshelf', github: 'berkshelf/vagrant-berkshelf'
-  gem 'vagrant-omnibus', github: 'schisamo/vagrant-omnibus'
   gem 'vagrant-cachier', github: 'fgrehm/vagrant-cachier'
+  gem 'vagrant-chef-zero', github: 'schubergphilis/vagrant-chef-zero'
+  gem 'vagrant-omnibus', github: 'schisamo/vagrant-omnibus'
 end
 
 group :maintain do

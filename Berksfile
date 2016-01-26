@@ -8,9 +8,9 @@ metadata
 
 cookbook 'ark', '~> 0.9.0'
 cookbook 'build-essential'
-cookbook 'chef-solo-search', '~> 0.5.1'
 cookbook 'chef-sugar', '~> 3.1.0'
-cookbook 'chef-vault', '~> 1.3.0'
+cookbook 'chef-vault', git: 'git@github.com:chef-cookbooks/chef-vault.git', tag: 'v1.3.2'
+
 cookbook 'database', '~> 4.0.6'
 cookbook 'postgresql', '~> 3'
 cookbook 'hostsfile', '~> 2.4.5'

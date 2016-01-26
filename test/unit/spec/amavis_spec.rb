@@ -2,7 +2,7 @@ require 'chefspec'
 require_relative 'spec_helper'
 
 describe 'paramount::amavis' do
-  let(:chef_run) { ChefSpec::SoloRunner.new.converge described_recipe }
+  let(:chef_run) { ChefSpec::ServerRunner.new.converge described_recipe }
 
   it 'installs amavisd-new' do
     expect(chef_run).to install_package 'amavisd-new'
