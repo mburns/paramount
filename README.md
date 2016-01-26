@@ -10,9 +10,11 @@
 
 # Paramount Cookbook
 
-A Chef cookbook for running a personal computer stack.
+A Chef cookbook for running your own self-hosted computing stack.
 
 Inspired by https://github.com/al3x/sovereign
+
+Tools are chosen from https://github.com/Kickball/awesome-selfhosted
 
 ## Supported Platforms
 
@@ -20,48 +22,51 @@ Inspired by https://github.com/al3x/sovereign
 
 ## Attributes
 
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['paramount']['domain']</tt></td>
-    <td>String</td>
-    <td>FQDN</td>
-    <td><tt>example.com</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['paramount']['user']</tt></td>
-    <td>String</td>
-    <td>Username</td>
-    <td><tt>admin</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['paramount']['contact']</tt></td>
-    <td>String</td>
-    <td>E-Mail address</td>
-    <td><tt>*computed*</tt></td>
-  </tr>
-</table>
+| Key | Type | Description | Default |
+| --- | ---- | ----------- | ------- |
+| `['paramount']['domain']` | String | FQDN | `example.com` |
+| `['paramount']['user']` | String | Username | `admin` |
+| `['paramount']['contact']` | String | E-Mail address | `*computed*` |
+
+## Components 
+
+
+### paramount::_email
+
+Email is a full email stack (IMAP, SMTP, anti-spam)
+
+* Dovecot, Postfix, dspam, spamassasin
+* Roundcube, postgresql
+
+### paramount::_web
+
+CMS, Blog, Website (HTTP/HTTPS)
+
+### paramount::_cloud
+
+social networking, messaging
+
+* Owncloud
+
+### paramount::_multimedia
+
+* Plex, sickbeard, etc
 
 ## Usage
 
-### paramount::default
-
-Include `paramount` in your node's `run_list`:
+Include the specific component(s) you want in your node's `run_list`:
 
 ```json
 {
   "run_list": [
-    "recipe[paramount::default]"
+    "recipe[paramount::_email]"
   ]
 }
 ```
 
 ## License and Authors
 
-Author:: Michael Burns (michael@mirwin.net)
+Author:: Michael Burns (@mburns)
+
+Contributor:: Alexander Adam (@alexanderadam)
 
