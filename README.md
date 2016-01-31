@@ -7,61 +7,83 @@
 [![Dependency Status](https://gemnasium.com/mburns/paramount.svg)](https://gemnasium.com/mburns/paramount)
 [![Gitter Chat](https://badges.gitter.im/mburns/paramount.svg)](https://gitter.im/mburns/paramount?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-
 # Paramount Cookbook
 
-A Chef cookbook for running a personal computer stack.
+A Chef cookbook for running your own self-hosted computing stack.
 
 Inspired by https://github.com/al3x/sovereign
 
+Tools are chosen from https://github.com/Kickball/awesome-selfhosted
+
 ## Supported Platforms
+
+### Tier 1
+
+Primary testing platform and proving ground for new features.
 
  * Ubuntu 14.04 LTS
 
+### Tier 2
+
+Test-kitchen is able to test some/all of the functionality on these platforms:
+
+ * CentOS 6.6
+ * CentOS 7
+ * Debian 7.8
+ * Ubuntu 15.10
+
+### Desired Platforms
+
+ * SmartOS/IllumOS
+ * FreeBSD
+
 ## Attributes
 
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['paramount']['domain']</tt></td>
-    <td>String</td>
-    <td>FQDN</td>
-    <td><tt>example.com</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['paramount']['user']</tt></td>
-    <td>String</td>
-    <td>Username</td>
-    <td><tt>admin</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['paramount']['contact']</tt></td>
-    <td>String</td>
-    <td>E-Mail address</td>
-    <td><tt>*computed*</tt></td>
-  </tr>
-</table>
+| Key | Type | Description | Default |
+| --- | ---- | ----------- | ------- |
+| `['paramount']['domain']` | String | FQDN | `example.com` |
+| `['paramount']['user']` | String | Username | `admin` |
+| `['paramount']['contact']` | String | E-Mail address | `*computed*` |
+
+## Components 
+
+
+### paramount::_email
+
+Email is a full email stack (IMAP, SMTP, anti-spam)
+
+* Dovecot, Postfix, dspam, spamassasin
+* Roundcube, postgresql
+
+### paramount::_web
+
+CMS, Blog, Website (HTTP/HTTPS)
+
+### paramount::_cloud
+
+social networking, messaging
+
+* Owncloud
+
+### paramount::_multimedia
+
+* Plex, sickbeard, etc
 
 ## Usage
 
-### paramount::default
-
-Include `paramount` in your node's `run_list`:
+Include the specific component(s) you want in your node's `run_list`:
 
 ```json
 {
   "run_list": [
-    "recipe[paramount::default]"
+    "recipe[paramount::_email]"
   ]
 }
 ```
 
 ## License and Authors
 
-Author:: Michael Burns (michael@mirwin.net)
+Author:: Michael Burns (@mburns)
+
+Contributor:: Alexander Adam (@alexanderadam)
 
