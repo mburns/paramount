@@ -4,10 +4,11 @@
 
 source 'https://rubygems.org'
 
+gem 'chef', '~> 12.8.1'
+
 group :plugins do
   gem 'vagrant-berkshelf', github: 'berkshelf/vagrant-berkshelf'
   gem 'vagrant-cachier', github: 'fgrehm/vagrant-cachier'
-  gem 'vagrant-chef-zero', github: 'schubergphilis/vagrant-chef-zero'
   gem 'vagrant-omnibus', github: 'schisamo/vagrant-omnibus'
 end
 
@@ -17,7 +18,7 @@ group :maintain do
 end
 
 group :development do
-  gem 'coveralls'
+  # gem 'coveralls'
   gem 'thor-scmversion'
   gem 'guard'
   gem 'guard-kitchen'

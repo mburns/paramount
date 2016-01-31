@@ -8,11 +8,11 @@
 
 include_recipe 'paramount::default'
 
-include_recipe 'nginx'
+include_recipe 'chef_nginx'
 
-service 'nginx' do
-  action %i(enable start)
-end
+# service 'nginx' do
+#   action %i(enable start)
+# end
 
 openssl_x509 "/etc/httpd/ssl/#{node['paramount']['domain']}.pem" do
   common_name node['paramount']['domain']
