@@ -7,7 +7,6 @@
 [![Dependency Status](https://gemnasium.com/mburns/paramount.svg)](https://gemnasium.com/mburns/paramount)
 [![Gitter Chat](https://badges.gitter.im/mburns/paramount.svg)](https://gitter.im/mburns/paramount?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-
 # Paramount Cookbook
 
 A Chef cookbook for running your own self-hosted computing stack.
@@ -18,7 +17,25 @@ Tools are chosen from https://github.com/Kickball/awesome-selfhosted
 
 ## Supported Platforms
 
+### Tier 1
+
+Primary testing platform and proving ground for new features.
+
  * Ubuntu 14.04 LTS
+
+### Tier 2
+
+Test-kitchen is able to test some/all of the functionality on these platforms:
+
+ * CentOS 6.6
+ * CentOS 7
+ * Debian 7.8
+ * Ubuntu 15.10
+
+### Desired Platforms
+
+ * SmartOS/IllumOS
+ * FreeBSD
 
 ## Attributes
 
