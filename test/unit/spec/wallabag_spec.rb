@@ -1,8 +1,12 @@
+# encoding: UTF-8
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
 require 'chefspec'
 require_relative 'spec_helper'
 
 describe 'paramount::wallabag' do
-  let(:chef_run) { ChefSpec::ServerRunner.new.converge described_recipe }
+  let(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
 
   %w(curl php5-tidy php-xml-parser).each do |package|
     it "installs #{package}" do

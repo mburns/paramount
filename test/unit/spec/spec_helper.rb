@@ -10,11 +10,11 @@ require 'coveralls'
 
 Coveralls.wear!
 
-# at_exit { ChefSpec::Coverage.report! }
+at_exit { ChefSpec::Coverage.report! }
 
 RSpec.configure do |config|
   # Specify the Chef log_level (default: :warn)
-  # config.log_level = :debug
+  # config.log_level = :fatal
 
   # Specify the path to a local JSON file with Ohai data (default: nil)
   # config.path = 'ohai.json'

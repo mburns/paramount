@@ -6,7 +6,7 @@ require 'chefspec'
 require_relative 'spec_helper'
 
 describe 'paramount::_web' do
-  let(:chef_run) { ChefSpec::ServerRunner.converge(described_recipe) }
+  let(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
 
   before(:each) do
     stub_command('which nginx').and_return false

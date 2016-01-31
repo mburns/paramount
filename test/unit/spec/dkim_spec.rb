@@ -1,3 +1,7 @@
+# encoding: UTF-8
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
 require 'chefspec'
 require_relative 'spec_helper'
 

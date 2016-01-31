@@ -15,10 +15,10 @@ cookbook 'database', '~> 4.0'
 cookbook 'hostsfile', '~> 2.4.5'
 cookbook 'packages', '~> 0.4.0'
 cookbook 'partial_search'
-cookbook 'ohai', '~> 2.0.1'
+cookbook 'ohai', '~> 3.0'
 
 ## Cloud
-cookbook 'djbdns', '~> 1.1.0'
+cookbook 'djbdns', '~> 3.0.0'
 cookbook 'prosody', git: 'git@github.com:mburns/chef-prosody.git'
 cookbook 'owncloud', git: 'git@github.com:onddo/owncloud-cookbook.git'
 cookbook 'ucspi-tcp'
@@ -26,7 +26,7 @@ cookbook 'ucspi-tcp'
 
 ## Email
 cookbook 'clamav', '~> 1.2.0'
-cookbook 'dovecot', '~> 2.1.0'
+cookbook 'dovecot', '~> 2.5.0'
 cookbook 'dspam', git: 'git@github.com:mburns/chef-dspam.git'
 cookbook 'opendkim', '~> 1.0.0'
 cookbook 'onddo-spamassassin', '~> 1.0.0'
@@ -46,7 +46,7 @@ cookbook 'couchpotato', git: 'git@github.com:multimedia-chef/couchpotato.git'
 cookbook 'plexapp', '~> 1.0.0'
 
 ## Web
-cookbook 'nginx'
+cookbook 'chef_nginx'
 # cookbook 'php'
 cookbook 'php-fpm'
 
@@ -73,7 +73,7 @@ cookbook 'ntp', '~> 1.8.6'
 cookbook 'openssh', '~> 1.4.0'
 cookbook 'runit'
 cookbook 'sudo', '~> 2.7.1'
-cookbook 'sysctl', '~> 0.6.2'
+# cookbook 'sysctl', '~> 0.8.0' # requires ohai 4
 cookbook 'ubuntu', '~> 1.1.8'
 cookbook 'users', '~> 2.0.2'
 cookbook 'yum'
@@ -82,8 +82,4 @@ cookbook 'xml'
 
 group :integration do
   cookbook 'test', path: 'test/fixtures/cookbooks/test'
-end
-
-group :local do
-  cookbook 'paramount', path: File.dirname(__FILE__)
 end

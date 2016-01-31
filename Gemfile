@@ -16,17 +16,28 @@ group :maintain do
   gem 'stove'
 end
 
+group :development do
+  gem 'coveralls'
+  gem 'thor-scmversion'
+  gem 'guard'
+  gem 'guard-kitchen'
+  gem 'guard-foodcritic'
+  gem 'guard-rubocop'
+end
+
 group :test do
-  gem 'berkshelf', '~> 4'
-  gem 'chefspec', '~> 4'
   gem 'chef-sugar'
   gem 'pry'
-  gem 'coveralls', require: false
 end
 
 group :style do
   gem 'foodcritic', '~> 3.0'
-  gem 'rubocop', '~> 0.24'
+  gem 'rubocop'
+end
+
+group :spec do
+  gem 'berkshelf', '~> 4'
+  gem 'chefspec', '~> 4'
 end
 
 group :integration do
