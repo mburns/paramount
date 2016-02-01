@@ -17,3 +17,9 @@ default['paramount']['contact'] = begin
                                   rescue
                                     'postmaster@example.com'
                                   end
+
+# prosody
+# wallabag
+# sabnzbd
+
+default['paramount']['services'] = %w()

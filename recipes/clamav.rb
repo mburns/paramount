@@ -26,6 +26,7 @@ node.default['clamav']['scan']['minimal']['enable'] = true
 
 include_recipe 'clamav'
 
+# TODO : make more platform-independent
 package 'clamav-daemon'
 
 # Add user clamav to amavis group to make them play together!

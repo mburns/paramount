@@ -50,7 +50,7 @@ postgresql_database 'postfix' do
   action :create
 end
 
-# postscreen
+# TODO : postscreen
 
 # include_recipe 'postfix-full'
 
