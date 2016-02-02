@@ -42,4 +42,4 @@ include_recipe 'paramount::dkim'
 
 include_recipe 'dspam'
 
-# include_recipe 'paramount::roundcube'
+include_recipe 'paramount::roundcube' if node.run_list.include?('paramount::_web')

@@ -8,10 +8,10 @@
 
 default['postfix']['mail_type'] = 'master'
 default['postfix']['main']['mydomain'] = begin
-                                    node['paramount']['domain']
-                                  rescue
-                                    'example.com'
-                                  end
+                                          "mail.#{node['paramount']['domain']}"
+                                        rescue
+                                          'example.com'
+                                        end
 
 default['postfix']['main']['inet-interfaces'] = 'all'
 default['postfix']['main']['relayhost'] = "[smtp.#{node['postfix']['main']['mydomain']}]"
