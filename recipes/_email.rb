@@ -8,6 +8,17 @@
 
 include_recipe 'paramount::default'
 
+# Resolve MX records for relvant FQDNs, smtp.*, mail.*
+# %w(smtp mail imap).each do |domain|
+#   ruby_block 'resolve MX records' do
+#     block do
+#       require 'resolv'
+#       Resolv::DNS.new.getresources(node['paramount']['domain'], Resolv::DNS::Resource::IN::MX)
+#     end
+#     action :run
+#   end
+# end
+
 include_recipe 'openssl::upgrade'
 Chef::Recipe.send(:include, OpenSSLCookbook::RandomPassword)
 node.default['paramount']['encfs_passwd'] = random_password(length: 50, mode: :base64, encoding: 'ASCII')
