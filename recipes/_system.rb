@@ -6,7 +6,6 @@
 # License:: Apache License, Version 2.0
 #
 
-# include_recipe 'locales'
 include_recipe 'ntp'
 
 automatic_updates 'default' do
@@ -20,11 +19,11 @@ include_recipe 'sysctl'
 include_recipe 'ubuntu'
 
 include_recipe 'sudo'
-# include_recipe 'users'
+
+include_recipe 'users::sysadmins'
+
+# TODO: create user from data_bag with users_manage
 
 include_recipe 'rsyslog'
-# include_recipe 'libyaml'
-# include_recipe 'djbdns::cache'
-# include_recipe 'xml'
 
 include_recipe 'openssh'
