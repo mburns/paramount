@@ -30,8 +30,6 @@ group 'postfix' do
   append true
 end
 
-include_recipe 'postgresql::server'
-
 connection_info = {
   host: '127.0.0.1',
   port: '5432',

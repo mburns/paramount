@@ -42,5 +42,4 @@ include_recipe 'paramount::dkim'
 
 include_recipe 'dspam'
 
-# TODO : optionally include if `paramount::_web` is in run_list
 # include_recipe 'paramount::roundcube'

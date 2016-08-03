@@ -19,3 +19,5 @@ bin/*
 
 attributes/blank.rb
 recipes/blank.rb
+
+coverage
