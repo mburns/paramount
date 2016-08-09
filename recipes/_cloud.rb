@@ -8,13 +8,13 @@
 
 include_recipe 'paramount::default'
 
-ssl_certificate 'owncloud-cert' do
-  namespace 'owncloud'
-end
+# ssl_certificate 'owncloud-cert' do
+#   namespace 'owncloud'
+# end
 
 # include_recipe 'owncloud'
 # include_recipe 'wallabag'
 # include_recipe 'plex'
 # include_recipe 'znc'
 
-include_recipe 'paramount::prosody'
+# include_recipe 'paramount::prosody'

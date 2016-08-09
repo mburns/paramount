@@ -7,7 +7,12 @@
 #
 
 default['postfix']['mail_type'] = 'master'
-default['postfix']['main']['mydomain'] = 'example.com'
+default['postfix']['main']['mydomain'] = begin
+                                          "mail.#{node['paramount']['domain']}"
+                                        rescue
+                                          'example.com'
+                                        end
+
 default['postfix']['main']['inet-interfaces'] = 'all'
-# default['postfix']['main']['relayhost'] = '[smtp.example.com]'
+default['postfix']['main']['relayhost'] = "[smtp.#{node['postfix']['main']['mydomain']}]"
 default['postfix']['main']['smtp_use_tls'] = 'yes'

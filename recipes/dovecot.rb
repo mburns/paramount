@@ -57,6 +57,8 @@ node.default['dovecot']['protocols']['lda']['mail_plugins'] = %w($mail_plugins s
 # We want IMAP enabled with the default configuration
 node.default['dovecot']['protocols']['imap'] = {}
 
+# node.default['dovecot']['protocols']['pop3s'] = {}
+
 # 90-sieve.conf
 node.default['dovecot']['plugins']['sieve']['sieve'] = '~/.dovecot.sieve'
 node.default['dovecot']['plugins']['sieve']['sieve_dir'] = '~/sieve'
