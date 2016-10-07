@@ -52,7 +52,7 @@ template '/etc/amavis/conf.d/01-basic' do
   source 'amavis.erb'
   owner 'amavis'
   group 'amavis'
-  mode 0644
+  mode 0o644
   notifies :restart, 'poise_service[amavis]', :delayed
 end
 
