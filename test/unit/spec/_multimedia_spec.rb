@@ -6,6 +6,10 @@ require 'chefspec'
 require_relative 'spec_helper'
 
 describe 'paramount::_multimedia' do
+  before(:each) do
+    stub_command('which sudo').and_return false
+  end
+
   context 'common case' do
     let(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
 
@@ -13,7 +17,7 @@ describe 'paramount::_multimedia' do
       expect(chef_run).to include_recipe 'paramount::default'
     end
 
-    %w(couchpotato sabnzbd sickbeard plexapp).each do |cb|
+    %w(plexapp).each do |cb|
       it "includes recipe #{cb}" do
         expect(chef_run).to include_recipe(cb)
       end

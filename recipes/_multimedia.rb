@@ -19,7 +19,7 @@
 
 include_recipe 'paramount::default'
 
-include_recipe 'couchpotato'
+# include_recipe 'couchpotato'
 include_recipe 'plexapp'
-include_recipe 'sabnzbd'
-include_recipe 'sickbeard'
+# include_recipe 'sabnzbd'
+# include_recipe 'sickbeard'

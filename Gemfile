@@ -7,9 +7,9 @@ source 'https://rubygems.org'
 gem 'chef', '~> 12.8.1'
 
 group :plugins do
-  gem 'vagrant-berkshelf', github: 'berkshelf/vagrant-berkshelf'
-  gem 'vagrant-cachier', github: 'fgrehm/vagrant-cachier'
-  gem 'vagrant-omnibus', github: 'schisamo/vagrant-omnibus'
+  gem 'vagrant-berkshelf', '~> 4.1'
+  gem 'vagrant-cachier', '~> 1.2'
+  gem 'vagrant-omnibus', '~> 1.5'
 end
 
 group :maintain do

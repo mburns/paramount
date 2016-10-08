@@ -15,7 +15,8 @@ describe 'paramount::postfix' do
     stub_command('test -d /etc/php5/fpm/pool.d || mkdir -p /etc/php5/fpm/pool.d').and_return true
   end
 
-  %w(postgresql::server postfixadmin postfixadmin::map_files paramount::dkim).each do |recipe|
+  # postgresql::server spostfixadmin::map_files
+  %w(paramount::dkim).each do |recipe|
     it "includes #{recipe}" do
       expect(chef_run).to include_recipe recipe
     end

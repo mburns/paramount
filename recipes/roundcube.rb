@@ -51,25 +51,25 @@ end
 include_recipe 'php-fpm'
 include_recipe 'chef_nginx'
 
-include_recipe 'roundcube::install'
-include_recipe 'roundcube::configure'
+# include_recipe 'roundcube::install'
+# include_recipe 'roundcube::configure'
 
-php_fpm_pool node['roundcube']['php-fpm']['pool'] do
-  user node['nginx']['user']
-  group node['nginx']['group']
-  listen_owner node['nginx']['user']
-  listen_group node['nginx']['group']
-  listen_mode '0660'
-  # Fix php-fpm cookbook ubuntu support
-  if node['platform'] == 'ubuntu' && node['platform_version'].to_i < 12
-    process_manager 'dynamic'
-  end
-end
+# php_fpm_pool node['roundcube']['php-fpm']['pool'] do
+#   user node['nginx']['user']
+#   group node['nginx']['group']
+#   listen_owner node['nginx']['user']
+#   listen_group node['nginx']['group']
+#   listen_mode '0660'
+#   # Fix php-fpm cookbook ubuntu support
+#   if node['platform'] == 'ubuntu' && node['platform_version'].to_i < 12
+#     process_manager 'dynamic'
+#   end
+# end
 
 # https://raw.githubusercontent.com/xhost-cookbooks/roundcube/master/templates/default/nginx_vhost.erb
-nginx_site node['roundcube']['server_name'] do
-  # variables(
-  #   base_dir: "#{node['roundcube']['install_dir']}/roundcube"
-  # )
-  enable true
-end
+# nginx_site node['roundcube']['server_name'] do
+#   variables(
+#     base_dir: "#{node['roundcube']['install_dir']}/roundcube"
+#   )
+#   enable true
+# end

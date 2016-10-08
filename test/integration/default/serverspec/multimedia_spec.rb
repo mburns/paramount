@@ -5,9 +5,6 @@
 require_relative 'spec_helper'
 
 %w(
-  couchpotato
-  sabnzbd
-  sickbeard
   plexmediaserver
 ).each do |f|
   describe service(f) do

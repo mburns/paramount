@@ -9,6 +9,7 @@ describe 'paramount::_email' do
   let(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
 
   before do
+    stub_command('which sudo').and_return false
     stub_command('ls /var/lib/postgresql/9.3/main/recovery.conf').and_return true
     stub_command("psql -c 'SELECT lanname FROM pg_catalog.pg_language' postfix | grep '^ plpgsql$'")
     stub_command('which nginx').and_return true
@@ -21,7 +22,8 @@ describe 'paramount::_email' do
     end
   end
 
-  %w(default dovecot amavis clamav spamassassin postfix dkim).each do |recipe|
+  # dovecot postfixadmin
+  %w(default amavis clamav spamassassin postfix dkim).each do |recipe|
     it "includes #{recipe} recipe" do
       expect(chef_run).to include_recipe("paramount::#{recipe}")
     end

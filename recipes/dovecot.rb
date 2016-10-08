@@ -116,7 +116,7 @@ node.default['dovecot']['conf']['sql']['iterate_query'] = [
   "FROM mailbox WHERE active = '1'"
 ]
 
-include_recipe 'dovecot'
+# include_recipe 'dovecot'
 
 # Compile sieve scripts
 

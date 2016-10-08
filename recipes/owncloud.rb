@@ -31,4 +31,4 @@ node.default['owncloud']['config']['dbtype'] = 'pgsql'
 
 # node.default['owncloud']['config']
 
-include_recipe 'owncloud'
+# include_recipe 'owncloud'

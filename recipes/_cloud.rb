@@ -13,7 +13,7 @@ include_recipe 'paramount::default'
 # end
 
 include_recipe 'paramount::prosody'
-include_recipe 'owncloud'
+# include_recipe 'owncloud'
 
 # include_recipe 'wallabag'
 # include_recipe 'znc'
