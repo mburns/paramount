@@ -36,7 +36,14 @@ cookbook 'postfix-full', '~> 0.1.2'
 cookbook 'solr_app', '~> 0.0.3'
 
 ## Monitoring & Logs
+# cookbook 'collectd-lib', '~> 3.0.1'
+# cookbook 'elasticsearch', '~> 1.0.0'
+cookbook 'elkstack', '~> 6.0.4'
+cookbook 'kibana_lwrp', '~> 2.0.5'
 cookbook 'logrotate', '~> 1.9.1'
+cookbook 'logstash', '~> 0.11.4'
+# cookbook 'newrelic', '~> 2.12.0'
+# cookbook 'rackspace_monitoring'
 cookbook 'rsyslog', '~> 2.0.0'
 
 ## Multimedia
@@ -55,7 +62,7 @@ cookbook 'php-fpm'
 cookbook 'automatic_updates'
 # cookbook 'encfs', '~> 0.2.0', git: 'git@github.com:mburns/encfs.git'
 cookbook 'fail2ban', '~> 2.2.1'
-cookbook 'firewall', '~> 1.1.2'
+cookbook 'firewall', '~> 2.0.1'
 cookbook 'ldap', '~> 1.0'
 # cookbook 'openvpn', git: 'git@github.com:xhost-cookbooks/openvpn.git'
 cookbook 'os-hardening', '~> 1.2.0'

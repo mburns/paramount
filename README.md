@@ -30,7 +30,7 @@ Test-kitchen is able to test some/all of the functionality on these platforms:
  * CentOS 6.6
  * CentOS 7
  * Debian 7.8
- * Ubuntu 15.10
+ * Ubuntu 16.04
 
 ### Desired Platforms
 
