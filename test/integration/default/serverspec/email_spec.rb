@@ -4,9 +4,9 @@
 
 require_relative 'spec_helper'
 
+# dspam
+# dovecot
 %w(
-  dovecot
-  dspam
   amavisd
   postfix
   postgresql

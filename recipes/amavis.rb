@@ -44,7 +44,7 @@ end
 ).each do |filename|
   file "/etc/amavis/conf.d/#{filename}" do
     action :delete
-    notifies :restart, 'poise_service[amavis]', :delayed
+    # notifies :restart, 'poise_service[amavis]', :delayed
   end
 end
 
@@ -53,7 +53,7 @@ template '/etc/amavis/conf.d/01-basic' do
   owner 'amavis'
   group 'amavis'
   mode 0o644
-  notifies :restart, 'poise_service[amavis]', :delayed
+  # notifies :restart, 'poise_service[amavis]', :delayed
 end
 
 # TODO : setup `amavis service

@@ -4,11 +4,12 @@
 
 source 'https://rubygems.org'
 
+gem 'chef', '~> 12.8.1'
+
 group :plugins do
-  gem 'vagrant-berkshelf', github: 'berkshelf/vagrant-berkshelf'
-  gem 'vagrant-cachier', github: 'fgrehm/vagrant-cachier'
-  gem 'vagrant-chef-zero', github: 'schubergphilis/vagrant-chef-zero'
-  gem 'vagrant-omnibus', github: 'schisamo/vagrant-omnibus'
+  gem 'vagrant-berkshelf', '~> 4.1'
+  gem 'vagrant-cachier', '~> 1.2'
+  gem 'vagrant-omnibus', '~> 1.5'
 end
 
 group :maintain do
@@ -16,17 +17,28 @@ group :maintain do
   gem 'stove'
 end
 
+group :development do
+  # gem 'coveralls'
+  gem 'thor-scmversion'
+  gem 'guard'
+  gem 'guard-kitchen'
+  gem 'guard-foodcritic'
+  gem 'guard-rubocop'
+end
+
 group :test do
-  gem 'berkshelf', '~> 4'
-  gem 'chefspec', '~> 4'
   gem 'chef-sugar'
   gem 'pry'
-  gem 'coveralls', require: false
 end
 
 group :style do
   gem 'foodcritic', '~> 3.0'
-  gem 'rubocop', '~> 0.24'
+  gem 'rubocop'
+end
+
+group :spec do
+  gem 'berkshelf', '~> 4'
+  gem 'chefspec', '~> 4'
 end
 
 group :integration do

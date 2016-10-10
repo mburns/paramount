@@ -15,7 +15,7 @@ end
 include_recipe 'build-essential'
 include_recipe 'packages'
 
-include_recipe 'sysctl'
+# include_recipe 'sysctl'
 include_recipe 'ubuntu'
 
 include_recipe 'sudo'

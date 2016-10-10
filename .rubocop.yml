@@ -1,2 +1,5 @@
 Metrics/LineLength:
   Max: 140
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: when_needed

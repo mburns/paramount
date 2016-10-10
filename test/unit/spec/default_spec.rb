@@ -1,5 +1,9 @@
+# encoding: UTF-8
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
 require 'chefspec'
-require_relative 'spec_helper'
+# require_relative 'spec_helper'
 
 describe 'paramount::default' do
   before(:each) do

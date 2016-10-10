@@ -17,7 +17,7 @@ node.set['aide']['paths'] = {
   '/data/.*' => '!'
 }
 
-include_recipe 'aide'
+# include_recipe 'aide'
 
 # selinux_state "SELinux #{node['selinux']['state'].capitalize}" do
 #   action node['selinux']['state'].downcase.to_sym

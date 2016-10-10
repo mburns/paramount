@@ -21,3 +21,4 @@ attributes/blank.rb
 recipes/blank.rb
 
 coverage
+.DS_Store

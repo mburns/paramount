@@ -1,8 +1,12 @@
+# encoding: UTF-8
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
 require 'chefspec'
 require_relative 'spec_helper'
 
 describe 'paramount::postfix' do
-  let(:chef_run) { ChefSpec::ServerRunner.new.converge described_recipe }
+  let(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
 
   before do
     stub_command('ls /var/lib/postgresql/9.3/main/recovery.conf').and_return true
@@ -11,7 +15,8 @@ describe 'paramount::postfix' do
     stub_command('test -d /etc/php5/fpm/pool.d || mkdir -p /etc/php5/fpm/pool.d').and_return true
   end
 
-  %w(postgresql::server postfixadmin postfixadmin::map_files paramount::dkim).each do |recipe|
+  # postgresql::server spostfixadmin::map_files
+  %w(paramount::dkim).each do |recipe|
     it "includes #{recipe}" do
       expect(chef_run).to include_recipe recipe
     end

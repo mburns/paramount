@@ -6,8 +6,6 @@
 # License:: Apache License, Version 2.0
 #
 
-include_attribute 'nginx'
-
 # default['nginx']['install_method'] = 'package'
 # default['nginx']['package_name'] = ''
 default['nginx']['default_site_enabled'] = false
