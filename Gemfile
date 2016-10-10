@@ -18,7 +18,6 @@ group :maintain do
 end
 
 group :development do
-  # gem 'coveralls'
   gem 'thor-scmversion'
   gem 'guard'
   gem 'guard-kitchen'
@@ -27,6 +26,7 @@ group :development do
 end
 
 group :test do
+  gem 'coveralls'
   gem 'chef-sugar'
   gem 'pry'
   gem 'codecov'

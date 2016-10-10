@@ -6,9 +6,9 @@ require 'rspec/expectations'
 require 'chefspec'
 require 'chefspec/berkshelf'
 require 'chef/application'
-# require 'coveralls'
-#
-# Coveralls.wear!
+require 'coveralls'
+
+Coveralls.wear!
 
 require 'simplecov'
 SimpleCov.start
