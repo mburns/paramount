@@ -29,6 +29,7 @@ end
 group :test do
   gem 'chef-sugar'
   gem 'pry'
+  gem 'codecov'
 end
 
 group :style do
