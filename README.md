@@ -3,6 +3,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/mburns/paramount/badge.svg?branch=master)](https://coveralls.io/github/mburns/paramount?branch=master)
 [![Code Climate](https://codeclimate.com/github/mburns/paramount/badges/gpa.svg)](https://codeclimate.com/github/mburns/paramount)
 [![Issue Count](https://codeclimate.com/github/mburns/paramount/badges/issue_count.svg)](https://codeclimate.com/github/mburns/paramount)
+[![Coverage](https://img.shields.io/codecov/c/github/mburns/paramount.svg)](https://codecov.io/github/mburns/paramount)
 [![Inline docs](http://inch-ci.org/github/mburns/paramount.svg?branch=master)](http://inch-ci.org/github/mburns/paramount)
 [![Dependency Status](https://gemnasium.com/mburns/paramount.svg)](https://gemnasium.com/mburns/paramount)
 [![Gitter Chat](https://badges.gitter.im/mburns/paramount.svg)](https://gitter.im/mburns/paramount?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
