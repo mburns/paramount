@@ -9,7 +9,7 @@ metadata
 cookbook 'ark', '~> 0.9.0'
 cookbook 'build-essential'
 cookbook 'chef-sugar', '~> 3.1.0'
-# cookbook 'chef-vault', git: 'git@github.com:chef-cookbooks/chef-vault.git', tag: 'v1.3.2'
+cookbook 'chef-vault', '~> 2.0.0'
 
 cookbook 'database', '~> 4.0'
 cookbook 'hostsfile', '~> 2.4.5'
@@ -19,7 +19,7 @@ cookbook 'ohai', '~> 4.1'
 
 ## Cloud
 cookbook 'djbdns', '~> 3.0.0'
-# cookbook 'prosody', git: 'git@github.com:mburns/chef-prosody.git'
+cookbook 'prosody', '~> 0.5.2'
 # cookbook 'owncloud', git: 'git@github.com:mburns/owncloud-cookbook.git', branch: 'nginx_chef'
 cookbook 'ucspi-tcp'
 cookbook 'znc', '~> 0.0.1'
@@ -36,14 +36,14 @@ cookbook 'postfix-full', '~> 0.1.2'
 cookbook 'solr_app', '~> 0.0.3'
 
 ## Monitoring & Logs
-# cookbook 'collectd-lib', '~> 3.0.1'
-# cookbook 'elasticsearch', '~> 1.0.0'
+cookbook 'collectd-lib'
+# cookbook 'elasticsearch', '~> 1.0.0' # TODO : elkstack uses 0.3.14 !!
 cookbook 'elkstack', '~> 6.0.4'
 cookbook 'kibana_lwrp', '~> 2.0.5'
 cookbook 'logrotate', '~> 1.9.1'
 cookbook 'logstash', '~> 0.11.4'
 # cookbook 'newrelic', '~> 2.12.0'
-# cookbook 'rackspace_monitoring'
+cookbook 'rackspace_monitoring'
 cookbook 'rsyslog', '~> 2.0.0'
 
 ## Multimedia
@@ -64,9 +64,9 @@ cookbook 'automatic_updates'
 cookbook 'fail2ban', '~> 2.2.1'
 cookbook 'firewall', '~> 2.0.1'
 cookbook 'ldap', '~> 1.0'
-# cookbook 'openvpn', git: 'git@github.com:xhost-cookbooks/openvpn.git'
+# cookbook 'openvpn', '~> 3.0' # pending publication to Supermarket
 cookbook 'os-hardening', '~> 1.2.0'
-# cookbook 'selinux'
+cookbook 'selinux'
 cookbook 'rkhunter', '~> 0.2.5'
 cookbook 'openldap', '~> 2.1'
 cookbook 'openssl', '~> 4.1.1'
