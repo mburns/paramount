@@ -247,7 +247,7 @@ GEM
       addressable (>= 2.3.5, < 2.5)
       faraday (~> 0.8, < 0.10)
     semverse (1.2.1)
-    serverspec (2.36.1)
+    serverspec (2.37.1)
       multi_json
       rspec (~> 3.0)
       rspec-its
@@ -258,7 +258,7 @@ GEM
     solve (2.0.3)
       molinillo (~> 0.4.2)
       semverse (~> 1.1)
-    specinfra (2.63.2)
+    specinfra (2.63.3)
       net-scp
       net-ssh (>= 2.7, < 4.0)
       net-telnet
