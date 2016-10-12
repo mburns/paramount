@@ -6,6 +6,9 @@
 # License:: Apache License, Version 2.0
 #
 
+# logic borrowed from zuazo's postfix-dovecot-cookbook::dovecot
+# TODO : install pigeonhole
+
 node.default['dovecot']['conf_files_group'] = 'vmail'
 
 node.default['dovecot']['conf']['disable_plaintext_auth'] = false
@@ -51,7 +54,7 @@ node.default['dovecot']['conf']['hostname'] = "mail.#{node['paramount']['domain'
 node.default['dovecot']['conf']['lda_mailbox_autocreate'] = true
 node.default['dovecot']['conf']['lda_mailbox_autosubscribe'] = true
 
-node.default['dovecot']['protocols']['lda']['mail_plugins'] = %w($mail_plugins sieve)
+node.default['dovecot']['protocols']['lda']['mail_plugins'] = %w(imap sieve)
 
 # 20-imap.conf
 # We want IMAP enabled with the default configuration
@@ -116,7 +119,21 @@ node.default['dovecot']['conf']['sql']['iterate_query'] = [
   "FROM mailbox WHERE active = '1'"
 ]
 
-# include_recipe 'dovecot'
+# 10-ssl.conf
+self.class.send(:include, Chef::SslCertificateCookbook::ServiceHelpers)
+@ssl_config = ssl_config_for_service('dovecot')
+
+node.default['dovecot']['conf']['ssl'] = true
+node.default['dovecot']['conf']['ssl_protocols'] = @ssl_config['protocols']
+node.default['dovecot']['conf']['ssl_cipher_list'] = @ssl_config['cipher_suite']
+cert = ssl_certificate 'dovecot2' do
+  namespace node['paramount']
+  notifies :restart, 'service[dovecot]'
+end
+node.default['dovecot']['conf']['ssl_cert'] = "<#{cert.chain_combined_path}"
+node.default['dovecot']['conf']['ssl_key'] = "<#{cert.key_path}"
+
+include_recipe 'dovecot'
 
 # Compile sieve scripts
 
@@ -135,11 +152,11 @@ directory File.dirname(sieve_global_path) do
   not_if { File.exist? File.dirname(sieve_global_path) }
 end
 
-# This will be the default sieve script:
-# template node['dovecot']['plugins']['sieve']['sieve_global_path'] do
-#   source 'default.sieve.erb'
-#   owner 'root'
-#   group 'root'
-#   mode '00644'
-#   notifies :run, 'execute[sievec sieve_global_path]'
-# end
+template node['dovecot']['plugins']['sieve']['sieve_global_path'] do
+  source 'default.sieve.erb'
+  owner 'root'
+  group 'root'
+  mode '00644'
+  only_if { node['paramount']['sieve']['enabled'] }
+  notifies :run, 'execute[sievec sieve_global_path]'
+end

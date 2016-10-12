@@ -8,7 +8,7 @@
 
 opendkim_port = node['paramount']['dkim_port']
 main_domain = node['paramount']['domain']
-selector = '20150615'
+selector = '20150615' # TODO : explain
 
 node.default['opendkim']['conf']['MinimumKeyBits'] = '1024'
 node.default['opendkim']['conf']['Mode'] = 'sv'

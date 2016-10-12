@@ -6,8 +6,17 @@
 # License:: Apache License, Version 2.0
 #
 
+# prerequisites
+
 include_recipe 'paramount::default'
 
+# DNS | Records         | Value
+# --- | --------------- | -----
+# A   | domain.tld      | <IP>
+# MX  | domain.tld      | mail.domain.tld
+# A   | mail.domain.tld | <IP>
+
+# TODO : helper ruby function
 # Resolve MX records for relvant FQDNs, smtp.*, mail.*
 # %w(smtp mail imap).each do |domain|
 #   ruby_block 'resolve MX records' do
@@ -29,6 +38,8 @@ directory '/data'
 #   password node['paramount']['encfs_passwd']
 #   action :mount
 # end
+
+# TODO : postgrey
 
 include_recipe 'database::postgresql'
 

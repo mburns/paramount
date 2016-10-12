@@ -27,11 +27,11 @@ cookbook 'znc', '~> 0.0.1'
 
 ## Email
 cookbook 'clamav', '~> 1.2.0'
-# cookbook 'dovecot', '~> 3.0.0' # requires version 3+
+cookbook 'dovecot', '~> 3.0.0'
 # cookbook 'dspam', git: 'git@github.com:mburns/chef-dspam.git'
 cookbook 'opendkim', '~> 2.0.0'
-cookbook 'onddo-spamassassin', '~> 1.0.0'
-cookbook 'postfix-full', '~> 0.1.2'
+cookbook 'onddo-spamassassin', '~> 1.1.0'
+cookbook 'postfix', '~> 4.0.0'
 # cookbook 'postfixadmin', git: 'git@github.com:mburns/postfixadmin-cookbook.git', branch: 'nginx_chef'
 # cookbook 'roundcube', git: 'git@github.com:mburns/roundcube.git', branch: 'support-pgsql'
 cookbook 'solr_app', '~> 0.0.3'
@@ -72,7 +72,7 @@ cookbook 'selinux'
 cookbook 'rkhunter', '~> 0.2.5'
 cookbook 'openldap', '~> 2.2'
 cookbook 'openssl', '~> 4.1.1'
-cookbook 'ssl_certificate', '~> 1.5.0'
+cookbook 'ssl_certificate', '~> 1.12.0'
 
 ## System
 cookbook 'apt', '~> 2.7.0'

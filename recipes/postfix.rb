@@ -18,6 +18,10 @@ node.default['postfix']['main']['non_smtpd_milters'] = "inet:localhost:#{opendki
 
 node.default['postgresql']['password']['postgres'] = random_password(length: 50, mode: :base64, encoding: 'ASCII')
 
+package 'sendmail' do
+  action :remove
+end
+
 user 'postfix' do
   shell '/bin/false'
   supports manage_home: true
@@ -39,7 +43,7 @@ connection_info = {
 
 postgresql_database_user 'postfix' do
   connection connection_info
-  password node['paramount']['postfix_passwd']
+  password node['postgresql']['password']['postgres']
   action :create
 end
 
@@ -50,25 +54,10 @@ postgresql_database 'postfix' do
   action :create
 end
 
-# TODO : postscreen
+node.normal['postfix']['sasl']['smtp_sasl_passwd'] = random_password(length: 50, mode: :base64, encoding: 'ASCII')
 
-# include_recipe 'postfix-full'
+include_recipe 'postfix::server'
 
-node.default['postfixadmin']['database']['type'] = 'postgresql'
-
-# include_recipe 'postfixadmin'
-# include_recipe 'postfixadmin::map_files'
-
-node.default['paramount']['postfix_passwd'] = random_password(length: 50, mode: :base64, encoding: 'ASCII')
-
-# postfixadmin_admin node['paramount']['contact'] do
-#   password node['paramount']['postfix_passwd']
-#   action :create
-# end
-
-# postfixadmin_domain node['paramount']['domain'] do
-#   login_username node['paramount']['contact']
-#   login_password node['paramount']['postfix_passwd']
-# end
-
+include_recipe 'paramount::postscreen'
+include_recipe 'paramount::postfixadmin'
 include_recipe 'paramount::dkim'
