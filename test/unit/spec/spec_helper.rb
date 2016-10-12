@@ -10,6 +10,12 @@ require 'chef/application'
 #
 # Coveralls.wear!
 
+require 'simplecov'
+SimpleCov.start
+
+require 'codecov'
+SimpleCov.formatter = SimpleCov::Formatter::Codecov
+
 at_exit { ChefSpec::Coverage.report! }
 
 RSpec.configure do |config|
