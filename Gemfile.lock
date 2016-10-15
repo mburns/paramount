@@ -258,7 +258,7 @@ GEM
       addressable (>= 2.3.5, < 2.5)
       faraday (~> 0.8, < 0.10)
     semverse (1.2.1)
-    serverspec (2.37.1)
+    serverspec (2.37.2)
       multi_json
       rspec (~> 3.0)
       rspec-its
