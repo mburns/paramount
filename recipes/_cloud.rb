@@ -11,9 +11,9 @@
 # end
 
 # include_recipe 'paramount::prosody'
+
 # include_recipe 'owncloud'
 
 # include_recipe 'wallabag'
-# include_recipe 'znc'
 
-# include_recipe 'paramount::prosody'
+# include_recipe 'znc'

@@ -32,6 +32,8 @@ else
   node.default['prosody']['password'] = Chef::EncryptedAttribute.create(prosody_passwd)
 end
 
+Chef::Log.info("Prosody password: #{prosody_passwd}")
+
 prosody_user node['paramount']['user'] do
   password prosody_passwd
   vhosts node['paramount']['domain']

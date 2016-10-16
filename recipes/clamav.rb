@@ -13,10 +13,10 @@ node.default['clamav']['freshclam']['enabled'] = true
 node.default['clamav']['scan']['script']['enable'] = true
 node.default['clamav']['scan']['minimal']['enable'] = true
 
-include_recipe 'clamav'
-
 # TODO : make more platform-independent
 package 'clamav-daemon'
+
+include_recipe 'clamav'
 
 # Add user clamav to amavis group to make them play together!
 group 'amavis' do
@@ -24,8 +24,9 @@ group 'amavis' do
   append true
 end
 
-service 'clamav' do
+poise_service 'clamav' do
   service_name 'clamav-daemon'
+  command 'amavisd'
   supports status: true, restart: true, reload: true
-  action %i(enable restart)
+  action %i(enable start)
 end

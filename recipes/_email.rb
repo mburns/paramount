@@ -6,10 +6,6 @@
 # License:: Apache License, Version 2.0
 #
 
-# prerequisites
-
-include_recipe 'paramount::default'
-
 # DNS | Records         | Value
 # --- | --------------- | -----
 # A   | domain.tld      | <IP>
@@ -30,16 +26,36 @@ include_recipe 'paramount::default'
 
 include_recipe 'openssl::upgrade'
 Chef::Recipe.send(:include, OpenSSLCookbook::RandomPassword)
-node.default['paramount']['encfs_passwd'] = random_password(length: 50, mode: :base64, encoding: 'ASCII')
+
+chef_gem 'chef-encrypted-attributes'
+require 'chef/encrypted_attributes'
+
+Chef::Recipe.send(:include, Opscode::OpenSSL::Password)
+
+if Chef::EncryptedAttribute.exist?(node['paramount']['encfs_passwd'])
+  Chef::EncryptedAttribute.update(node.set['paramount']['encfs_passwd'])
+  # encfs_pass = Chef::EncryptedAttribute.load(node['paramount']['encfs_passwd'])
+else
+  # create the password and save it
+  encfs_pass = secure_password
+  node.set['paramount']['encfs_passwd'] = Chef::EncryptedAttribute.create(encfs_pass)
+end
+
+Chef::Log.info("EncFS password: #{encfs_pass}")
 
 directory '/data'
 
+log 'encfs-passwd' do
+  message "Your ENCFS password: #{node['paramount']['encfs_passwd']}"
+  level :info
+end
+
 # encfs '/data/encrypted-mail' do
-#   password node['paramount']['encfs_passwd']
+#   password encfs_pass
 #   action :mount
 # end
 
-# TODO : postgrey
+package 'postgrey'
 
 include_recipe 'database::postgresql'
 
