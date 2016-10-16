@@ -6,8 +6,6 @@
 # License:: Apache License, Version 2.0
 #
 
-include_recipe 'paramount::default'
-
 # ssl_certificate 'owncloud-cert' do
 #   namespace 'owncloud'
 # end

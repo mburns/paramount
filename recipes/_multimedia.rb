@@ -6,8 +6,6 @@
 # License:: Apache License, Version 2.0
 #
 
-include_recipe 'paramount::default'
-
 # include_recipe 'couchpotato'
 include_recipe 'plexapp'
 # include_recipe 'sabnzbd'
