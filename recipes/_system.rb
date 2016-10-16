@@ -26,7 +26,6 @@ include_recipe 'users::sysadmins'
 
 include_recipe 'rsyslog'
 
-# include_recipe 'libyaml'
 # include_recipe 'djbdns::cache'
 # include_recipe 'xml'
 
