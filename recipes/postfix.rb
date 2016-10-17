@@ -53,12 +53,12 @@ connection_info = {
   host: '127.0.0.1',
   port: '5432',
   username: 'postgres',
-  password: postgres_passwd
+  password: node['paramount']['password']['postgres']
 }
 
 postgresql_database_user 'postfix' do
   connection connection_info
-  password postgres_passwd
+  password node['paramount']['password']['postgres']
   action :create
 end
 
