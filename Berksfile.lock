@@ -1,4 +1,5 @@
 DEPENDENCIES
+  aide (~> 0.1.4)
   apt (~> 2.7.0)
   ark (~> 0.9.0)
   automatic_updates
@@ -62,6 +63,8 @@ DEPENDENCIES
 GRAPH
   7-zip (1.0.2)
     windows (>= 1.2.2)
+  aide (0.1.4)
+    cron (>= 0.0.0)
   ant (1.0.3)
     ark (>= 0.0.0)
   apache2 (3.2.2)
@@ -231,6 +234,7 @@ GRAPH
   packages (0.4.0)
   pacman (1.1.1)
   paramount (0.1.3)
+    aide (>= 0.0.0)
     apt (>= 0.0.0)
     ark (>= 0.0.0)
     automatic_updates (>= 0.0.0)

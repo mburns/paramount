@@ -19,3 +19,8 @@
 
 include_recipe 'paramount::_security'
 include_recipe 'paramount::_system'
+
+include_recipe 'paramount::_cloud' unless node['paramount']['disable_cloud']
+include_recipe 'paramount::_email' unless node['paramount']['disable_email']
+include_recipe 'paramount::_multimedia' unless node['paramount']['disable_multimedia']
+include_recipe 'paramount::_web' unless node['paramount']['disable_web']
