@@ -7,7 +7,9 @@ require_relative 'spec_helper'
 
 describe 'paramount::_cloud' do
   before(:each) do
-    stub_command('which sudo').and_return false
+    stub_command('which sudo').and_return true
+    stub_command('which nginx').and_return true
+    stub_command('test -d /etc/php5/fpm/pool.d || mkdir -p /etc/php5/fpm/pool.d').and_return true
   end
 
   let(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
