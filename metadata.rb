@@ -28,7 +28,7 @@ recipe 'paramount::_email', 'Builds a full email stack (SMTP, IMAP, POP)'
 recipe 'paramount::_cloud', 'Various cloud-based tools'
 recipe 'paramount::_web', 'Builds a web host'
 
-# depends 'aide'
+depends 'aide'
 depends 'automatic_updates'
 depends 'apt'
 depends 'ark'
