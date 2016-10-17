@@ -70,6 +70,7 @@ GEM
     chef-config (12.8.1)
       mixlib-config (~> 2.0)
       mixlib-shellout (~> 2.0)
+    chef-encrypted-attributes (0.9.0)
     chef-sugar (3.4.0)
     chef-zero (4.9.0)
       ffi-yajl (~> 2.2)
@@ -320,6 +321,7 @@ PLATFORMS
 DEPENDENCIES
   berkshelf (~> 4)
   chef (~> 12.8.1)
+  chef-encrypted-attributes
   chef-sugar
   chefspec (~> 4)
   codecov
