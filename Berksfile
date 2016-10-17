@@ -58,7 +58,7 @@ cookbook 'chef_nginx'
 cookbook 'php-fpm'
 
 ## Security
-# cookbook 'aide', git: 'git@github.com:mburns/chef-aide.git', tag: '0.1.3'
+cookbook 'aide', '~>0.1.4'
 cookbook 'automatic_updates'
 # cookbook 'encfs', '~> 0.2.0', git: 'git@github.com:mburns/encfs.git'
 cookbook 'encrypted_attributes', '~> 0.6.0'
