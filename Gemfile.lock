@@ -82,7 +82,7 @@ GEM
       fauxhai (~> 3.2)
       rspec (~> 3.0)
     cleanroom (1.0.0)
-    codecov (0.1.5)
+    codecov (0.1.6)
       json
       simplecov
       url
