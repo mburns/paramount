@@ -179,7 +179,7 @@ GEM
       shellany (~> 0.0)
     octokit (4.3.0)
       sawyer (~> 0.7.0, >= 0.5.3)
-    ohai (8.20.0)
+    ohai (8.21.0)
       chef-config (>= 12.5.0.alpha.1, < 13)
       ffi (~> 1.9)
       ffi-yajl (~> 2.2)
