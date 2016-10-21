@@ -6,7 +6,7 @@
 # License:: Apache License, Version 2.0
 #
 
-# include_recipe 'selinux'
+include_recipe 'selinux'
 # include_recipe 'os-hardening'
 include_recipe 'firewall'
 include_recipe 'fail2ban'
@@ -19,9 +19,9 @@ node.set['aide']['paths'] = {
 
 include_recipe 'aide'
 
-# selinux_state "SELinux #{node['selinux']['state'].capitalize}" do
-#   action node['selinux']['state'].downcase.to_sym
-# end
+selinux_state "SELinux #{node['selinux']['state'].capitalize}" do
+  action node['selinux']['state'].downcase.to_sym
+end
 
 directory '/etc/httpd/ssl' do
   owner 'root'
