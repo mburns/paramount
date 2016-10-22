@@ -6,7 +6,7 @@
 # License:: Apache License, Version 2.0
 #
 
-include_recipe 'paramount::postifx'
+include_recipe 'paramount::postfix'
 
 node.default['postfixadmin']['database']['type'] = 'postgresql'
 
