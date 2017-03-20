@@ -266,6 +266,7 @@ GRAPH
     plexapp (>= 0.0.0)
     poise-service (>= 0.0.0)
     postfix-full (>= 0.0.0)
+    prosody (>= 0.0.0)
     rkhunter (>= 0.0.0)
     rsyslog (>= 0.0.0)
     runit (>= 0.0.0)
