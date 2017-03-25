@@ -26,6 +26,7 @@ group :development do
 end
 
 group :test do
+  gem 'chef-encrypted-attributes'
   gem 'coveralls'
   gem 'chef-sugar'
   gem 'pry'

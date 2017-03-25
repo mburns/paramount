@@ -19,7 +19,6 @@
 * Hardened Ubuntu
 * Hardened SSH
 * SNORT
-* SELinux
 
 ### System
 
