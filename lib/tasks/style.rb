@@ -40,5 +40,5 @@ namespace :style do
   RuboCop::RakeTask.new
 
   desc 'Run all linters'
-  task all: [:erblint, :jsonlint, :yamllint, :rubocop, :foodcritic]
+  task all: %i(erblint jsonlint yamllint rubocop foodcritic)
 end
