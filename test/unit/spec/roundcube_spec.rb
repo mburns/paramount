@@ -15,7 +15,7 @@ describe 'paramount::roundcube' do
   let(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
 
   # roundcube::install roundcube::configure
-  %w(php-fpm chef_nginx).each do |recipe|
+  %w(php-fpm).each do |recipe|
     it "includes #{recipe}" do
       expect(chef_run).to include_recipe recipe
     end

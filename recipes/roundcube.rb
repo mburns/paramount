@@ -49,7 +49,7 @@ openssl_x509 '/etc/httpd/ssl/roundcube.pem' do
 end
 
 include_recipe 'php-fpm'
-include_recipe 'chef_nginx'
+# include_recipe 'chef_nginx'
 
 # include_recipe 'roundcube::install'
 # include_recipe 'roundcube::configure'
