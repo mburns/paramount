@@ -509,7 +509,7 @@ DEPENDENCIES
   guard-foodcritic
   guard-kitchen
   guard-rubocop
-  highline (~> 1.7, >= 1.7.8)
+  highline (~> 1.7.8, >= 1.7.8)
   jsonlint
   kitchen-vagrant
   mime-types
