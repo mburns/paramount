@@ -20,25 +20,35 @@ namespace :style do
       **/.*.{yml,yaml}
       **/*.{yml,yaml}
     )
+    t.exclude_paths = %w(
+      vendor/
+    )
   end
 
   JsonLint::RakeTask.new do |t|
     t.paths = %w(
       **/*.json
     )
+    t.exclude_paths = %w(
+      vendor/
+    )
   end
 
   FoodCritic::Rake::LintTask.new do |t|
     t.options = {
       fail_tags: ['any'],
-      cookbook_paths: ['site-cookbooks', 'test/fixtures/cookbooks'],
+      cookbook_paths: ['.', 'test/fixtures/cookbooks'],
       tags: [
+        '~FC001', # Don't enforce strings-over-symbols to access node attrs.
+        '~FC005', # Don't care about repetition resource declarations.
+        '~FC023', # Don't prefer conditional attributes.
+        '~FC048'  # Don't prefer Mixlib::ShellOut.
       ]
     }
   end
 
   RuboCop::RakeTask.new
 
-  desc 'Run all linters'
-  task all: %i(erblint jsonlint yamllint rubocop foodcritic)
+  desc 'Run all style checks'
+  task all: %i(rubocop foodcritic erblint jsonlint yamllint)
 end

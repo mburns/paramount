@@ -20,13 +20,10 @@ namespace :maintain do
   Stove::RakeTask.new
 end
 
-desc 'Run all style checks'
-task style: %w(style:chef style:ruby)
-
 desc 'Run tests on Travis'
-task ci: %w(style spec)
+task ci: %w(style:all test:spec)
 
 desc 'All tests'
-task test: %w(style spec integration:vagrant)
+task test: %w(style:all test:spec test:integration:vagrant)
 
-task default: %w(test)
+task default: %w(style:all)

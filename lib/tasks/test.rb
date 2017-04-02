@@ -9,8 +9,8 @@ namespace :test do
     t.rspec_opts = 'test/unit/'
   end
 
-  namespace :kitchen do
-    desc 'Run Test Kitchen using Vagrant'
+  namespace :integration do
+    desc 'Run Integration Tests using Vagrant'
     task :vagrant do
       Kitchen.logger = Kitchen.default_file_logger
       Kitchen::Config.new.instances.each do |instance|
@@ -18,7 +18,7 @@ namespace :test do
       end
     end
 
-    desc 'Run Test Kitchen using Cloud Servers'
+    desc 'Run integration tests using Cloud Servers'
     task :cloud do
       Kitchen.logger = Kitchen.default_file_logger
 
@@ -43,4 +43,7 @@ namespace :test do
       threads.map(&:join)
     end
   end
+
+  desc 'Run all tests'
+  task all: %i(spec test:integration:vagrant)
 end
