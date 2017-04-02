@@ -21,7 +21,7 @@ describe 'paramount::_web' do
     end
   end
 
-  it 'installs nginx' do
-    expect(chef_run).to install_package 'nginx'
-  end
+  # it 'installs nginx' do
+  #   expect(chef_run).to install_package 'nginx'
+  # end
 end
