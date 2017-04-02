@@ -29,7 +29,7 @@ cookbook 'znc', '~> 0.0.1'
 cookbook 'clamav', '~> 1.2.0'
 # cookbook 'dovecot', '~> 3.0.0' # requires version 3+
 # cookbook 'dspam', git: 'git@github.com:mburns/chef-dspam.git'
-cookbook 'opendkim', '~> 1.0.0'
+cookbook 'opendkim', '~> 2.0.0'
 cookbook 'onddo-spamassassin', '~> 1.0.0'
 cookbook 'postfix-full', '~> 0.1.2'
 # cookbook 'postfixadmin', git: 'git@github.com:mburns/postfixadmin-cookbook.git', branch: 'nginx_chef'
