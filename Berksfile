@@ -54,7 +54,7 @@ cookbook 'rsyslog', '~> 2.0.0'
 cookbook 'plexapp', '~> 1.0.0'
 
 ## Web
-cookbook 'chef_nginx'
+cookbook 'chef_nginx', '~> 5.1.3'
 # cookbook 'php'
 cookbook 'php-fpm'
 
