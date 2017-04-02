@@ -7,7 +7,7 @@ source 'https://rubygems.org'
 
 ruby '2.3.0'
 
-gem 'chef', '~> 12.8.1'
+gem 'chef', '~> 12.9.41'
 
 group :plugins do
   gem 'vagrant-berkshelf'
