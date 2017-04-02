@@ -1,49 +1,59 @@
 # encoding: UTF-8
+
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
 source 'https://rubygems.org'
 
-gem 'chef', '~> 12.8.1'
+ruby '2.4.0'
+
+gem 'chef', '~> 12.9.41'
 
 group :plugins do
-  gem 'vagrant-berkshelf', '~> 4.1'
-  gem 'vagrant-cachier', '~> 1.2'
-  gem 'vagrant-omnibus', '~> 1.5'
+  gem 'vagrant-berkshelf'
+  gem 'vagrant-cachier'
+  gem 'vagrant-omnibus'
 end
 
 group :maintain do
-  gem 'rake'
+  gem 'rake', '~> 11'
   gem 'stove'
 end
 
 group :development do
-  gem 'thor-scmversion'
   gem 'guard'
-  gem 'guard-kitchen'
   gem 'guard-foodcritic'
+  gem 'guard-kitchen'
   gem 'guard-rubocop'
+  gem 'highline', '~> 1.7', '>= 1.7.8' # Used for input in Rake tasks.
+  gem 'thor-scmversion'
 end
 
 group :test do
   gem 'chef-encrypted-attributes'
-  gem 'coveralls'
   gem 'chef-sugar'
-  gem 'pry'
   gem 'codecov'
+  gem 'coveralls'
+  gem 'fog'
+  gem 'mime-types'
+  gem 'pry'
 end
 
 group :style do
-  gem 'foodcritic', '~> 3.0'
+  gem 'foodcritic'
+  gem 'jsonlint'
   gem 'rubocop'
+  gem 'yamllint'
 end
 
 group :spec do
-  gem 'berkshelf', '~> 4'
-  gem 'chefspec', '~> 4'
+  gem 'berkshelf'
+  gem 'chefspec'
+  gem 'rspec'
+  gem 'rspec-json_expectations'
 end
 
 group :integration do
-  gem 'test-kitchen', '~> 1.4.0'
-  gem 'kitchen-vagrant', '~> 0.18.0'
+  gem 'kitchen-vagrant'
+  gem 'test-kitchen'
 end

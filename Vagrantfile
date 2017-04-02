@@ -13,7 +13,7 @@ Vagrant.configure('2') do |config|
   end
 
   if Vagrant.has_plugin?('vagrant-omnibus')
-    config.omnibus.chef_version = '12.8.1'
+    config.omnibus.chef_version = '12.9.41'
   end
 
   config.vm.hostname = 'paramount.local'

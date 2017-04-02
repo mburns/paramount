@@ -24,10 +24,6 @@ default['openssh']['server']['PermitEmptyPasswords'] = 'no'
 default['openssh']['server']['TCPKeepAlive'] = 'no'
 default['openssh']['server']['X11Forwarding'] = 'no'
 
-# default['openssh']['client']['cbc_required']  = false   # ssh
-# default['openssh']['client']['weak_hmac']     = false   # ssh
-# default['openssh']['client']['weak_kex']      = false   # ssh
-#
 # default['openssh']['server']['cbc_required']  = false   # sshd
 # default['openssh']['server']['weak_hmac']     = false   # sshd
 # default['openssh']['server']['weak_kex']      = false   # sshd
@@ -48,7 +44,5 @@ default['openssh']['server']['X11Forwarding'] = 'no'
 # default['openssh']['print_motd']              = false   # sshd
 # default['openssh']['print_last_log']          = false   # sshd
 
-# set this to nil to let us use the default OpenSSH in case it's not set by the user
-# default['openssh']['use_dns']                 = nil     # sshd
 # set this to nil to let us detect the attribute based on the node platform
 # default['openssh']['use_privilege_separation'] = nil

@@ -20,8 +20,8 @@ SimpleCov.formatter = SimpleCov::Formatter::Codecov
 at_exit { ChefSpec::Coverage.report! }
 
 RSpec.configure do |config|
-  # Specify the Chef log_level (default: :warn)
-  # config.log_level = :fatal
+  config.log_level = :error
+  Ohai::Config[:log_level] = :error
 
   # Specify the path to a local JSON file with Ohai data (default: nil)
   # config.path = 'ohai.json'

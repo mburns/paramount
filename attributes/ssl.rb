@@ -6,6 +6,6 @@
 # License:: Apache License, Version 2.0
 #
 
-default['ssl']['country'] = 'USL'
-default['ssl']['state'] = 'CA'
-default['ssl']['city'] = 'SF'
+default['ssl']['country'] = 'USA'
+default['ssl']['state'] = 'OR'
+default['ssl']['city'] = 'Portland'

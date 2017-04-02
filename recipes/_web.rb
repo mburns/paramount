@@ -8,6 +8,6 @@
 
 include_recipe 'paramount::default'
 
-include_recipe 'chef_nginx'
+# include_recipe 'chef_nginx'
 
 include_recipe 'paramount::wallabag'

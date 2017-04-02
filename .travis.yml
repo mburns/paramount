@@ -1,8 +1,8 @@
 language: ruby
+bundler_args: --without development plugins
 cache: bundler
 rvm:
-  - 2.2.2
-bundler_args: --without development plugins
+  - 2.4.0
 gemfile:
   - Gemfile
 script: bundle exec rake ci
