@@ -12,7 +12,7 @@ include_recipe 'paramount::default'
 #   namespace 'owncloud'
 # end
 
-include_recipe 'paramount::prosody'
+# include_recipe 'paramount::prosody'
 # include_recipe 'owncloud'
 
 # include_recipe 'wallabag'
