@@ -1,6 +1,6 @@
 DEPENDENCIES
   aide
-    git: git@github.com:mburns/chef-aide.git
+    git: https://github.com/mburns/chef-aide.git
     revision: 7e7d902bea5765175df7bb9da25012b7c88f3aa2
     branch: remove-duplicates
   apt (~> 2.7.0)
