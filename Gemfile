@@ -5,7 +5,7 @@
 
 source 'https://rubygems.org'
 
-ruby '2.4.0'
+ruby '2.3.0'
 
 gem 'chef', '~> 12.9.41'
 
