@@ -22,3 +22,7 @@ recipes/blank.rb
 
 coverage
 .DS_Store
+
+int-lint-results.xml
+
+vendor/

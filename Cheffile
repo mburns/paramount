@@ -1,4 +1,3 @@
-# Cheffile
 site 'https://supermarket.chef.io/api/v1'
 
 cookbook 'paramount', path: '.'

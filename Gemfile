@@ -5,7 +5,7 @@
 
 source 'https://rubygems.org'
 
-ruby '2.4.0'
+ruby '2.3.0'
 
 gem 'chef', '~> 12.9.41'
 
@@ -25,7 +25,7 @@ group :development do
   gem 'guard-foodcritic'
   gem 'guard-kitchen'
   gem 'guard-rubocop'
-  gem 'highline', '~> 1.7', '>= 1.7.8' # Used for input in Rake tasks.
+  gem 'highline', '~> 1.7.8', '>= 1.7.8' # Used for input in Rake tasks.
   gem 'thor-scmversion'
 end
 

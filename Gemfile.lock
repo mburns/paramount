@@ -509,7 +509,7 @@ DEPENDENCIES
   guard-foodcritic
   guard-kitchen
   guard-rubocop
-  highline (~> 1.7, >= 1.7.8)
+  highline (~> 1.7.8, >= 1.7.8)
   jsonlint
   kitchen-vagrant
   mime-types
@@ -527,7 +527,7 @@ DEPENDENCIES
   yamllint
 
 RUBY VERSION
-   ruby 2.4.0p0
+   ruby 2.3.0p0
 
 BUNDLED WITH
    1.14.6
