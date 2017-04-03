@@ -34,4 +34,12 @@ describe 'paramount::amavis' do
       expect(chef_run).to delete_file("/etc/amavis/conf.d/#{filename}")
     end
   end
+
+  it 'creates amavis user with an explicit action' do
+    expect(chef_run).to create_user('amavis')
+  end
+
+  it 'creates amavis group with an explicit action' do
+    expect(chef_run).to create_group('amavis')
+  end
 end

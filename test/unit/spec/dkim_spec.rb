@@ -9,21 +9,29 @@ require_relative 'spec_helper'
 describe 'paramount::dkim' do
   let(:chef_run) do
     ChefSpec::ServerRunner.new.tap do |runner|
-      runner.node.set['paramount']['domain'] = 'you-should-write-more-specs.com'
+      # runner.node.set['paramount']['domain'] = 'you-should-write-more-specs.com'
     end.converge described_recipe
   end
 
   it 'includes opendkim' do
-    expect(chef_run).to include_recipe 'opendkim'
+    expect(chef_run).to include_recipe('opendkim')
   end
 
   %w(
     /etc/opendkim/SigningTable
-    /etc/opendkim/keys/you-should-write-more-specs.com/20150615.private
-    /etc/opendkim/keys/you-should-write-more-specs.com/20150615.txt
+    /etc/opendkim/keys/example.com/20150615.private'
+    /etc/opendkim/keys/example.com/20150615.txt'
   ).each do |file|
     it "writes #{file}" do
-      expect(chef_run).to render_file file
+      expect(chef_run).to create_file(file)
     end
+  end
+
+  it 'creates /etc/opendkim directory with an explicit action' do
+    expect(chef_run).to create_directory('/etc/opendkim')
+  end
+
+  it 'creates opendkim/keys/example.com directory with an explicit action' do
+    expect(chef_run).to create_directory('/etc/opendkim/keys/example.com')
   end
 end
