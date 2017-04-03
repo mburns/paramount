@@ -14,21 +14,20 @@ node.default['postfix']['main']['milter_default_action'] = 'accept'
 node.default['postfix']['main']['smtpd_milters'] = "inet:localhost:#{opendkim_port}"
 node.default['postfix']['main']['non_smtpd_milters'] = "inet:localhost:#{opendkim_port}"
 
-chef_gem 'chef-encrypted-attributes'
-require 'chef/encrypted_attributes'
+include_recipe 'encrypted_attributes'
 
 Chef::Recipe.send(:include, Opscode::OpenSSL::Password)
 
-if Chef::EncryptedAttribute.exist?(node['paramount']['password']['postgres'])
+if Chef::EncryptedAttribute.exist?(node['paramount']['postgres_passwd'])
   # update with the new keys
-  Chef::EncryptedAttribute.update(node.set['paramount']['password']['postgres'])
+  Chef::EncryptedAttribute.update(node.set['paramount']['postgres_passwd'])
 
   # read the password
-  postgres_passwd = Chef::EncryptedAttribute.load(node['paramount']['password']['postgres'])
+  postgres_passwd = Chef::EncryptedAttribute.load(node['paramount']['postgres_passwd'])
 else
   # create the password and save it
   postgres_passwd = secure_password
-  node.default['paramount']['password']['postgres'] = Chef::EncryptedAttribute.create(postgres_passwd)
+  node.default['paramount']['postgres_passwd'] = Chef::EncryptedAttribute.create(postgres_passwd)
 end
 
 Chef::Log.info("Postgres password: #{postgres_passwd}")
@@ -53,12 +52,12 @@ connection_info = {
   host: '127.0.0.1',
   port: '5432',
   username: 'postgres',
-  password: node['paramount']['password']['postgres']
+  password: postgres_passwd
 }
 
 postgresql_database_user 'postfix' do
   connection connection_info
-  password node['paramount']['password']['postgres']
+  password postgres_passwd
   action :create
 end
 

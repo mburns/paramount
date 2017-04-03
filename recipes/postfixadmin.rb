@@ -16,18 +16,20 @@ node.default['postfixadmin']['common_name'] = node['paramount']['hostname']
 # include_recipe 'postfixadmin'
 # include_recipe 'postfixadmin::map_files'
 
-chef_gem 'chef-encrypted-attributes'
-require 'chef/encrypted_attributes'
+include_recipe 'encrypted_attributes'
 
 Chef::Recipe.send(:include, Opscode::OpenSSL::Password)
 
 if Chef::EncryptedAttribute.exist?(node['paramount']['postfix_passwd'])
+  # update with the new keys
   Chef::EncryptedAttribute.update(node.set['paramount']['postfix_passwd'])
-  # encfs_pass = Chef::EncryptedAttribute.load(node['paramount']['postfix_passwd'])
+
+  # read the password
+  postfix_passwd = Chef::EncryptedAttribute.load(node['paramount']['postfix_passwd'])
 else
   # create the password and save it
   postfix_passwd = secure_password
-  node.set['paramount']['postfix_passwd'] = Chef::EncryptedAttribute.create(encfs_pass)
+  node.set['paramount']['postfix_passwd'] = Chef::EncryptedAttribute.create(postfix_passwd)
 end
 
 Chef::Log.info("Postfix password: #{postfix_passwd}")

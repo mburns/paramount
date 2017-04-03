@@ -24,11 +24,7 @@
 #   end
 # end
 
-include_recipe 'openssl::upgrade'
-Chef::Recipe.send(:include, OpenSSLCookbook::RandomPassword)
-
-chef_gem 'chef-encrypted-attributes'
-require 'chef/encrypted_attributes'
+include_recipe 'encrypted_attributes'
 
 Chef::Recipe.send(:include, Opscode::OpenSSL::Password)
 
@@ -44,11 +40,6 @@ end
 Chef::Log.info("EncFS password: #{encfs_pass}")
 
 directory '/data'
-
-log 'encfs-passwd' do
-  message "Your ENCFS password: #{node['paramount']['encfs_passwd']}"
-  level :info
-end
 
 # encfs '/data/encrypted-mail' do
 #   password encfs_pass

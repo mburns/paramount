@@ -14,6 +14,7 @@ default['postfix-dovecot']['hostname'] = node['fqdn'] || 'example.local'
 
 default['paramount']['organization'] = 'Example'
 default['paramount']['organization_unit'] = 'Paramount'
+default['paramount']['country'] = 'US'
 
 default['paramount']['contact'] = begin
                                     node['paramount']['user'] + '@' + node['paramount']['domain']
