@@ -21,13 +21,14 @@ namespace :style do
       **/*.{yml,yaml}
     )
     t.exclude_paths = %w(
-      vendor/
+      vendor/**/.*.{yml,yaml}
+      vendor/**/*.{yml,yaml}
     )
   end
 
   JsonLint::RakeTask.new do |t|
     t.paths = %w(
-      **/*.json
+      test/fixtures/**/*.json
     )
   end
 
