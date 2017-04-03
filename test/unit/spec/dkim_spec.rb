@@ -17,10 +17,10 @@ describe 'paramount::dkim' do
     expect(chef_run).to include_recipe('opendkim')
   end
 
+  # /etc/opendkim/keys/example.com/20150615.private'
+  # /etc/opendkim/keys/example.com/20150615.txt'
   %w(
     /etc/opendkim/SigningTable
-    /etc/opendkim/keys/example.com/20150615.private'
-    /etc/opendkim/keys/example.com/20150615.txt'
   ).each do |file|
     it "writes #{file}" do
       expect(chef_run).to create_file(file)

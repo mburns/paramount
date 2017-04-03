@@ -32,7 +32,6 @@ end
 file '/etc/opendkim/SigningTable' do
   mode '00644'
   content "*@#{main_domain} #{selector}._domainkey.#{main_domain}"
-  action :create
 end
 
 # Install OpenDKIM
@@ -62,7 +61,6 @@ file "/etc/opendkim/keys/#{main_domain}/#{selector}.private" do
   group node['opendkim']['group']
   mode '00640'
   # content key['private']
-  action :create
 end
 
 # The txt is optional
@@ -72,5 +70,4 @@ file "/etc/opendkim/keys/#{main_domain}/#{selector}.txt" do
   mode '00644'
   content key['txt']
   only_if { key['txt'].is_a?(String) }
-  action :create
 end
