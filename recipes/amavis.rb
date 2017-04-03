@@ -48,5 +48,5 @@ end
 poise_service 'amavis' do
   command 'amavisd'
   supports [:restart]
-  action [:enable, :start]
+  action %i(enable start)
 end
