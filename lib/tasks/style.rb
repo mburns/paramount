@@ -29,9 +29,6 @@ namespace :style do
     t.paths = %w(
       **/*.json
     )
-    t.exclude_paths = %w(
-      vendor/
-    )
   end
 
   FoodCritic::Rake::LintTask.new do |t|
