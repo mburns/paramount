@@ -14,4 +14,8 @@ describe 'paramount::_security' do
       expect(chef_run).to include_recipe(recipe)
     end
   end
+
+  it 'creates ssl directory with an explicit action' do
+    expect(chef_run).to create_directory('/etc/httpd/ssl')
+  end
 end

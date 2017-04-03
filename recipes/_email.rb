@@ -23,7 +23,7 @@ include_recipe 'openssl::upgrade'
 Chef::Recipe.send(:include, OpenSSLCookbook::RandomPassword)
 node.default['paramount']['encfs_passwd'] = random_password(length: 50, mode: :base64, encoding: 'ASCII')
 
-directory '/data/'
+directory '/data'
 
 # encfs '/data/encrypted-mail' do
 #   password node['paramount']['encfs_passwd']

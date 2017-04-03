@@ -22,4 +22,12 @@ describe 'paramount::postfix' do
       expect(chef_run).to include_recipe recipe
     end
   end
+
+  it 'creates postfix user with an explicit action' do
+    expect(chef_run).to create_user('postfix')
+  end
+
+  it 'creates postfix group with an explicit action' do
+    expect(chef_run).to create_group('postfix')
+  end
 end

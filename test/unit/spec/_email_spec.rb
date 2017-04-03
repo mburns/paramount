@@ -29,4 +29,16 @@ describe 'paramount::_email' do
       expect(chef_run).to include_recipe("paramount::#{recipe}")
     end
   end
+
+  it 'creates /data directory with an explicit action' do
+    expect(chef_run).to create_directory('/data')
+  end
+
+  it 'creates vmail user with an explicit action' do
+    expect(chef_run).to create_user('vmail')
+  end
+
+  it 'creates vmail group with an explicit action' do
+    expect(chef_run).to create_group('vmail')
+  end
 end
