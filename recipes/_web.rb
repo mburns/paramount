@@ -6,6 +6,6 @@
 # License:: Apache License, Version 2.0
 #
 
-include_recipe 'chef_nginx'
+# include_recipe 'chef_nginx'
 
 include_recipe 'paramount::wallabag'
