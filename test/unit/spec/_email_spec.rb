@@ -17,7 +17,7 @@ describe 'paramount::_email' do
     stub_command('test -d /etc/php5/fpm/pool.d || mkdir -p /etc/php5/fpm/pool.d').and_return true
   end
 
-  %w(openssl::upgrade database::postgresql).each do |recipe|
+  %w(encrypted_attributes database::postgresql).each do |recipe|
     it "includes #{recipe} recipe" do
       expect(chef_run).to include_recipe(recipe)
     end
