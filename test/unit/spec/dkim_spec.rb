@@ -13,9 +13,9 @@ describe 'paramount::dkim' do
     end.converge described_recipe
   end
 
-  it 'includes opendkim' do
-    expect(chef_run).to include_recipe('opendkim')
-  end
+  # it 'includes opendkim' do
+  #   expect(chef_run).to include_recipe('opendkim')
+  # end
 
   # /etc/opendkim/keys/example.com/20150615.private'
   # /etc/opendkim/keys/example.com/20150615.txt'
