@@ -23,3 +23,5 @@ default['paramount']['contact'] = begin
                                   end
 
 default['paramount']['services'] = %w()
+
+default['paramount']['sieve']['enabled'] = true
