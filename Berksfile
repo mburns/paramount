@@ -27,7 +27,7 @@ cookbook 'znc', '~> 0.0.1'
 
 ## Email
 cookbook 'clamav', '~> 1.3.0'
-cookbook 'dovecot', '~> 3.0.0'
+cookbook 'dovecot', '~> 3.0'
 cookbook 'dspam', git: 'https://github.com/mburns/chef-dspam.git'
 cookbook 'opendkim', '~> 2.0.0'
 cookbook 'onddo-spamassassin', '~> 1.1.0'

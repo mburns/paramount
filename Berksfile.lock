@@ -19,7 +19,7 @@ DEPENDENCIES
   database (~> 6.0)
   djbdns (~> 3.0.0)
   docker (~> 2.9.7)
-  dovecot (~> 3.0.0)
+  dovecot (~> 3.0)
   dspam
     git: https://github.com/mburns/chef-dspam.git
     revision: eaec659e4387942c129134281af1c2dd59e3e3c0
@@ -140,7 +140,7 @@ GRAPH
   dmg (3.1.0)
   docker (2.9.10)
     compat_resource (>= 12.14.7)
-  dovecot (3.0.0)
+  dovecot (3.2.1)
     ohai (~> 4.0)
   dspam (0.2.0)
   elasticsearch (0.3.14)
