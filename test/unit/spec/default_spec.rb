@@ -11,7 +11,7 @@ describe 'paramount::default' do
 
   let(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
 
-  %w(paramount::_security paramount::_system).each do |cb|
+  %w[paramount::_security paramount::_system].each do |cb|
     it "includes recipe: #{cb}" do
       expect(chef_run).to include_recipe(cb)
     end

@@ -12,7 +12,7 @@ describe 'paramount::postfix' do
   let(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
 
   # postgresql::server spostfixadmin::map_files
-  %w(paramount::dkim).each do |recipe|
+  %w[paramount::dkim].each do |recipe|
     it "includes #{recipe}" do
       expect(chef_run).to include_recipe recipe
     end

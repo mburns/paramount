@@ -7,11 +7,11 @@ require_relative 'spec_helper'
 
 # dspam
 # dovecot
-%w(
+%w[
   amavisd
   postfix
   postgresql
-).each do |s|
+].each do |s|
   describe service(s) do
     it { should be_running }
   end

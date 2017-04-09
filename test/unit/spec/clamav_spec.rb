@@ -15,7 +15,7 @@ describe 'paramount::clamav' do
     expect(chef_run).to install_package 'clamav-daemon'
   end
 
-  %w(paramount::amavis clamav).each do |recipe|
+  %w[paramount::amavis clamav].each do |recipe|
     it "includes #{recipe} recipe" do
       expect(chef_run).to include_recipe(recipe)
     end

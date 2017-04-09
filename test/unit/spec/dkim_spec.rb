@@ -21,9 +21,9 @@ describe 'paramount::dkim' do
 
   # /etc/opendkim/keys/example.com/20150615.private'
   # /etc/opendkim/keys/example.com/20150615.txt'
-  %w(
+  %w[
     /etc/opendkim/SigningTable
-  ).each do |file|
+  ].each do |file|
     it "writes #{file}" do
       expect(chef_run).to create_file(file)
     end

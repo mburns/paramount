@@ -6,11 +6,11 @@
 # License:: Apache License, Version 2.0
 #
 
-%w(
+%w[
   curl
   php5-tidy
   php-xml-parser
-).each do |pkg|
+].each do |pkg|
   package pkg
 end
 

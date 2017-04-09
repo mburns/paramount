@@ -12,7 +12,7 @@ describe 'paramount::_multimedia' do
   context 'common case' do
     let(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
 
-    %w(plexapp).each do |cb|
+    %w[plexapp].each do |cb|
       it "includes recipe #{cb}" do
         expect(chef_run).to include_recipe(cb)
       end

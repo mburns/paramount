@@ -18,7 +18,6 @@ package 'clamav-daemon'
 
 include_recipe 'clamav'
 
-# Add user clamav to amavis group to make them play together!
 group 'amavis' do
   members ['clamav']
   append true
@@ -28,5 +27,5 @@ poise_service 'clamav' do
   service_name 'clamav-daemon'
   command 'amavisd'
   supports status: true, restart: true, reload: true
-  action %i(enable start)
+  action %i[enable start]
 end
