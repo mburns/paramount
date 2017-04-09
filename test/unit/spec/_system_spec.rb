@@ -7,9 +7,7 @@ require 'chefspec'
 require_relative 'spec_helper'
 
 describe 'paramount::_system' do
-  before(:each) do
-    stub_command('which sudo').and_return false
-  end
+  before { stub_resources }
 
   let(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
 

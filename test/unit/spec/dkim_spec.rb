@@ -7,6 +7,8 @@ require 'chefspec'
 require_relative 'spec_helper'
 
 describe 'paramount::dkim' do
+  before { stub_resources }
+
   let(:chef_run) do
     ChefSpec::ServerRunner.new.tap do |runner|
       # runner.node.set['paramount']['domain'] = 'you-should-write-more-specs.com'

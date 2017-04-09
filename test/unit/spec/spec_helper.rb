@@ -23,12 +23,19 @@ RSpec.configure do |config|
   config.log_level = :error
   Ohai::Config[:log_level] = :error
 
-  # Specify the path to a local JSON file with Ohai data (default: nil)
-  # config.path = 'ohai.json'
-
-  # Specify the operating platform to mock Ohai data from (default: nil)
   config.platform = 'ubuntu'
-
-  # Specify the operating version to mock Ohai data from (default: nil)
   config.version = '14.04'
 end
+
+def stub_resources
+  stub_command('which sudo').and_return '/usr/bin/sudo'
+  stub_command('which nginx').and_return '/usr/sbin/nginx'
+
+  stub_command('test -d /etc/php5/fpm/pool.d || mkdir -p /etc/php5/fpm/pool.d').and_return false
+  
+  stub_command('ls /var/lib/postgresql/9.3/main/recovery.conf').and_return true
+
+  stub_command("psql -c 'SELECT lanname FROM pg_catalog.pg_language' postfix | grep '^ plpgsql$'").and_return true
+end
+
+at_exit { ChefSpec::Coverage.report! }
