@@ -11,17 +11,17 @@ describe 'paramount::_email' do
 
   let(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
 
-  # %w(database::postgresql).each do |recipe|
-  #   it "includes #{recipe} recipe" do
-  #     expect(chef_run).to include_recipe(recipe)
-  #   end
-  # end
+  %w[encrypted_attributes database::postgresql dspam].each do |recipe|
+    it "includes #{recipe} recipe" do
+      expect(chef_run).to include_recipe(recipe)
+    end
+  end
 
-  # %w(default amavis clamav spamassassin postfix dkim).each do |recipe|
-  #   it "includes #{recipe} recipe" do
-  #     expect(chef_run).to include_recipe("paramount::#{recipe}")
-  #   end
-  # end
+  %w[dovecot amavis clamav spamassassin postfix dkim].each do |recipe|
+    it "includes #{recipe} recipe" do
+      expect(chef_run).to include_recipe("paramount::#{recipe}")
+    end
+  end
 
   it 'creates /data directory with an explicit action' do
     expect(chef_run).to create_directory('/data')
@@ -33,5 +33,9 @@ describe 'paramount::_email' do
 
   it 'creates vmail group with an explicit action' do
     expect(chef_run).to create_group('vmail')
+  end
+
+  it 'installs nginx' do
+    expect(chef_run).to install_package('postgrey')
   end
 end

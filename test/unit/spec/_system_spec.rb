@@ -12,7 +12,17 @@ describe 'paramount::_system' do
   let(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
 
   # sysctl
-  %w[ntp build-essential packages ubuntu sudo rsyslog openssh].each do |recipe|
+  %w[
+    ntp
+    build-essential
+    packages
+    ubuntu
+    sudo
+    users::sysadmins
+    rsyslog
+    djbdns::cache
+    openssh
+  ].each do |recipe|
     it "Includes recipe: #{recipe}" do
       expect(chef_run).to include_recipe(recipe)
     end
@@ -25,4 +35,6 @@ describe 'paramount::_system' do
   it 'writes sshd config' do
     expect(chef_run).to render_file('/etc/ssh/sshd_config')
   end
+
+  # automatic_updates[default]
 end

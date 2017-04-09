@@ -15,13 +15,9 @@ describe 'paramount::dkim' do
     end.converge described_recipe
   end
 
-  # it 'includes opendkim' do
-  #   expect(chef_run).to include_recipe('opendkim')
-  # end
-
-  # /etc/opendkim/keys/example.com/20150615.private'
-  # /etc/opendkim/keys/example.com/20150615.txt'
   %w[
+    /etc/opendkim/keys/example.com/20150615.private
+    /etc/opendkim/keys/example.com/20150615.txt
     /etc/opendkim/SigningTable
   ].each do |file|
     it "writes #{file}" do
@@ -35,5 +31,9 @@ describe 'paramount::dkim' do
 
   it 'creates opendkim/keys/example.com directory with an explicit action' do
     expect(chef_run).to create_directory('/etc/opendkim/keys/example.com')
+  end
+
+  it 'includes opendkim' do
+    expect(chef_run).to include_recipe('opendkim')
   end
 end

@@ -44,4 +44,6 @@ describe 'paramount::amavis' do
   it 'creates amavis group with an explicit action' do
     expect(chef_run).to create_group('amavis')
   end
+
+  # poise_service[amavis]
 end

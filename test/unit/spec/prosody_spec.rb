@@ -11,7 +11,7 @@ describe 'paramount::prosody' do
 
   let(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
 
-  # it 'includes prosody' do
-  #   expect(chef_run).to include_recipe 'prosody'
-  # end
+  it 'includes prosody' do
+    expect(chef_run).to include_recipe('prosody')
+  end
 end
