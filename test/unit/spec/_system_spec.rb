@@ -18,9 +18,9 @@ describe 'paramount::_system' do
     end
   end
 
-  it 'installs vim' do
-    expect(chef_run).to install_package('vim')
-  end
+  # it 'installs vim' do
+  #   expect(chef_run).to install_package('vim')
+  # end
 
   it 'writes sshd config' do
     expect(chef_run).to render_file('/etc/ssh/sshd_config')
