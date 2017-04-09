@@ -18,6 +18,6 @@ describe 'paramount::dovecot' do
   end
 
   it 'creates /sieve directory with an explicit action' do
-    expect(chef_run).to create_directory('/sieve')
+    expect(chef_run).to create_directory('/etc/dovecot/sieve')
   end
 end
