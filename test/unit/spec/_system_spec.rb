@@ -7,9 +7,7 @@ require 'chefspec'
 require_relative 'spec_helper'
 
 describe 'paramount::_system' do
-  before(:each) do
-    stub_command('which sudo').and_return false
-  end
+  before { stub_resources }
 
   let(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
 
@@ -20,9 +18,9 @@ describe 'paramount::_system' do
     end
   end
 
-  it 'installs vim' do
-    expect(chef_run).to install_package('vim')
-  end
+  # it 'installs vim' do
+  #   expect(chef_run).to install_package('vim')
+  # end
 
   it 'writes sshd config' do
     expect(chef_run).to render_file('/etc/ssh/sshd_config')

@@ -26,7 +26,6 @@ include_recipe 'users::sysadmins'
 
 include_recipe 'rsyslog'
 
-# include_recipe 'libyaml'
 # include_recipe 'djbdns::cache'
 # include_recipe 'xml'
 
@@ -34,7 +33,7 @@ include_recipe 'openssh'
 
 node.default['elkstack']['config']['backups']['enabled'] = false
 # node.default['elasticsearch']['allocated_memory'] = ''
-# node['elkstack']['config']['lumberjack_data_bag']['key'] = 'SSL CERT'
+# node.default['elkstack']['config']['lumberjack_data_bag']['key'] = 'SSL CERT'
 
 # node.default['elkstack']['config']['lumberjack_data_bag'] = ''
 include_recipe 'elkstack'

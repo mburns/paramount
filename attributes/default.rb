@@ -9,8 +9,12 @@
 default['paramount']['domain'] = 'example.com'
 default['paramount']['user'] = 'admin'
 
+default['postfix-dovecot']['postmaster_address'] = "postmaster@#{node['paramount']['domain']}"
+default['postfix-dovecot']['hostname'] = node['fqdn'] || 'example.local'
+
 default['paramount']['organization'] = 'Example'
 default['paramount']['organization_unit'] = 'Paramount'
+default['paramount']['country'] = 'US'
 
 default['paramount']['contact'] = begin
                                     node['paramount']['user'] + '@' + node['paramount']['domain']
@@ -18,8 +22,6 @@ default['paramount']['contact'] = begin
                                     'postmaster@example.com'
                                   end
 
-# prosody
-# wallabag
-# sabnzbd
-
 default['paramount']['services'] = %w()
+
+default['paramount']['sieve']['enabled'] = true

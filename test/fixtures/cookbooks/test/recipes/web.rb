@@ -1,5 +1,7 @@
 #
-# Copyright (C) 2015 Michael Burns
+# Cookbook Name:: test
+# Recipe:: web
+#
 # License:: Apache License, Version 2.0
 #
 

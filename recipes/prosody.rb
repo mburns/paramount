@@ -15,8 +15,7 @@ prosody_vhost node['paramount']['domain'] do
   enabled true
 end
 
-chef_gem 'chef-encrypted-attributes'
-require 'chef/encrypted_attributes'
+include_recipe 'encrypted_attributes'
 
 Chef::Recipe.send(:include, Opscode::OpenSSL::Password)
 
@@ -31,6 +30,8 @@ else
   prosody_passwd = secure_password
   node.default['prosody']['password'] = Chef::EncryptedAttribute.create(prosody_passwd)
 end
+
+Chef::Log.info("Prosody password: #{prosody_passwd}")
 
 prosody_user node['paramount']['user'] do
   password prosody_passwd

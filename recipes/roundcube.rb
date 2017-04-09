@@ -6,33 +6,62 @@
 # License:: Apache License, Version 2.0
 #
 
-Chef::Recipe.send(:include, OpenSSLCookbook::RandomPassword)
-
 # node.default['roundcube']['default_host'] = ''
 
 # node.default['roundcube']['support_url'] = ''
 # node.default['roundcube']['product_name'] = ''
-# node.default['roundcube']['listen_port'] = ''
+# node.default['roundcube']['listen_port'] = '80'
 
 node.default['roundcube']['database']['host'] = '127.0.0.1'
 node.default['roundcube']['database']['user'] = 'roundcube_db'
-node.default['roundcube']['database']['password'] = random_password(length: 50, mode: :base64, encoding: 'ASCII')
+
+include_recipe 'encrypted_attributes'
+
+Chef::Recipe.send(:include, Opscode::OpenSSL::Password)
+
+if Chef::EncryptedAttribute.exist?(node['roundcube']['database']['password'])
+  # update with the new keys
+  Chef::EncryptedAttribute.update(node.set['roundcube']['database']['password'])
+
+  # read the password
+  roundcube_passwd = Chef::EncryptedAttribute.load(node['roundcube']['database']['password'])
+else
+  # create the password and save it
+  roundcube_passwd = secure_password
+  node.default['roundcube']['database']['password'] = Chef::EncryptedAttribute.create(roundcube_passwd)
+end
+
+Chef::Log.info("RoundCube password: #{roundcube_passwd}")
+
 # node.default['roundcube']['database']['schema'] = ''
 
 node.default['roundcube']['smtp']['server'] = "mail.#{node['paramount']['domain']}"
 node.default['roundcube']['smtp']['user'] = 'postfix'
-node.default['roundcube']['smtp']['password'] = random_password(length: 50, mode: :base64, encoding: 'ASCII')
+
+if Chef::EncryptedAttribute.exist?(node['roundcube']['smtp']['password'])
+  # update with the new keys
+  Chef::EncryptedAttribute.update(node.set['roundcube']['smtp']['password'])
+
+  # read the password
+  roundcube_smtp_passwd = Chef::EncryptedAttribute.load(node['roundcube']['smtp']['password'])
+else
+  # create the password and save it
+  roundcube_smtp_passwd = secure_password
+  node.default['roundcube']['smtp']['password'] = Chef::EncryptedAttribute.create(roundcube_smtp_passwd)
+end
+
+Chef::Log.info("RoundCube SMTP password: #{roundcube_smtp_passwd}")
 
 postgresql_connection_info = {
   host: '127.0.0.1',
   port: 5432,
   username: 'postgres',
-  password: node['postgresql']['password']['postgres']
+  password: roundcube_passwd
 }
 
 postgresql_database_user 'roundcube_db' do
   connection postgresql_connection_info
-  password node['roundcube']['database']['password']
+  password roundcube_passwd
   action :create
 end
 
@@ -43,9 +72,9 @@ end
 
 openssl_x509 '/etc/httpd/ssl/roundcube.pem' do
   common_name "webmail.#{node['paramount']['domain']}"
-  org 'Mirwin'
-  org_unit 'Paramount'
-  country 'US'
+  org node['paramount']['organization']
+  org_unit node['paramount']['organization_unit']
+  country node['paramount']['country']
 end
 
 include_recipe 'php-fpm'

@@ -6,8 +6,6 @@
 # License:: Apache License, Version 2.0
 #
 
-Chef::Recipe.send(:include, OpenSSLCookbook::RandomPassword)
-
 opendkim_port = node['paramount']['dkim_port']
 
 # Configure Postfix
@@ -16,7 +14,27 @@ node.default['postfix']['main']['milter_default_action'] = 'accept'
 node.default['postfix']['main']['smtpd_milters'] = "inet:localhost:#{opendkim_port}"
 node.default['postfix']['main']['non_smtpd_milters'] = "inet:localhost:#{opendkim_port}"
 
-node.default['postgresql']['password']['postgres'] = random_password(length: 50, mode: :base64, encoding: 'ASCII')
+include_recipe 'encrypted_attributes'
+
+Chef::Recipe.send(:include, Opscode::OpenSSL::Password)
+
+if Chef::EncryptedAttribute.exist?(node['paramount']['postgres_passwd'])
+  # update with the new keys
+  Chef::EncryptedAttribute.update(node.set['paramount']['postgres_passwd'])
+
+  # read the password
+  postgres_passwd = Chef::EncryptedAttribute.load(node['paramount']['postgres_passwd'])
+else
+  # create the password and save it
+  postgres_passwd = secure_password
+  node.default['paramount']['postgres_passwd'] = Chef::EncryptedAttribute.create(postgres_passwd)
+end
+
+Chef::Log.info("Postgres password: #{postgres_passwd}")
+
+package 'sendmail' do
+  action :remove
+end
 
 user 'postfix' do
   shell '/bin/false'
@@ -34,12 +52,12 @@ connection_info = {
   host: '127.0.0.1',
   port: '5432',
   username: 'postgres',
-  password: node['postgresql']['password']['postgres']
+  password: postgres_passwd
 }
 
 postgresql_database_user 'postfix' do
   connection connection_info
-  password node['paramount']['postfix_passwd']
+  password postgres_passwd
   action :create
 end
 
@@ -50,25 +68,23 @@ postgresql_database 'postfix' do
   action :create
 end
 
+if Chef::EncryptedAttribute.exist?(node['postfix']['sasl']['smtp_sasl_passwd'])
+  # update with the new keys
+  Chef::EncryptedAttribute.update(node.set['postfix']['sasl']['smtp_sasl_passwd'])
+
+  # read the password
+  smtp_sasl_passwd = Chef::EncryptedAttribute.load(node['postfix']['sasl']['smtp_sasl_passwd'])
+else
+  # create the password and save it
+  smtp_sasl_passwd = secure_password
+  node.set['postfix']['sasl']['smtp_sasl_passwd'] = Chef::EncryptedAttribute.create(postgres_passwd)
+end
+
+Chef::Log.info("SMTP SASL password: #{smtp_sasl_passwd}")
+
 # TODO : postscreen
 
-# include_recipe 'postfix-full'
+include_recipe 'postfix::server'
 
-node.default['postfixadmin']['database']['type'] = 'postgresql'
-
-# include_recipe 'postfixadmin'
-# include_recipe 'postfixadmin::map_files'
-
-node.default['paramount']['postfix_passwd'] = random_password(length: 50, mode: :base64, encoding: 'ASCII')
-
-# postfixadmin_admin node['paramount']['contact'] do
-#   password node['paramount']['postfix_passwd']
-#   action :create
-# end
-
-# postfixadmin_domain node['paramount']['domain'] do
-#   login_username node['paramount']['contact']
-#   login_password node['paramount']['postfix_passwd']
-# end
-
+include_recipe 'paramount::postfixadmin'
 include_recipe 'paramount::dkim'
