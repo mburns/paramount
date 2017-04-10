@@ -9,7 +9,7 @@ maintainer_email 'michael@mirwin.net'
 license 'Apache 2.0'
 description 'Installs/Configures a complete online software stack'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-chef_version '>= 12.9.41'
+chef_version '>= 12.9.41' if respond_to?(:chef_version)
 
 version begin
   IO.read(File.join(File.dirname(__FILE__), 'VERSION'))
@@ -20,8 +20,8 @@ end
 source_url 'https://github.com/mburns/cookbook-paramount' if respond_to?(:source_url)
 issues_url 'https://github.com/mburns/cookbook-paramount/issues' if respond_to?(:issues_url)
 
-supports 'debian'
-supports 'ubuntu'
+supports 'debian', '>= 7.0'
+supports 'ubuntu', '>= 14.04'
 
 recipe 'paramount::default', 'Includes Security and System configuration'
 recipe 'paramount::_security', 'Hardens your host system'
@@ -39,11 +39,11 @@ depends 'chef-client'
 depends 'chef-sugar'
 # depends 'chef-vault'
 depends 'clamav'
-# depends 'couchpotato'
+depends 'couchpotato'
 depends 'database'
 depends 'djbdns'
 depends 'dovecot'
-# depends 'dspam'
+depends 'dspam'
 # depends 'encfs'
 depends 'elasticsearch'
 depends 'elkstack'
@@ -75,8 +75,8 @@ depends 'rkhunter'
 # depends 'roundcube'
 depends 'rsyslog'
 depends 'runit'
-# depends 'sabnzbd'
-# depends 'sickbeard'
+depends 'sabnzbd'
+depends 'sickbeard'
 depends 'omnibus_updater'
 depends 'onddo-spamassassin'
 depends 'selinux'
@@ -87,3 +87,31 @@ depends 'ubuntu'
 depends 'users'
 depends 'yum'
 depends 'yum-epel'
+
+attribute 'paramount/domain',
+          display_name: 'Domain',
+          description: 'Domain Name',
+          type: 'string',
+          required: 'optional',
+          default: 'example.com'
+
+attribute 'paramount/user',
+          display_name: 'Username',
+          description: 'Default Username',
+          type: 'string',
+          required: 'optional',
+          default: 'admin'
+
+attribute 'paramount/organization',
+          display_name: 'Organization',
+          description: 'Organization',
+          type: 'string',
+          required: 'optional',
+          default: 'Example'
+
+attribute 'paramount/contact',
+          display_name: 'Contact',
+          description: 'E-mail contact address',
+          type: 'string',
+          required: 'optional',
+          default: 'postmaster@example.com'

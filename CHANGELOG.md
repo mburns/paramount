@@ -1,4 +1,7 @@
+# 0 .1.6
+
 # 0.1.5
+Work on the email stack. Initial logic for encrypted attributes
 
 # 0.1.4
 

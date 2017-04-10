@@ -16,20 +16,20 @@ namespace :style do
   end
 
   YamlLint::RakeTask.new do |t|
-    t.paths = %w(
+    t.paths = %w[
       **/.*.{yml,yaml}
       **/*.{yml,yaml}
-    )
-    t.exclude_paths = %w(
+    ]
+    t.exclude_paths = %w[
       vendor/**/.*.{yml,yaml}
       vendor/**/*.{yml,yaml}
-    )
+    ]
   end
 
   JsonLint::RakeTask.new do |t|
-    t.paths = %w(
+    t.paths = %w[
       test/fixtures/**/*.json
-    )
+    ]
   end
 
   FoodCritic::Rake::LintTask.new do |t|
@@ -48,5 +48,5 @@ namespace :style do
   RuboCop::RakeTask.new
 
   desc 'Run all style checks'
-  task all: %i(rubocop foodcritic erblint jsonlint yamllint)
+  task all: %i[rubocop foodcritic erblint jsonlint yamllint]
 end

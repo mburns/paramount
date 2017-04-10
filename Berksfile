@@ -27,8 +27,8 @@ cookbook 'znc', '~> 0.0.1'
 
 ## Email
 cookbook 'clamav', '~> 1.3.0'
-cookbook 'dovecot', '~> 3.0.0'
-# cookbook 'dspam', git: 'git@github.com:mburns/chef-dspam.git'
+cookbook 'dovecot', '~> 3.0'
+cookbook 'dspam', git: 'https://github.com/mburns/chef-dspam.git'
 cookbook 'opendkim', '~> 2.0.0'
 cookbook 'onddo-spamassassin', '~> 1.1.0'
 cookbook 'postfix', '~> 4.0.0'
@@ -43,14 +43,13 @@ cookbook 'elkstack', '~> 6.0.4'
 cookbook 'kibana_lwrp', '~> 2.0.5'
 cookbook 'logrotate', '~> 1.9.1' # clamav requires 1.x
 cookbook 'logstash', '~> 0.12.0'
-# cookbook 'newrelic', '~> 2.12.0'
 cookbook 'rackspace_monitoring'
 cookbook 'rsyslog', '~> 4.0.1'
 
 ## Multimedia
-# cookbook 'sabnzbd', git: 'git@github.com:multimedia-chef/sabnzbd.git'
-# cookbook 'sickbeard', git: 'git@github.com:multimedia-chef/sickbeard.git'
-# cookbook 'couchpotato', git: 'git@github.com:multimedia-chef/couchpotato.git'
+cookbook 'sabnzbd', git: 'https://github.com/multimedia-chef/sabnzbd.git'
+cookbook 'sickbeard', git: 'https://github.com/multimedia-chef/sickbeard.git'
+cookbook 'couchpotato', git: 'https://github.com/multimedia-chef/couchpotato.git'
 cookbook 'plexapp', '~> 1.0.0'
 
 ## Web
@@ -61,7 +60,7 @@ cookbook 'php-fpm'
 ## Security
 cookbook 'aide', git: 'https://github.com/mburns/chef-aide.git', branch: 'remove-duplicates'
 cookbook 'automatic_updates'
-# cookbook 'encfs', '~> 0.2.0', git: 'git@github.com:mburns/encfs.git'
+# cookbook 'encfs', '~> 0.2.0', git: 'https://github.com/mburns/encfs.git'
 cookbook 'encrypted_attributes', '~> 0.6.0'
 cookbook 'fail2ban', '~> 2.3.1'
 cookbook 'firewall', '~> 2.5.2'

@@ -9,7 +9,7 @@ require_relative 'spec_helper'
 describe 'paramount::amavis' do
   before { stub_resources }
 
-  let(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
+  cached(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
 
   it 'installs amavisd-new' do
     expect(chef_run).to install_package 'amavisd-new'
@@ -19,7 +19,7 @@ describe 'paramount::amavis' do
     expect(chef_run).to render_file '/etc/amavis/conf.d/01-basic'
   end
 
-  %w(
+  %w[
     01-debian
     05-domain_id
     05-node_id
@@ -31,7 +31,7 @@ describe 'paramount::amavis' do
     30-template_localization
     40-policy_banks
     50-user
-  ).each do |filename|
+  ].each do |filename|
     it "deletes #{filename}" do
       expect(chef_run).to delete_file("/etc/amavis/conf.d/#{filename}")
     end
@@ -44,4 +44,6 @@ describe 'paramount::amavis' do
   it 'creates amavis group with an explicit action' do
     expect(chef_run).to create_group('amavis')
   end
+
+  # poise_service[amavis]
 end

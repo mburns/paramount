@@ -8,6 +8,7 @@ require 'chefspec'
 require 'chefspec/berkshelf'
 require 'chef/application'
 require 'coveralls'
+require 'fauxhai'
 
 Coveralls.wear!
 
@@ -37,5 +38,3 @@ def stub_resources
 
   stub_command("psql -c 'SELECT lanname FROM pg_catalog.pg_language' postfix | grep '^ plpgsql$'").and_return true
 end
-
-at_exit { ChefSpec::Coverage.report! }

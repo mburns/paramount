@@ -7,7 +7,6 @@
 #
 
 include_recipe 'selinux'
-# include_recipe 'os-hardening'
 include_recipe 'firewall'
 include_recipe 'fail2ban'
 include_recipe 'rkhunter'

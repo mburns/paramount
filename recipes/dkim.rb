@@ -60,10 +60,9 @@ file "/etc/opendkim/keys/#{main_domain}/#{selector}.private" do
   owner node['opendkim']['user']
   group node['opendkim']['group']
   mode '00640'
-  # content key['private']
+  content key['private']
 end
 
-# The txt is optional
 file "/etc/opendkim/keys/#{main_domain}/#{selector}.txt" do
   owner node['opendkim']['user']
   group node['opendkim']['group']

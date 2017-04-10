@@ -21,9 +21,9 @@ namespace :maintain do
 end
 
 desc 'Run tests on Travis'
-task ci: %w(style:all test:spec)
+task ci: %w[style:all test:spec]
 
 desc 'All tests'
-task test: %w(style:all test:spec test:integration:vagrant)
+task test: %w[style:all test:spec test:integration:vagrant]
 
-task default: %w(style:all)
+task default: %w[style:all]

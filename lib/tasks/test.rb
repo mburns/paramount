@@ -45,5 +45,5 @@ namespace :test do
   end
 
   desc 'Run all tests'
-  task all: %i(spec test:integration:vagrant)
+  task all: %i[spec test:integration:vagrant]
 end

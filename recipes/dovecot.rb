@@ -54,7 +54,7 @@ node.default['dovecot']['conf']['hostname'] = "mail.#{node['paramount']['domain'
 node.default['dovecot']['conf']['lda_mailbox_autocreate'] = true
 node.default['dovecot']['conf']['lda_mailbox_autosubscribe'] = true
 
-node.default['dovecot']['protocols']['lda']['mail_plugins'] = %w(imap sieve)
+node.default['dovecot']['protocols']['lda']['mail_plugins'] = %w[imap sieve]
 
 # 20-imap.conf
 # We want IMAP enabled with the default configuration
@@ -73,12 +73,12 @@ node.default['dovecot']['auth']['sql']['passdb']['args'] = '/etc/dovecot/dovecot
 node.default['dovecot']['auth']['sql']['userdb']['args'] = '/etc/dovecot/dovecot-sql.conf.ext'
 
 # auth-static.conf.ext
-node.default['dovecot']['auth']['static']['userdb']['args'] = %w(
+node.default['dovecot']['auth']['static']['userdb']['args'] = %w[
   uid=vmail
   gid=vmail
   home=/var/vmail/%d/%n
   allow_all_users=yes
-)
+]
 
 # auth-system.conf.ext
 node.default['dovecot']['auth']['system'] = {}
@@ -87,12 +87,12 @@ node.default['dovecot']['auth']['system'] = {}
 # We want to enable MySQL driver
 node.default['dovecot']['conf']['sql']['driver'] = 'pgsql'
 
-node.default['dovecot']['conf']['sql']['connect'] = %w(
+node.default['dovecot']['conf']['sql']['connect'] = %w[
   host=localhost
   dbname=postfix
   user=postfix
   password=#{}
-)
+]
 
 # md5crypt encryption method
 node.default['dovecot']['conf']['sql']['default_pass_scheme'] = 'MD5-CRYPT'
