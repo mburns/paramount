@@ -9,7 +9,7 @@ require 'chefspec'
 describe 'paramount::default' do
   before { stub_resources }
 
-  let(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
+  cached(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
 
   %w[_security _system].each do |cb|
     it "Includes recipe: #{cb}" do

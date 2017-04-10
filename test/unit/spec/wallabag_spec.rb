@@ -9,7 +9,7 @@ require_relative 'spec_helper'
 describe 'paramount::wallabag' do
   before { stub_resources }
 
-  let(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
+  cached(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
 
   %w[curl php5-tidy php-xml-parser].each do |package|
     it "installs #{package}" do

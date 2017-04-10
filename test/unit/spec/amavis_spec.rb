@@ -9,7 +9,7 @@ require_relative 'spec_helper'
 describe 'paramount::amavis' do
   before { stub_resources }
 
-  let(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
+  cached(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
 
   it 'installs amavisd-new' do
     expect(chef_run).to install_package 'amavisd-new'

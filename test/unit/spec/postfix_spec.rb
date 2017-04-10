@@ -8,7 +8,7 @@ require_relative 'spec_helper'
 describe 'paramount::postfix' do
   before { stub_resources }
 
-  let(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
+  cached(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
 
   # postgresql::server spostfixadmin::map_files
   %w[

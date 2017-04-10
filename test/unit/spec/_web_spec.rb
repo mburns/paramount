@@ -9,7 +9,7 @@ require_relative 'spec_helper'
 describe 'paramount::_web' do
   before { stub_resources }
 
-  let(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
+  cached(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
 
   %w[paramount::wallabag].each do |recipe|
     it "Includes recipe: #{recipe}" do
