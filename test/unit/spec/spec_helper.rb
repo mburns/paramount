@@ -8,6 +8,7 @@ require 'chefspec'
 require 'chefspec/berkshelf'
 require 'chef/application'
 require 'coveralls'
+require 'fauxhai'
 
 Coveralls.wear!
 
