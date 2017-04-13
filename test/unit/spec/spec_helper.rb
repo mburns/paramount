@@ -21,6 +21,10 @@ SimpleCov.formatter = SimpleCov::Formatter::Codecov
 at_exit { ChefSpec::Coverage.report! }
 
 RSpec.configure do |config|
+  config.run_all_when_everything_filtered = true
+  config.fail_fast = true
+  config.filter_run :focus
+
   config.log_level = :error
   Ohai::Config[:log_level] = :error
 

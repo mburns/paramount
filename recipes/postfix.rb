@@ -16,7 +16,7 @@ node.default['postfix']['main']['non_smtpd_milters'] = "inet:localhost:#{opendki
 
 include_recipe 'encrypted_attributes'
 
-Chef::Recipe.send(:include, Opscode::OpenSSL::Password)
+Chef::Recipe.send(:include, OpenSSLCookbook::RandomPassword)
 
 if Chef::EncryptedAttribute.exist?(node['paramount']['postgres_passwd'])
   # update with the new keys
@@ -26,7 +26,7 @@ if Chef::EncryptedAttribute.exist?(node['paramount']['postgres_passwd'])
   postgres_passwd = Chef::EncryptedAttribute.load(node['paramount']['postgres_passwd'])
 else
   # create the password and save it
-  postgres_passwd = secure_password
+  postgres_passwd = random_password
   node.default['paramount']['postgres_passwd'] = Chef::EncryptedAttribute.create(postgres_passwd)
 end
 
@@ -76,7 +76,7 @@ if Chef::EncryptedAttribute.exist?(node['postfix']['sasl']['smtp_sasl_passwd'])
   smtp_sasl_passwd = Chef::EncryptedAttribute.load(node['postfix']['sasl']['smtp_sasl_passwd'])
 else
   # create the password and save it
-  smtp_sasl_passwd = secure_password
+  smtp_sasl_passwd = random_password
   node.set['postfix']['sasl']['smtp_sasl_passwd'] = Chef::EncryptedAttribute.create(postgres_passwd)
 end
 

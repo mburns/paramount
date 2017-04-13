@@ -17,7 +17,7 @@ end
 
 include_recipe 'encrypted_attributes'
 
-Chef::Recipe.send(:include, Opscode::OpenSSL::Password)
+Chef::Recipe.send(:include, OpenSSLCookbook::RandomPassword)
 
 if Chef::EncryptedAttribute.exist?(node['prosody']['password'])
   # update with the new keys
@@ -27,7 +27,7 @@ if Chef::EncryptedAttribute.exist?(node['prosody']['password'])
   prosody_passwd = Chef::EncryptedAttribute.load(node['prosody']['password'])
 else
   # create the password and save it
-  prosody_passwd = secure_password
+  prosody_passwd = random_password
   node.default['prosody']['password'] = Chef::EncryptedAttribute.create(prosody_passwd)
 end
 

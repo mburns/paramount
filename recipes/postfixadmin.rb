@@ -18,7 +18,7 @@ node.default['postfixadmin']['common_name'] = node['paramount']['hostname']
 
 include_recipe 'encrypted_attributes'
 
-Chef::Recipe.send(:include, Opscode::OpenSSL::Password)
+Chef::Recipe.send(:include, OpenSSLCookbook::RandomPassword)
 
 if Chef::EncryptedAttribute.exist?(node['paramount']['postfix_passwd'])
   # update with the new keys
@@ -28,7 +28,7 @@ if Chef::EncryptedAttribute.exist?(node['paramount']['postfix_passwd'])
   postfix_passwd = Chef::EncryptedAttribute.load(node['paramount']['postfix_passwd'])
 else
   # create the password and save it
-  postfix_passwd = secure_password
+  postfix_passwd = random_password
   node.set['paramount']['postfix_passwd'] = Chef::EncryptedAttribute.create(postfix_passwd)
 end
 
