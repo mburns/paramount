@@ -17,7 +17,7 @@ node.default['roundcube']['database']['user'] = 'roundcube_db'
 
 include_recipe 'encrypted_attributes'
 
-Chef::Recipe.send(:include, Opscode::OpenSSL::Password)
+Chef::Recipe.send(:include, OpenSSLCookbook::RandomPassword)
 
 if Chef::EncryptedAttribute.exist?(node['roundcube']['database']['password'])
   # update with the new keys
@@ -27,7 +27,7 @@ if Chef::EncryptedAttribute.exist?(node['roundcube']['database']['password'])
   roundcube_passwd = Chef::EncryptedAttribute.load(node['roundcube']['database']['password'])
 else
   # create the password and save it
-  roundcube_passwd = secure_password
+  roundcube_passwd = random_password
   node.default['roundcube']['database']['password'] = Chef::EncryptedAttribute.create(roundcube_passwd)
 end
 
@@ -46,7 +46,7 @@ if Chef::EncryptedAttribute.exist?(node['roundcube']['smtp']['password'])
   roundcube_smtp_passwd = Chef::EncryptedAttribute.load(node['roundcube']['smtp']['password'])
 else
   # create the password and save it
-  roundcube_smtp_passwd = secure_password
+  roundcube_smtp_passwd = random_password
   node.default['roundcube']['smtp']['password'] = Chef::EncryptedAttribute.create(roundcube_smtp_passwd)
 end
 

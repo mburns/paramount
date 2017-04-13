@@ -26,14 +26,14 @@
 
 include_recipe 'encrypted_attributes'
 
-Chef::Recipe.send(:include, Opscode::OpenSSL::Password)
+Chef::Recipe.send(:include, OpenSSLCookbook::RandomPassword)
 
 if Chef::EncryptedAttribute.exist?(node['paramount']['encfs_passwd'])
   Chef::EncryptedAttribute.update(node.set['paramount']['encfs_passwd'])
   # encfs_pass = Chef::EncryptedAttribute.load(node['paramount']['encfs_passwd'])
 else
   # create the password and save it
-  encfs_pass = secure_password
+  encfs_pass = random_password
   node.set['paramount']['encfs_passwd'] = Chef::EncryptedAttribute.create(encfs_pass)
 end
 
