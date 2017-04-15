@@ -11,7 +11,7 @@ describe 'paramount::default' do
 
   cached(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
 
-  %w[_security _system].each do |cb|
+  %w[security system].each do |cb|
     it "Includes recipe: #{cb}" do
       expect(chef_run).to include_recipe("paramount::#{cb}")
     end

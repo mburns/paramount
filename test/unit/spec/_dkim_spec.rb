@@ -6,7 +6,7 @@
 require 'chefspec'
 require_relative 'spec_helper'
 
-describe 'paramount::dkim' do
+describe 'paramount::_dkim' do
   before { stub_resources }
 
   cached(:chef_run) do

@@ -5,7 +5,7 @@
 
 require_relative 'spec_helper'
 
-describe 'paramount::prosody' do
+describe 'paramount::_prosody' do
   before { stub_resources }
 
   cached(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }

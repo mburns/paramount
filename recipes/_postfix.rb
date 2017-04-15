@@ -86,5 +86,5 @@ Chef::Log.info("SMTP SASL password: #{smtp_sasl_passwd}")
 
 include_recipe 'postfix::server'
 
-include_recipe 'paramount::postfixadmin'
-include_recipe 'paramount::dkim'
+include_recipe 'paramount::_postfixadmin'
+include_recipe 'paramount::_dkim'

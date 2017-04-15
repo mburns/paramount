@@ -6,7 +6,7 @@
 require 'chefspec'
 require_relative 'spec_helper'
 
-describe 'paramount::_system' do
+describe 'paramount::system' do
   before { stub_resources }
 
   cached(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }

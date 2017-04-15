@@ -20,15 +20,14 @@ end
 source_url 'https://github.com/mburns/cookbook-paramount' if respond_to?(:source_url)
 issues_url 'https://github.com/mburns/cookbook-paramount/issues' if respond_to?(:issues_url)
 
-supports 'debian', '>= 7.0'
 supports 'ubuntu', '>= 14.04'
 
 recipe 'paramount::default', 'Includes Security and System configuration'
-recipe 'paramount::_security', 'Hardens your host system'
-recipe 'paramount::_system', 'Configures basic system requirements'
-recipe 'paramount::_email', 'Builds a full email stack (SMTP, IMAP, POP)'
-recipe 'paramount::_cloud', 'Various cloud-based tools'
-recipe 'paramount::_web', 'Builds a web host'
+recipe 'paramount::cloud', 'Various cloud-based tools'
+recipe 'paramount::email', 'Builds a full email stack (SMTP, IMAP, POP)'
+recipe 'paramount::security', 'Hardens your host system'
+recipe 'paramount::system', 'Configures basic system requirements'
+recipe 'paramount::web', 'Builds a web host'
 
 depends 'aide'
 depends 'automatic_updates'

@@ -31,24 +31,24 @@ Tools are chosen from https://github.com/Kickball/awesome-selfhosted
 ## Components 
 
 
-### paramount::_email
+### paramount::email
 
 Email is a full email stack (IMAP, SMTP, anti-spam)
 
 * Dovecot, Postfix, dspam, spamassasin
 * Roundcube, postgresql
 
-### paramount::_web
+### paramount::web
 
 CMS, Blog, Website (HTTP/HTTPS)
 
-### paramount::_cloud
+### paramount::cloud
 
 social networking, messaging
 
 * Owncloud
 
-### paramount::_multimedia
+### paramount::multimedia
 
 * Plex, sickbeard, etc
 
@@ -59,7 +59,7 @@ Include the specific component(s) you want in your node's `run_list`:
 ```json
 {
   "run_list": [
-    "recipe[paramount::_email]"
+    "recipe[paramount::email]"
   ]
 }
 ```

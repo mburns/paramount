@@ -6,7 +6,7 @@
 require 'chefspec'
 require_relative 'spec_helper'
 
-describe 'paramount::_cloud' do
+describe 'paramount::cloud' do
   before { stub_resources }
 
   cached(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
@@ -16,6 +16,6 @@ describe 'paramount::_cloud' do
   # end
 
   # it 'includes prosody recipe' do
-  #   expect(chef_run).to include_recipe 'paramount::prosody'
+  #   expect(chef_run).to include_recipe 'paramount::_prosody'
   # end
 end

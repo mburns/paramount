@@ -6,7 +6,7 @@
 require 'chefspec'
 require_relative 'spec_helper'
 
-describe 'paramount::dovecot' do
+describe 'paramount::_dovecot' do
   before { stub_resources }
 
   cached(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }

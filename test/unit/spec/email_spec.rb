@@ -6,7 +6,7 @@
 require 'chefspec'
 require_relative 'spec_helper'
 
-describe 'paramount::_email' do
+describe 'paramount::email' do
   before { stub_resources }
 
   cached(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
@@ -19,7 +19,7 @@ describe 'paramount::_email' do
 
   %w[dovecot amavis clamav spamassassin postfix dkim].each do |recipe|
     it "includes #{recipe} recipe" do
-      expect(chef_run).to include_recipe("paramount::#{recipe}")
+      expect(chef_run).to include_recipe("paramount::_#{recipe}")
     end
   end
 

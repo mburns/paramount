@@ -5,7 +5,7 @@
 
 require_relative 'spec_helper'
 
-describe 'paramount::postfix' do
+describe 'paramount::_postfix' do
   before { stub_resources }
 
   cached(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
@@ -14,8 +14,8 @@ describe 'paramount::postfix' do
   %w[
     encrypted_attributes
     postfix::server
-    paramount::postfixadmin
-    paramount::dkim
+    paramount::_postfixadmin
+    paramount::_dkim
   ].each do |recipe|
     it "includes #{recipe}" do
       expect(chef_run).to include_recipe recipe

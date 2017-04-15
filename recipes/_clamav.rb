@@ -6,7 +6,7 @@
 # License:: Apache License, Version 2.0
 #
 
-include_recipe 'paramount::amavis'
+include_recipe 'paramount::_amavis'
 
 node.default['clamav']['clamd']['enabled'] = true
 node.default['clamav']['freshclam']['enabled'] = true
