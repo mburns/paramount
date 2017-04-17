@@ -6,6 +6,8 @@
 # License:: Apache License, Version 2.0
 #
 
-# include_recipe 'chef_nginx'
+Chef::Log.info("[WEB] :: #{recipe_name}")
+
+include_recipe 'chef_nginx'
 
 include_recipe 'paramount::_wallabag'

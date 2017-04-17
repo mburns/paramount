@@ -6,6 +6,8 @@
 # License:: Apache License, Version 2.0
 #
 
+Chef::Log.info("[CLOUD] :: #{recipe_name}")
+
 include_recipe 'prosody'
 
 prosody_vhost node['paramount']['domain'] do

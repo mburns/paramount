@@ -10,7 +10,7 @@
 #   namespace 'owncloud'
 # end
 
-# include_recipe 'paramount::_prosody'
+include_recipe 'paramount::_prosody'
 
 # include_recipe 'owncloud'
 

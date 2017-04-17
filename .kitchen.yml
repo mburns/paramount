@@ -1,11 +1,15 @@
 ---
 driver:
   name: vagrant
-  network:
-  - ["forwarded_port", {guest: 80,   host: 8080, auto_correct: true}]
-  - ["forwarded_port", {guest: 443,   host: 8443, auto_correct: true}]
+  ssh:
+    insert_key: false
+  # network:
+  # - ["forwarded_port", {guest: 22,   host: 2200, auto_correct: true}]
+  # - ["forwarded_port", {guest: 80,   host: 8080, auto_correct: true}]
+  # - ["forwarded_port", {guest: 443,   host: 8443, auto_correct: true}]
+  cachier: true
   customize:
-    memory: 2048
+    memory: 4096
 
 driver_config:
   require_chef_omnibus: 12.9.41
@@ -13,11 +17,12 @@ driver_config:
 provisioner:
   require_chef_omnibus: true
   name: chef_zero
+  log_level: info
   environments_path: test/integration/environments
   attributes:
     openssh:
       server:
-        permit_root_login: 'no'
+        permit_root_login: 'yes'
     authorization:
       sudo:
         users: ['vagrant']
@@ -25,14 +30,16 @@ provisioner:
 
 platforms:
   - name: ubuntu-16.04
+    driver:
+      box: bento/ubuntu-16.04
     run_list:
     - recipe[apt]
-  - name: centos-7.3
-    run_list:
-    - recipe[yum]
-  - name: debian-7.8
-    run_list:
-    - recipe[apt]
+  # - name: centos-7.3
+  #   run_list:
+  #   - recipe[yum]
+  # - name: debian-7.8
+  #   run_list:
+  #   - recipe[apt]
 
 suites:
   - name: default

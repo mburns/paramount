@@ -33,7 +33,7 @@ group :test do
   gem 'chef-encrypted-attributes'
   gem 'chef-sugar'
   gem 'codecov'
-  gem 'coveralls'
+  gem 'coveralls', require: false
   gem 'fog'
   gem 'mime-types'
   gem 'pry'

@@ -6,6 +6,8 @@
 # License:: Apache License, Version 2.0
 #
 
+Chef::Log.info('[EMAIL]')
+
 # DNS | Records         | Value
 # --- | --------------- | -----
 # A   | domain.tld      | <IP>
@@ -46,10 +48,6 @@ directory '/data'
 #   action :mount
 # end
 
-package 'postgrey'
-
-include_recipe 'database::postgresql'
-
 user 'vmail' do
   shell '/bin/false'
   supports manage_home: true
@@ -62,13 +60,19 @@ group 'vmail' do
   append true
 end
 
+include_recipe 'database::postgresql'
+
+include_recipe 'paramount::_postgrey'
 include_recipe 'paramount::_dovecot'
 include_recipe 'paramount::_amavis'
-include_recipe 'paramount::_clamav'
+include_recipe 'clamav'
+include_recipe 'paramount::_spamhaus'
 include_recipe 'paramount::_spamassassin'
 include_recipe 'paramount::_postfix'
 include_recipe 'paramount::_dkim'
 
 include_recipe 'dspam'
 
-include_recipe 'paramount::_roundcube' if node.run_list.include?('paramount::web')
+include_recipe 'paramount::_roundcube'
+# include_recipe 'paramount::_dpush' # requires apache
+# include_recipe 'paramount::_automx' # requires php

@@ -7,3 +7,10 @@
 #
 
 default['paramount']['dkim_port'] = 8891
+
+default['opendkim']['conf']['MinimumKeyBits'] = '1024'
+default['opendkim']['conf']['Mode'] = 'sv'
+default['opendkim']['conf']['OversignHeaders'] = 'From'
+default['opendkim']['conf']['Syslog'] = true
+default['opendkim']['conf']['SyslogSuccess'] = true
+default['opendkim']['conf']['UMask'] = '002'

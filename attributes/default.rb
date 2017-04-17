@@ -9,9 +9,6 @@
 default['paramount']['domain'] = 'example.com'
 default['paramount']['user'] = 'admin'
 
-default['postfix-dovecot']['postmaster_address'] = "postmaster@#{node['paramount']['domain']}"
-default['postfix-dovecot']['hostname'] = node['fqdn'] || 'example.local'
-
 default['paramount']['organization'] = 'Example'
 default['paramount']['organization_unit'] = 'Paramount'
 default['paramount']['country'] = 'US'

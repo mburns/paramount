@@ -6,9 +6,9 @@
 # License:: Apache License, Version 2.0
 #
 
-include_recipe 'openldap::auth'
+Chef::Log.info("[PARAMOUNT] :: #{recipe_name}")
 
-node.default['openldap']['manage_ssl'] = true
+include_recipe 'openldap::auth'
 
 # Use https://github.com/atomic-penguin/cookbook-certificate cookbook for advanced certificate deployment
 # or use wrapper cookbook to source ssl files from the wrapper cookbook folder structure:

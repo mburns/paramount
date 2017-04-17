@@ -1,0 +1,15 @@
+server {
+  listen   <%= node['nginx']['port'] -%>;
+  server_name  <%= node['hostname'] %>;
+
+  access_log  <%= node['nginx']['log_dir'] %>/dpush.access.log;
+
+  location / {
+    root   <%= node['nginx']['default_root'] %>;
+    index  index.html index.htm;
+  }
+  
+  location /Microsoft-Server-ActiveSync {
+    alias /usr/share/d-push/index.php
+  }
+}

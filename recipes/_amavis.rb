@@ -6,7 +6,8 @@
 # License:: Apache License, Version 2.0
 #
 
-# TODO : make more platform-independent
+Chef::Log.info("[EMAIL] :: #{recipe_name}")
+
 package 'amavisd-new'
 
 user 'amavis' do

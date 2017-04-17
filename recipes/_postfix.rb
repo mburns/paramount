@@ -6,6 +6,8 @@
 # License:: Apache License, Version 2.0
 #
 
+Chef::Log.info("[EMAIL] :: #{recipe_name}")
+
 opendkim_port = node['paramount']['dkim_port']
 
 # Configure Postfix
@@ -68,18 +70,8 @@ postgresql_database 'postfix' do
   action :create
 end
 
-if Chef::EncryptedAttribute.exist?(node['postfix']['sasl']['smtp_sasl_passwd'])
-  # update with the new keys
-  Chef::EncryptedAttribute.update(node.set['postfix']['sasl']['smtp_sasl_passwd'])
-
-  # read the password
-  smtp_sasl_passwd = Chef::EncryptedAttribute.load(node['postfix']['sasl']['smtp_sasl_passwd'])
-else
-  # create the password and save it
-  smtp_sasl_passwd = random_password
-  node.set['postfix']['sasl']['smtp_sasl_passwd'] = Chef::EncryptedAttribute.create(postgres_passwd)
-end
-
+smtp_sasl_passwd = random_password
+node.set['postfix']['sasl']['smtp_sasl_passwd'] = smtp_sasl_passwd
 Chef::Log.info("SMTP SASL password: #{smtp_sasl_passwd}")
 
 # TODO : postscreen

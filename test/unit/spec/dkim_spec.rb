@@ -36,4 +36,8 @@ describe 'paramount::_dkim' do
   it 'includes opendkim' do
     expect(chef_run).to include_recipe('opendkim')
   end
+
+  it 'creates TrustedHosts file with an explicit action' do
+    expect(chef_run).to create_cookbook_file('/etc/opendkim/TrustedHosts')
+  end
 end

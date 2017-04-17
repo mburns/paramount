@@ -13,4 +13,9 @@ describe 'paramount::_prosody' do
   it 'includes prosody' do
     expect(chef_run).to include_recipe('prosody')
   end
+
+  # prosody_vhost[example.com]
+  # prosody_user[admin]
+  # prosody_module[roster]
+  # prosody_module[saslauth]
 end

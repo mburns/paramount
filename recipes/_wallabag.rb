@@ -6,6 +6,8 @@
 # License:: Apache License, Version 2.0
 #
 
+Chef::Log.info("[CLOUD] :: #{recipe_name}")
+
 %w[
   curl
   php5-tidy
@@ -25,8 +27,8 @@ ark 'wallabag' do
   action :install
 end
 
-# nginx_site 'wallabag' do
-#   enable true
-# end
+nginx_site 'wallabag' do
+  enable true
+end
 
-# db
+# TODO : db

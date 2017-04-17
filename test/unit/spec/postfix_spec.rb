@@ -30,9 +30,9 @@ describe 'paramount::_postfix' do
     expect(chef_run).to create_group('postfix')
   end
 
-  # it 'installs sendmail' do
-  #   expect(chef_run).to install_package('sendmail')
-  # end
+  it 'installs sendmail' do
+    expect(chef_run).to remove_package('sendmail')
+  end
 
   # postgresql_database_user[postfix]
   # postgresql_database[postfix]

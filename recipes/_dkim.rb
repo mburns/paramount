@@ -6,37 +6,42 @@
 # License:: Apache License, Version 2.0
 #
 
+Chef::Log.info("[EMAIL] :: #{recipe_name}")
+
+include_recipe 'paramount::_postfix'
+
 opendkim_port = node['paramount']['dkim_port']
 main_domain = node['paramount']['domain']
 selector = '20150615' # TODO : explain
 
-node.default['opendkim']['conf']['MinimumKeyBits'] = '1024'
-node.default['opendkim']['conf']['Mode'] = 'sv'
-node.default['opendkim']['conf']['OversignHeaders'] = 'From'
 node.default['opendkim']['conf']['Socket'] = "inet:#{opendkim_port}@localhost"
-node.default['opendkim']['conf']['Syslog'] = true
-node.default['opendkim']['conf']['SyslogSuccess'] = true
-node.default['opendkim']['conf']['UMask'] = '002'
 
 key_table_default = node.set['opendkim']['conf']['KeyTable']
 key_table_default["csl:#{selector}._domainkey.#{main_domain}"] = "#{main_domain}:mail:/etc/opendkim/keys/#{main_domain}/#{selector}.private"
 
 node.default['opendkim']['conf']['SigningTable'] = 'refile:/etc/opendkim/SigningTable'
 
-# We create the Signing Table
+# Install OpenDKIM
+include_recipe 'opendkim'
 
 directory '/etc/opendkim' do
-  mode '00755'
+  owner 'opendkim'
+  group 'opendkim'
+  mode '00750'
 end
 
+# We create the Signing Table
 file '/etc/opendkim/SigningTable' do
   mode '00644'
   content "*@#{main_domain} #{selector}._domainkey.#{main_domain}"
 end
 
-# Install OpenDKIM
-
-include_recipe 'opendkim'
+cookbook_file '/etc/opendkim/TrustedHosts' do
+  source 'TrustedHosts'
+  owner 'opendkim'
+  group 'opendkim'
+  mode '0644'
+end
 
 # Read DKIM keys from chef-vault
 

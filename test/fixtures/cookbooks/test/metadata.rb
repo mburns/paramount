@@ -1,7 +1,7 @@
 name 'test'
 maintainer 'Michael Burns'
 maintainer_email 'michael@mirwin.net'
-license 'Apache 2.0'
+license 'Apache-2.0'
 description 'Installs/Configures test'
 version '0.1.0'
 source_url 'https://github.com/mburns/cookbook-paramount' if respond_to?(:source_url)

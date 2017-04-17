@@ -11,13 +11,13 @@ describe 'paramount::email' do
 
   cached(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
 
-  %w[encrypted_attributes database::postgresql dspam].each do |recipe|
+  %w[clamav database::postgresql dspam].each do |recipe|
     it "includes #{recipe} recipe" do
       expect(chef_run).to include_recipe(recipe)
     end
   end
 
-  %w[dovecot amavis clamav spamassassin postfix dkim].each do |recipe|
+  %w[dovecot amavis spamassassin postfix dkim].each do |recipe|
     it "includes #{recipe} recipe" do
       expect(chef_run).to include_recipe("paramount::_#{recipe}")
     end

@@ -19,4 +19,8 @@ describe 'paramount::_roundcube' do
       expect(chef_run).to include_recipe recipe
     end
   end
+
+  # postgresql_database_user[roundcube_db]
+  # postgresql_database[roundcube_db]
+  # openssl_x509[/etc/httpd/ssl/roundcube.pem]
 end
