@@ -304,7 +304,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
-    mini_portile2 (2.1.0)
+    mini_portile2 (2.2.0)
     minitar (0.6.1)
     mixlib-archive (0.4.1)
       mixlib-log
@@ -336,8 +336,8 @@ GEM
       net-ssh-gateway (>= 1.2.0)
     net-telnet (0.1.1)
     nio4r (2.0.0)
-    nokogiri (1.7.1)
-      mini_portile2 (~> 2.1.0)
+    nokogiri (1.8.0)
+      mini_portile2 (~> 2.2.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
@@ -513,6 +513,7 @@ DEPENDENCIES
   jsonlint
   kitchen-vagrant
   mime-types
+  nokogiri (>= 1.7.2)
   pry
   rake (~> 11)
   rspec
@@ -528,6 +529,5 @@ DEPENDENCIES
 
 RUBY VERSION
    ruby 2.3.1p112
-
 BUNDLED WITH
    1.14.6
