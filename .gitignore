@@ -26,3 +26,5 @@ coverage
 int-lint-results.xml
 
 vendor/
+
+.yardoc/
