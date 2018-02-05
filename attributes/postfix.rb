@@ -13,7 +13,7 @@ default['postfix']['mail_type'] = 'master'
 
 domain = begin
   "mail.#{node['paramount']['domain']}"
-rescue
+rescue StandardError
   'example.com'
 end
 

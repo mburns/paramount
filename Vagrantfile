@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
@@ -12,9 +10,7 @@ Vagrant.configure('2') do |config|
     STDERR.puts "Install plugin:\n$ vagrant plugin install vagrant-cachier"
   end
 
-  if Vagrant.has_plugin?('vagrant-omnibus')
-    config.omnibus.chef_version = '12.9.41'
-  end
+  config.omnibus.chef_version = '12.15.19' if Vagrant.has_plugin?('vagrant-omnibus')
 
   config.vm.hostname = 'paramount.local'
 

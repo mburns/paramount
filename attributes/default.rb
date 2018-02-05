@@ -15,7 +15,7 @@ default['paramount']['country'] = 'US'
 
 default['paramount']['contact'] = begin
                                     node['paramount']['user'] + '@' + node['paramount']['domain']
-                                  rescue
+                                  rescue StandardError
                                     'postmaster@example.com'
                                   end
 

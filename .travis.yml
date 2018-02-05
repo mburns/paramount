@@ -2,7 +2,7 @@ sudo: required
 services: docker
 dist: trusty
 language: ruby
-rvm: 2.3.1
+rvm: 2.3.6
 
 cache:
   bundler: true
@@ -24,20 +24,19 @@ matrix:
   fast_finish: true
 
 before_install:
-  - curl -L https://www.getchef.com/chef/install.sh | sudo bash -s -- -P chefdk -v 0.18.30
-  - eval "$(/opt/chefdk/bin/chef shell-init bash)"
+  - gem install bundler
+  - bundle install
 
 install:
-  - chef exec bundle install --jobs=3 --retry=3 --without='development plugins'
+  - bundle install --jobs=3 --retry=3 --without='development plugins'
 
 before_script:
   - sudo iptables -L DOCKER || ( echo "DOCKER iptables chain missing" ; sudo iptables -N DOCKER )
-  - chef --version
   - berks --version
   - foodcritic --version
 
 script:
-  - travis_retry chef exec bundle exec rake ${TEST}
+  - travis_retry bundle exec rake ${TEST}
 
 after_failure:
   - cat docker_daemon.log

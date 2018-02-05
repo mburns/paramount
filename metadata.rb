@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
@@ -9,11 +7,11 @@ maintainer_email 'michael@mirwin.net'
 license 'Apache-2.0'
 description 'Installs/Configures a complete online software stack'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-chef_version '>= 12.9.41' if respond_to?(:chef_version)
+chef_version '>= 12.15.19' if respond_to?(:chef_version)
 
 version begin
   IO.read(File.join(File.dirname(__FILE__), 'VERSION'))
-rescue
+rescue StandardError
   '0.2.0'
 end
 
@@ -37,7 +35,7 @@ depends 'build-essential'
 depends 'chef-client'
 depends 'chef_client_updater'
 depends 'chef-sugar'
-depends 'chef-vault'
+# depends 'chef-vault'
 depends 'clamav'
 depends 'couchpotato'
 depends 'djbdns'
