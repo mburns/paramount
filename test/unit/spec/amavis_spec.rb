@@ -45,5 +45,5 @@ describe 'paramount::_amavis' do
     expect(chef_run).to create_group('amavis')
   end
 
-  # poise_service[amavis]
+  # service[amavis]
 end

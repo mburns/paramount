@@ -2,11 +2,16 @@ GEM
   remote: https://rubygems.org/
   specs:
     CFPropertyList (2.3.5)
+    activesupport (5.0.2)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (~> 0.7)
+      minitest (~> 5.1)
+      tzinfo (~> 1.1)
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
     artifactory (2.8.1)
     ast (2.3.0)
-    backports (3.7.0)
+    backports (3.8.0)
     berkshelf (5.6.4)
       addressable (~> 2.3, >= 2.3.4)
       berkshelf-api-client (>= 2.0.2, < 4.0)
@@ -92,6 +97,7 @@ GEM
       simplecov
       url
     coderay (1.1.1)
+    concurrent-ruby (1.0.5)
     coveralls (0.8.19)
       json (>= 1.8, < 3)
       simplecov (~> 0.12.0)
@@ -107,6 +113,8 @@ GEM
     excon (0.55.0)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
+    faraday-http-cache (2.0.0)
+      faraday (~> 0.8)
     fauxhai (4.1.0)
       net-ssh
     ffi (1.9.18)
@@ -207,7 +215,7 @@ GEM
     fog-profitbricks (3.0.0)
       fog-core (~> 1.42)
       fog-json (~> 1.0)
-    fog-rackspace (0.1.4)
+    fog-rackspace (0.1.5)
       fog-core (>= 1.35)
       fog-json (>= 1.0)
       fog-xml (>= 0.1)
@@ -250,7 +258,7 @@ GEM
     fog-xml (0.1.3)
       fog-core
       nokogiri (>= 1.5.11, < 2.0.0)
-    foodcritic (10.4.0)
+    foodcritic (11.0.0)
       cucumber-core (>= 1.3)
       erubis
       nokogiri (>= 1.5, < 2.0)
@@ -261,6 +269,14 @@ GEM
     formatador (0.2.5)
     fuzzyurl (0.8.0)
     gherkin (4.1.1)
+    github_changelog_generator (1.14.3)
+      activesupport
+      faraday-http-cache
+      multi_json
+      octokit (~> 4.6)
+      rainbow (>= 2.1)
+      rake (>= 10.0)
+      retriable (~> 2.1)
     guard (2.14.1)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -278,6 +294,10 @@ GEM
     guard-kitchen (0.0.2)
       guard
       mixlib-shellout
+    guard-rspec (4.7.3)
+      guard (~> 2.1)
+      guard-compat (~> 1.1)
+      rspec (>= 2.99.0, < 4.0)
     guard-rubocop (1.2.0)
       guard (~> 2.0)
       rubocop (~> 0.20)
@@ -285,12 +305,15 @@ GEM
     highline (1.7.8)
     hitimes (1.2.4)
     httpclient (2.8.3)
+    i18n (0.8.1)
     inflecto (0.0.2)
     ipaddress (0.8.3)
     json (1.8.6)
     jsonlint (0.2.0)
       oj (~> 2)
       trollop (~> 2)
+    kitchen-docker (2.6.0)
+      test-kitchen (>= 1.0.0)
     kitchen-vagrant (1.1.0)
       test-kitchen (~> 1.4)
     libyajl2 (1.2.0)
@@ -306,6 +329,7 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitar (0.6.1)
+    minitest (5.10.1)
     mixlib-archive (0.4.1)
       mixlib-log
     mixlib-authentication (1.4.1)
@@ -368,16 +392,18 @@ GEM
       slop (~> 3.4)
     public_suffix (2.0.5)
     rack (1.6.5)
-    rainbow (2.2.1)
+    rainbow (2.2.2)
+      rake
     rake (11.3.0)
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
-    rbvmomi (1.11.0)
+    rbvmomi (1.11.1)
       builder (~> 3.0)
       json (>= 1.8)
       nokogiri (~> 1.5)
       trollop (~> 2.1)
+    retriable (2.1.0)
     retryable (2.0.4)
     ridley (5.1.0)
       addressable
@@ -471,12 +497,15 @@ GEM
     thor-scmversion (1.7.0)
       mixlib-shellout
       thor
+    thread_safe (0.3.6)
     timers (4.0.4)
       hitimes
     tins (1.13.2)
     treetop (1.6.8)
       polyglot (~> 0.3)
     trollop (2.1.2)
+    tzinfo (1.2.3)
+      thread_safe (~> 0.1)
     unicode-display_width (1.2.1)
     url (0.3.2)
     uuidtools (2.1.5)
@@ -496,21 +525,25 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  berkshelf
+  berkshelf (~> 5.1)
   chef (~> 12.9.41)
   chef-encrypted-attributes
   chef-sugar
   chefspec
   codecov
   coveralls
+  fauxhai
   fog
   foodcritic
+  github_changelog_generator
   guard
   guard-foodcritic
   guard-kitchen
+  guard-rspec
   guard-rubocop
   highline (~> 1.7.8, >= 1.7.8)
   jsonlint
+  kitchen-docker (~> 2.6)
   kitchen-vagrant
   mime-types
   pry
@@ -519,7 +552,7 @@ DEPENDENCIES
   rspec-json_expectations
   rubocop
   stove
-  test-kitchen
+  test-kitchen (~> 1.13)
   thor-scmversion
   vagrant-berkshelf
   vagrant-cachier

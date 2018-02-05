@@ -12,11 +12,11 @@ cookbook 'build-essential'
 cookbook 'chef-sugar', '~> 3.4'
 cookbook 'chef-vault', '~> 2.1'
 
-cookbook 'database', '~> 6.0'
 cookbook 'hostsfile', '~> 2.4'
 cookbook 'packages', '~> 1.0'
 cookbook 'partial_search'
 cookbook 'ohai', '~> 4.2.2'
+cookbook 'postgresql', '~> 6.1.1'
 
 ## Cloud
 cookbook 'djbdns', '~> 3.0'
@@ -31,14 +31,13 @@ cookbook 'dovecot', '~> 3.0'
 cookbook 'dspam', github: 'mburns/chef-dspam'
 cookbook 'opendkim', '~> 2.0'
 cookbook 'onddo-spamassassin', '~> 2.0'
-cookbook 'postfix', '~> 4.0'
-cookbook 'postfixadmin', '~> 3.0'
+cookbook 'postfix', '~> 5.2.1'
+# cookbook 'postfixadmin', github: 'mburns/postfixadmin-cookbook', branch: 'mysql2_chef_gem_v2.0'
 # cookbook 'roundcube', github: 'mburns/roundcube', branch: 'chef_nginx'
 cookbook 'solr_app', '~> 0.0'
 
 ## Monitoring & Logs
 cookbook 'collectd-lib'
-cookbook 'elkstack', github: 'mburns/elkstack', branch: 'chef_nginx'
 cookbook 'kibana_lwrp', github: 'lusis/chef-kibana'
 cookbook 'logrotate', '~> 2.1'
 cookbook 'logstash', '~> 0.12.0'
@@ -52,8 +51,7 @@ cookbook 'couchpotato', github: 'multimedia-chef/couchpotato'
 cookbook 'plexapp', '~> 1.0.0'
 
 ## Web
-cookbook 'chef_nginx', '~> 5.0'
-# cookbook 'php'
+cookbook 'nginx', '~> 7.0'
 cookbook 'php-fpm'
 
 ## Security
@@ -63,13 +61,12 @@ cookbook 'automatic_updates', github: 'rackspace-cookbooks/automatic_updates'
 cookbook 'encrypted_attributes', '~> 0.6.0'
 cookbook 'fail2ban', '~> 2.3'
 cookbook 'firewall', '~> 2.5'
-cookbook 'ldap', '~> 1.1'
 # cookbook 'openvpn', github: 'sous-chefs/openvpn' # pending publication to Supermarket
 cookbook 'os-hardening', '~> 1.2'
 cookbook 'selinux'
 cookbook 'rkhunter', '~> 0.2'
-cookbook 'openldap', '~> 2.2'
-cookbook 'openssl', '~> 6.0'
+cookbook 'openldap', '~> 3.0'
+cookbook 'openssl', '~> 8.1'
 cookbook 'ssl_certificate', '~> 2.1'
 
 ## System

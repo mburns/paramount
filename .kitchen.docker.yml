@@ -1,0 +1,41 @@
+---
+driver:
+  name: docker
+  hostname: paramount.local
+  privileged: true
+  use_sudo: false
+  disable_upstart: false
+  binary: /usr/bin/docker
+  run_command: /sbin/init
+  provision_command:
+    - mkdir -p /var/run/sshd
+
+driver_config:
+  image: ubuntu-upstart:14.04
+
+provisioner:
+  client_rb:
+    file_atomic_update: false
+
+suites:
+  - name: default
+    run_list:
+    - recipe[test::default]
+  - name: system
+    run_list:
+    - recipe[paramount::system]
+  - name: security
+    run_list:
+    - recipe[paramount::security]
+  - name: cloud
+    run_list:
+    - recipe[test::cloud]
+  - name: email
+    run_list:
+    - recipe[test::email]
+  - name: multimedia
+    run_list:
+    - recipe[test::multimedia]
+  - name: web
+    run_list:
+    - recipe[test::web]

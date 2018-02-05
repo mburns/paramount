@@ -1,49 +1,44 @@
 ---
 driver:
   name: vagrant
-  ssh:
-    insert_key: false
-  # network:
-  # - ["forwarded_port", {guest: 22,   host: 2200, auto_correct: true}]
-  # - ["forwarded_port", {guest: 80,   host: 8080, auto_correct: true}]
-  # - ["forwarded_port", {guest: 443,   host: 8443, auto_correct: true}]
+  use_sudo: false
+  network:
+    - ["forwarded_port", {guest:  80, host: 8080, auto_correct: true}]
+    - ["forwarded_port", {guest: 443, host: 8443, auto_correct: true}]
   cachier: true
   customize:
     memory: 4096
 
-driver_config:
-  require_chef_omnibus: 12.9.41
-
 provisioner:
-  require_chef_omnibus: true
   name: chef_zero
+  require_chef_omnibus: 12.14.89
   log_level: info
+  file_atomic_update: false
   environments_path: test/integration/environments
+  data_bags_path: test/fixtures/data_bags
   attributes:
+    postfix:
+      recipient_canonical_map_entries:
+        john: john@example.com
     openssh:
       server:
         permit_root_login: 'yes'
     authorization:
       sudo:
-        users: ['vagrant']
+        users: ['vagrant', 'kitchen']
         passwordless: true
 
 platforms:
-  - name: ubuntu-16.04
+  - name: ubuntu-14.04
     driver:
-      box: bento/ubuntu-16.04
-    run_list:
-    - recipe[apt]
-  # - name: centos-7.3
-  #   run_list:
-  #   - recipe[yum]
-  # - name: debian-7.8
-  #   run_list:
-  #   - recipe[apt]
+      box: ubuntu/trusty64
+  - name: ubuntu-16.04
+  - name: debian-8.7
+  - name: fedora-25
+  - name: centos-7.3
 
 suites:
   - name: default
-    sudo: true
     run_list:
     - recipe[test::default]
   - name: cloud

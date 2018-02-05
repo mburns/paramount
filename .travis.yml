@@ -1,8 +1,8 @@
-sudo: false
+sudo: required
+services: docker
 dist: trusty
 language: ruby
-rvm:
-  - 2.3.1
+rvm: 2.3.1
 
 cache:
   bundler: true
@@ -10,18 +10,34 @@ cache:
     - $HOME/.berkshelf/
     - $HOME/.gem/
 
-before_install:
-  - gem update --system
-  - gem install bundler --no-document
-bundler_args: --without development plugins
-
 env:
-  global:
-  - TRAVIS=1 CI=1 COVERAGE=1
+  matrix:
+  - TEST="style:all"
+  - TEST="unit"
+  - TEST="integration:docker[default-ubuntu-1404]"
+  - TEST="integration:docker[cloud-ubuntu-1404]"
+  - TEST="integration:docker[email-ubuntu-1404]"
+  - TEST="integration:docker[multimedia-ubuntu-1404]"
+  - TEST="integration:docker[web-ubuntu-1404]"
 
-gemfile:
-  - Gemfile
+matrix:
+  fast_finish: true
+
+before_install:
+  - curl -L https://www.getchef.com/chef/install.sh | sudo bash -s -- -P chefdk -v 0.18.30
+  - eval "$(/opt/chefdk/bin/chef shell-init bash)"
+
+install:
+  - chef exec bundle install --jobs=3 --retry=3 --without='development plugins'
+
+before_script:
+  - sudo iptables -L DOCKER || ( echo "DOCKER iptables chain missing" ; sudo iptables -N DOCKER )
+  - chef --version
+  - berks --version
+  - foodcritic --version
 
 script:
-  - bundle exec rake style:all
-  - bundle exec rake test:spec
+  - travis_retry chef exec bundle exec rake ${TEST}
+
+after_failure:
+  - cat docker_daemon.log

@@ -8,6 +8,8 @@
 
 Chef::Log.info("[EMAIL] :: #{recipe_name}")
 
+include_recipe 'paramount::_spamassassin'
+
 package 'amavisd-new'
 
 user 'amavis' do
@@ -34,20 +36,18 @@ end
 ].each do |filename|
   file "/etc/amavis/conf.d/#{filename}" do
     action :delete
-    notifies :restart, 'poise_service[amavis]', :delayed
+    notifies :restart, 'service[amavis]', :delayed
   end
 end
 
 template '/etc/amavis/conf.d/01-basic' do
   source 'amavis.erb'
-  owner 'amavis'
+  owner 'root'
   group 'amavis'
   mode 0o644
-  notifies :restart, 'poise_service[amavis]', :delayed
+  notifies :restart, 'service[amavis]', :delayed
 end
 
-poise_service 'amavis' do
-  command 'amavisd'
-  supports [:restart]
+service 'amavis' do
   action %i[enable start]
 end

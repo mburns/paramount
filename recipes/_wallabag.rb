@@ -12,6 +12,7 @@ Chef::Log.info("[CLOUD] :: #{recipe_name}")
   curl
   php5-tidy
   php-xml-parser
+  unzip
 ].each do |pkg|
   package pkg
 end
@@ -27,8 +28,10 @@ ark 'wallabag' do
   action :install
 end
 
-nginx_site 'wallabag' do
-  enable true
+nginx_site 'Enable wallabag' do
+  template 'wallabag.erb'
+  name 'wallabag'
+  action :enable
 end
 
 # TODO : db

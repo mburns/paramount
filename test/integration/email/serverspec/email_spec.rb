@@ -9,8 +9,6 @@ require_relative 'spec_helper'
   amavisd
   dspam
   dovecot
-  postfix
-  postgresql
 ].each do |s|
   describe service(s) do
     it { should be_running }
@@ -18,36 +16,36 @@ require_relative 'spec_helper'
 end
 
 # smtp
-describe port(25) do
-  it { should be_listening }
-end
+# describe port(25) do
+#   it { should be_listening }
+# end
 
 # imap
-describe port(143) do
-  it { should be_listening }
-end
+# describe port(143) do
+#   it { should be_listening }
+# end
 
 # imaps
-describe port(993) do
-  it { should be_listening }
-end
+# describe port(993) do
+#   it { should be_listening }
+# end
 
 # pop3
-describe port(110) do
-  it { should be_listening }
-end
+# describe port(110) do
+#   it { should be_listening }
+# end
 
 # pop3s
-describe port(995) do
-  it { should be_listening }
-end
+# describe port(995) do
+#   it { should be_listening }
+# end
 
 # http
-describe port(80) do
-  it { should be_listening }
-end
+# describe port(80) do
+#   it { should be_listening }
+# end
 
 # https
-describe port(443) do
-  it { should be_listening }
-end
+# describe port(443) do
+#   it { should be_listening }
+# end

@@ -6,7 +6,7 @@
 # License:: Apache License, Version 2.0
 #
 
-Chef::Log.info('[EMAIL] :: #{recipe_name}')
+Chef::Log.info("[EMAIL] :: #{recipe_name}")
 
 cookbook_file '/etc/cron.daily/spamhaus' do
   source 'spamhaus.sh'

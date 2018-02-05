@@ -11,6 +11,8 @@ Chef::Log.info("[EMAIL] :: #{recipe_name}")
 # a2enmod wsgi
 # a2enmod rewrite
 
+package 'git'
+
 git '/opt/automx' do
   repository 'https://github.com/sys4/automx.git'
   revision 'master'

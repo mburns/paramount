@@ -40,13 +40,7 @@ Email is a full email stack (IMAP, SMTP, anti-spam)
 
 ### paramount::web
 
-CMS, Blog, Website (HTTP/HTTPS)
-
 ### paramount::cloud
-
-social networking, messaging
-
-* Owncloud
 
 ### paramount::multimedia
 

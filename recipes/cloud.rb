@@ -6,11 +6,13 @@
 # License:: Apache License, Version 2.0
 #
 
+Chef::Log.info("[CLOUD] :: #{recipe_name}")
+
 # ssl_certificate 'owncloud-cert' do
 #   namespace 'owncloud'
 # end
 
-include_recipe 'paramount::_prosody'
+# include_recipe 'paramount::_prosody'
 
 # include_recipe 'owncloud'
 

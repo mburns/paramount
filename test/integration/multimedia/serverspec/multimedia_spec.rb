@@ -5,10 +5,10 @@
 
 require_relative 'spec_helper'
 
-%w[
-  plexmediaserver
-].each do |f|
-  describe service(f) do
-    it { should be_running }
-  end
-end
+# %w[
+#   plexmediaserver
+# ].each do |f|
+#   describe service(f) do
+#     it { should be_running }
+#   end
+# end

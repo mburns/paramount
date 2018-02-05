@@ -8,6 +8,4 @@
 
 Chef::Log.info("[EMAIL] :: #{recipe_name}")
 
-include_recipe 'paramount::_amavis'
-
-include_recipe 'onddo-spamassassin'
+include_recipe 'onddo-spamassassin::default'

@@ -10,10 +10,6 @@ describe 'paramount::_prosody' do
 
   cached(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
 
-  it 'includes prosody' do
-    expect(chef_run).to include_recipe('prosody')
-  end
-
   # prosody_vhost[example.com]
   # prosody_user[admin]
   # prosody_module[roster]

@@ -9,3 +9,4 @@
 # default['nginx']['install_method'] = 'package'
 # default['nginx']['package_name'] = ''
 default['nginx']['default_site_enabled'] = false
+default['nginx']['repo_source'] = 'distro'

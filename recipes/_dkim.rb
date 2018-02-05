@@ -16,7 +16,7 @@ selector = '20150615' # TODO : explain
 
 node.default['opendkim']['conf']['Socket'] = "inet:#{opendkim_port}@localhost"
 
-key_table_default = node.set['opendkim']['conf']['KeyTable']
+key_table_default = node.normal['opendkim']['conf']['KeyTable']
 key_table_default["csl:#{selector}._domainkey.#{main_domain}"] = "#{main_domain}:mail:/etc/opendkim/keys/#{main_domain}/#{selector}.private"
 
 node.default['opendkim']['conf']['SigningTable'] = 'refile:/etc/opendkim/SigningTable'
