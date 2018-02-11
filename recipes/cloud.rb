@@ -6,7 +6,7 @@
 # License:: Apache License, Version 2.0
 #
 
-Chef::Log.info("[CLOUD] :: #{recipe_name}")
+Chef::Log.info('[CLOUD]')
 
 # ssl_certificate 'owncloud-cert' do
 #   namespace 'owncloud'

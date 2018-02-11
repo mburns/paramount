@@ -6,7 +6,7 @@
 # License:: Apache License, Version 2.0
 #
 
-Chef::Log.info("[WEB] :: #{recipe_name}")
+Chef::Log.info('[WEB]')
 
 include_recipe 'nginx'
 include_recipe 'php-fpm'
