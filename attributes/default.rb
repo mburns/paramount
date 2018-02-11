@@ -8,6 +8,7 @@
 
 default['paramount']['domain'] = 'example.com'
 default['paramount']['user'] = 'admin'
+default['paramount']['name'] = 'John Smith'
 
 default['paramount']['organization'] = 'Example'
 default['paramount']['organization_unit'] = 'Paramount'
