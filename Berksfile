@@ -36,7 +36,9 @@ cookbook 'rspamd'
 
 ## Monitoring & Logs
 cookbook 'collectd', '~> 2.2.4'
-cookbook 'kibana_lwrp', github: 'lusis/chef-kibana'
+cookbook 'elasticsearch', '~> 3.4'
+cookbook 'filebeat', '~> 1.4.0'
+cookbook 'kibana5', '~> 1.3'
 cookbook 'logrotate', '~> 2.2'
 cookbook 'logstash', '~> 1.0'
 cookbook 'rackspace_monitoring'
@@ -56,7 +58,6 @@ cookbook 'php-fpm'
 ## Security
 cookbook 'aide', github: 'mburns/chef-aide', tag: 'v0.2.1'
 cookbook 'automatic_updates', github: 'rackspace-cookbooks/automatic_updates'
-# cookbook 'encfs', '~> 0.2.0', github: 'mburns/encfs'
 cookbook 'encrypted_attributes', '~> 0.6.0'
 cookbook 'fail2ban', '~> 5.0'
 cookbook 'firewall', '~> 2.6'
