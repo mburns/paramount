@@ -35,7 +35,7 @@ cookbook 'postfix', '~> 5.2.1'
 cookbook 'solr_app', '~> 0.0'
 
 ## Monitoring & Logs
-cookbook 'collectd-lib'
+cookbook 'collectd', '~> 2.2.4'
 cookbook 'kibana_lwrp', github: 'lusis/chef-kibana'
 cookbook 'logrotate', '~> 2.2'
 cookbook 'logstash', '~> 1.0'

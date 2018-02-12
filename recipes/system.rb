@@ -25,13 +25,15 @@ include_recipe 'users::sysadmins'
 
 include_recipe 'rsyslog'
 
+include_recipe 'collectd::default'
+
+collectd_plugin 'syslog' do
+  options do
+    log_level 'info'
+    notify_level 'OKAY'
+  end
+end
+
 include_recipe 'djbdns::cache'
 
 include_recipe 'openssh'
-
-# node.default['elkstack']['config']['backups']['enabled'] = false
-# node.default['elasticsearch']['allocated_memory'] = ''
-# node.default['elkstack']['config']['lumberjack_data_bag']['key'] = 'SSL CERT'
-
-# node.default['elkstack']['config']['lumberjack_data_bag'] = ''
-# include_recipe 'elkstack'
