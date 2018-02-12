@@ -9,7 +9,7 @@
 Chef::Log.info("[EMAIL] :: #{recipe_name}")
 
 # logic borrowed from zuazo's postfix-dovecot-cookbook::dovecot
-# TODO : install pigeonhole
+# TODO : install pigeonhole for Sieve filtering support
 
 # 10-ssl.conf
 self.class.send(:include, Chef::SslCertificateCookbook::ServiceHelpers)

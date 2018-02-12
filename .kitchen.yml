@@ -33,14 +33,15 @@ platforms:
     driver:
       box: ubuntu/trusty64
   - name: ubuntu-16.04
-  - name: debian-8.7
-  - name: fedora-25
-  - name: centos-7.3
+  - name: debian-8
+  - name: fedora-26
+  - name: centos-7
 
 suites:
   - name: default
     run_list:
-    - recipe[test::default]
+    - recipe[test::system]
+    - recipe[test::security]
   - name: cloud
     run_list:
     - recipe[test::cloud]

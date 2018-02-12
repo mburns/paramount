@@ -8,7 +8,7 @@
 
 default['spamassassin']['spamd']['enabled'] = false
 
-# Required_score is set to 5 by default, change it:
+# Required_score is set to 5 by default
 default['spamassassin']['conf']['required_score'] = 4
 default['spamassassin']['conf']['report_safe'] = false
 default['spamassassin']['conf']['lock_method'] = 'flock'
