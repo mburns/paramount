@@ -18,6 +18,9 @@ end
 source_url 'https://github.com/mburns/cookbook-paramount' if respond_to?(:source_url)
 issues_url 'https://github.com/mburns/cookbook-paramount/issues' if respond_to?(:issues_url)
 
+supports 'centos', '>= 7'
+supports 'debian', '>= 8'
+supports 'fedora', '>= 27'
 supports 'ubuntu', '>= 14.04'
 
 recipe 'paramount::default', 'Includes Security and System configuration'

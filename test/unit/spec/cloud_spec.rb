@@ -5,7 +5,21 @@ require 'chefspec'
 require_relative 'spec_helper'
 
 describe 'paramount::cloud' do
-  before { stub_resources }
+  supported_platforms.each do |platform, versions|
+    versions.each do |version|
+      context "on #{platform.capitalize} #{version}" do
+        let(:chef_run) do
+          @chef_run
+        end
 
-  cached(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
+        context 'with default attributes' do
+          before(:context) do
+            @chef_run = ChefSpec::SoloRunner.new(platform: platform, version: version)
+            stub_resources
+            @chef_run.converge(described_recipe)
+          end
+        end
+      end
+    end
+  end
 end

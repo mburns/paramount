@@ -4,12 +4,26 @@
 require_relative 'spec_helper'
 
 describe 'paramount::_prosody' do
-  before { stub_resources }
+  supported_platforms.each do |platform, versions|
+    versions.each do |version|
+      context "on #{platform.capitalize} #{version}" do
+        let(:chef_run) do
+          @chef_run
+        end
 
-  cached(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
+        context 'with default attributes' do
+          before(:context) do
+            @chef_run = ChefSpec::SoloRunner.new(platform: platform, version: version)
+            stub_resources
+            @chef_run.converge(described_recipe)
+          end
 
-  # prosody_vhost[example.com]
-  # prosody_user[admin]
-  # prosody_module[roster]
-  # prosody_module[saslauth]
+          # prosody_vhost[example.com]
+          # prosody_user[admin]
+          # prosody_module[roster]
+          # prosody_module[saslauth]
+        end
+      end
+    end
+  end
 end

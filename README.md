@@ -18,7 +18,9 @@ Tools are chosen from https://github.com/Kickball/awesome-selfhosted
 
 ## Supported Platforms
 
- * Ubuntu 16.04
+ * Centos 7.4.1708
+ * Debian 8.10, 9.3
+ * Ubuntu 14.04, 16.06
 
 ## Attributes
 
