@@ -5,24 +5,25 @@ require 'rspec/expectations'
 require 'chefspec'
 require 'chefspec/berkshelf'
 require 'chef/application'
-require 'coveralls'
+# require 'coveralls'
 require 'fauxhai'
 
-Coveralls.wear!
+# Coveralls.wear!
 
-require 'simplecov'
-SimpleCov.start
+# require 'simplecov'
+# SimpleCov.start
 
-require 'codecov'
-SimpleCov.formatter = SimpleCov::Formatter::Codecov
+# require 'codecov'
+# SimpleCov.formatter = SimpleCov::Formatter::Codecov
 
 at_exit { ChefSpec::Coverage.report! }
 
 def supported_platforms
   {
-    'centos' => ['7.4.1708'],
+    'amazon' => ['2017.09'],
+    'centos' => ['6.9', '7.4.1708'],
     'debian' => ['8.10', '9.3'],
-    'ubuntu' => ['14.04', '16.04']
+    'ubuntu' => ['14.04', '16.04'],
   }
 end
 

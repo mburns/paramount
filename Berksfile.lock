@@ -16,6 +16,7 @@ DEPENDENCIES
     git: https://github.com/RoboticCheese/clamav-chef.git
     revision: 640894fb7b65c172cc5d9f10a85c58916e003644
   collectd (~> 2.2.4)
+  composer (~> 2.6.1)
   couchpotato
     git: https://github.com/multimedia-chef/couchpotato.git
     revision: bdbd6be0c32a947b19a731c6930488dea726fc5f
@@ -26,7 +27,7 @@ DEPENDENCIES
     git: https://github.com/mburns/chef-dspam.git
     revision: eaec659e4387942c129134281af1c2dd59e3e3c0
   encrypted_attributes (~> 0.6.0)
-  fail2ban (~> 4.0)
+  fail2ban (~> 5.0)
   firewall (~> 2.6)
   hostname (~> 0.4)
   hostsfile (~> 3.0)
@@ -56,7 +57,10 @@ DEPENDENCIES
   poise-service (~> 1.5)
   postfix (~> 5.2.1)
   postgresql (~> 6.1.1)
-  prosody (~> 0.5)
+  prosody
+    git: https://github.com/mburns/chef-prosody.git
+    revision: 60588cdb5277552b90e7324ba5c93ee7c122a425
+    branch: patch-1
   rackspace_monitoring
   rkhunter (~> 0.2)
   rsyslog (~> 6.0)
@@ -127,6 +131,10 @@ GRAPH
     poise (~> 2.2)
     poise-service (~> 1.0)
   compat_resource (12.19.1)
+  composer (2.6.1)
+    apt (>= 0.0.0)
+    php (>= 0.0.0)
+    windows (>= 0.0.0)
   couchpotato (0.1.0)
   cron (5.0.1)
   curl (2.0.4)
@@ -146,7 +154,7 @@ GRAPH
     yum (>= 0.0.0)
   encrypted_attributes (0.6.0)
     build-essential (>= 0.0.0)
-  fail2ban (4.0.1)
+  fail2ban (5.0.1)
     yum-epel (>= 0.0.0)
   firewall (2.6.3)
     chef-sugar (>= 0.0.0)
@@ -230,6 +238,7 @@ GRAPH
     chef_client_updater (>= 0.0.0)
     clamav (>= 0.0.0)
     collectd (>= 0.0.0)
+    composer (>= 0.0.0)
     couchpotato (>= 0.0.0)
     djbdns (>= 0.0.0)
     dovecot (>= 0.0.0)
@@ -271,6 +280,9 @@ GRAPH
     yum (>= 0.0.0)
     yum-epel (>= 0.0.0)
   partial_search (1.0.9)
+  php (5.0.0)
+    build-essential (>= 0.0.0)
+    yum-epel (>= 0.0.0)
   php-fpm (0.8.0)
   plexapp (1.0.0)
   poise (2.8.1)

@@ -16,6 +16,6 @@ Chef::Log.info('[CLOUD]')
 
 # include_recipe 'owncloud'
 
-# include_recipe 'wallabag'
+# include_recipe 'paramount::_wallabag'
 
 # include_recipe 'znc'

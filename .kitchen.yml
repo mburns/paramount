@@ -3,15 +3,17 @@ driver:
   name: vagrant
   use_sudo: false
   network:
-    - ["forwarded_port", {guest:  80, host: 8080, auto_correct: true}]
-    - ["forwarded_port", {guest: 443, host: 8443, auto_correct: true}]
+    - ['forwarded_port', {guest:  80, host: 8080, auto_correct: true}]
+    - ['forwarded_port', {guest: 443, host: 8443, auto_correct: true}]
   cachier: true
   customize:
     memory: 4096
 
 provisioner:
   name: chef_zero
-  require_chef_omnibus: 12.15.19
+  product_name: chef
+  product_version: <%= ENV['CHEF_VERSION'] || 'latest' %>
+  install_strategy: once
   log_level: info
   file_atomic_update: false
   environments_path: test/integration/environments
@@ -29,13 +31,19 @@ provisioner:
         passwordless: true
 
 platforms:
-  - name: ubuntu-14.04
-    driver:
-      box: ubuntu/trusty64
-  - name: ubuntu-16.04
-  - name: debian-8
-  - name: fedora-26
+  - name: amazonlinux
+    driver_config:
+      box: mvbcoding/awslinux
+  - name: centos-6
   - name: centos-7
+  - name: debian-8
+  - name: debian-9
+  - name: opensuse-leap-42
+  - name: fedora-27
+  - name: freebsd-10
+  - name: freebsd-11
+  - name: ubuntu-14.04
+  - name: ubuntu-16.04
 
 suites:
   - name: default

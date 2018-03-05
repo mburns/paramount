@@ -13,4 +13,4 @@ task :unit do
 end
 
 desc 'Run unit tests (alias)'
-task spec: %w[unit]
+task spec: %w(unit)

@@ -15,11 +15,11 @@ default['spamassassin']['conf']['lock_method'] = 'flock'
 
 # local.cf
 default['spamassassin']['conf']['rewrite_header'] = [
-  Subject: '[SPAM]'
+  Subject: '[SPAM]',
 ]
 
-default['spamassassin']['spamd']['options'] = %w[
+default['spamassassin']['spamd']['options'] = %w(
   --create-prefs
   --max-children 3
   --helper-home-dir
-]
+)

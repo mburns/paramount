@@ -43,12 +43,22 @@ group 'vmail' do
   append true
 end
 
+apt_update 'update apt' if node['platform_family'] == 'debian'
+
 # include_recipe 'postgresql'
 
 include_recipe 'paramount::_postgrey'
 include_recipe 'paramount::_dovecot'
 include_recipe 'paramount::_amavis'
-include_recipe 'clamav'
+
+clamav 'default' do
+  version node['clamav']['clamd']['version']
+  clamd_config node['clamav']['clamd']['config'] unless node['clamav']['clamd']['config'].nil?
+  enable_clamd node['clamav']['clamd']['enabled'] unless node['clamav']['clamd']['enabled'].nil?
+  freshclam_config node['clamav']['freshclam']['config'] unless node['clamav']['freshclam']['config'].nil?
+  enable_freshclam node['clamav']['freshclam']['enabled'] unless node['clamav']['freshclam']['enabled'].nil?
+end
+
 include_recipe 'paramount::_spamhaus'
 include_recipe 'paramount::_spamassassin'
 include_recipe 'paramount::_postfix'

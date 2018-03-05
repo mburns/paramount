@@ -19,7 +19,7 @@ default['paramount']['contact'] = begin
                                     'postmaster@example.com'
                                   end
 
-default['paramount']['services'] = %w[]
+default['paramount']['services'] = %w()
 
 default['paramount']['sieve']['enabled'] = true
 

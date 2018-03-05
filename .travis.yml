@@ -2,41 +2,112 @@ sudo: required
 services: docker
 dist: trusty
 language: ruby
-rvm: 2.3.6
+rvm: 2.4.2
 
-cache:
-  bundler: true
-  directories:
-    - $HOME/.berkshelf/
-    - $HOME/.gem/
+addons:
+  apt:
+    sources:
+      - chef-stable-trusty
+    packages:
+      - chefdk
+
+# before_install:
+#   - /opt/chefdk/bin/chef exec gem install bundler
+
+# Don't `bundle install` which takes about 1.5 mins
+install: echo "skip bundle install"
+
+branches:
+  only:
+    master
+
+# cache:
+#   directories:
+#     - $HOME/.berkshelf/
+#     - cookbooks/
+#     - berks-cookbooks/
 
 env:
-  matrix:
-  - TEST="style:all"
-  - TEST="unit"
-  - TEST="integration:docker[default-ubuntu-1404]"
-  - TEST="integration:docker[cloud-ubuntu-1404]"
-  - TEST="integration:docker[email-ubuntu-1404]"
-  - TEST="integration:docker[multimedia-ubuntu-1404]"
-  - TEST="integration:docker[web-ubuntu-1404]"
+  - TEST=default-ubuntu-1404
+  - TEST=email-ubuntu-1404
+  - TEST=cloud-ubuntu-1404
+  - TEST=multimedia-ubuntu-1404
+  - TEST=web-ubuntu-1404
+  #
+  # - TEST=default-centos-7
+  - TEST=default-debian-8
+  # - TEST=default-ubuntu-1604
+  # - TEST=email-ubuntu-1604
+  # - TEST=web-ubuntu-1604
+
+before_script:
+  - sudo iptables -L DOCKER || ( echo 'DOCKER iptables chain missing' ; sudo iptables -N DOCKER )
+  - eval "$(/opt/chefdk/bin/chef shell-init bash)"
+  - /opt/chefdk/bin/chef --version
+  - /opt/chefdk/bin/cookstyle --version
+  - /opt/chefdk/bin/foodcritic --version
+
+script:
+  - KITCHEN_LOCAL_YAML=.kitchen.dokken.yml /opt/chefdk/bin/kitchen verify ${TEST}
 
 matrix:
   fast_finish: true
-
-before_install:
-  - gem install bundler
-  - bundle install
-
-install:
-  - bundle install --jobs=3 --retry=3 --without='development plugins'
-
-before_script:
-  - sudo iptables -L DOCKER || ( echo "DOCKER iptables chain missing" ; sudo iptables -N DOCKER )
-  - berks --version
-  - foodcritic --version
-
-script:
-  - travis_retry bundle exec rake ${TEST}
-
+  include:
+    - script:
+      # - /opt/chefdk/bin/chef exec delivery local all
+      - sudo /opt/chefdk/bin/chef exec rspec test/unit/spec/
+      - /opt/chefdk/bin/chef exec cookstyle --display-cop-names --extra-details
+      - /opt/chefdk/bin/chef exec foodcritic .
+      env: UNIT_AND_LINT=1
+  allow_failures:
+    env:
+    - TEST=default-amazonlinux
+    - TEST=default-centos-6
+    - TEST=default-centos-7
+    - TEST=default-debian-8
+    - TEST=default-debian-9
+    - TEST=default-opensuse-leap-42
+    - TEST=default-freebsd-10
+    - TEST=default-freebsd-11
+    - TEST=default-ubuntu-1604
+    - TEST=cloud-amazonlinux
+    - TEST=cloud-centos-6
+    - TEST=cloud-centos-7
+    - TEST=cloud-debian-8
+    - TEST=cloud-debian-9
+    - TEST=cloud-opensuse-leap-42
+    - TEST=cloud-freebsd-10
+    - TEST=cloud-freebsd-11
+    - TEST=cloud-ubuntu-1404
+    - TEST=cloud-ubuntu-1604
+    - TEST=email-amazonlinux
+    - TEST=email-centos-6
+    - TEST=email-centos-7
+    - TEST=email-debian-8
+    - TEST=email-debian-9
+    - TEST=email-opensuse-leap-42
+    - TEST=email-freebsd-10
+    - TEST=email-freebsd-11
+    - TEST=email-ubuntu-1604
+    - TEST=multimedia-amazonlinux
+    - TEST=multimedia-centos-6
+    - TEST=multimedia-centos-7
+    - TEST=multimedia-debian-8
+    - TEST=multimedia-debian-9
+    - TEST=multimedia-opensuse-leap-42
+    - TEST=multimedia-freebsd-10
+    - TEST=multimedia-freebsd-11
+    - TEST=multimedia-ubuntu-1404
+    - TEST=multimedia-ubuntu-1604
+    - TEST=web-amazonlinux
+    - TEST=web-centos-6
+    - TEST=web-centos-7
+    - TEST=web-debian-8
+    - TEST=web-debian-9
+    - TEST=web-opensuse-leap-42
+    - TEST=web-freebsd-10
+    - TEST=web-freebsd-11
+    - TEST=web-ubuntu-1604
+    
 after_failure:
   - cat docker_daemon.log

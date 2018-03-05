@@ -18,6 +18,10 @@ describe 'paramount::_roundcube' do
             @chef_run.converge(described_recipe)
           end
 
+          it 'converges successfully' do
+            expect { :chef_run }.to_not raise_error
+          end
+
           # postgresql_database_user[roundcube_db]
           # postgresql_database[roundcube_db]
           # openssl_x509[/etc/nginx/ssl/roundcube.pem]

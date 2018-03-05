@@ -19,7 +19,7 @@ describe 'paramount::_wallabag' do
             @chef_run.converge(described_recipe)
           end
 
-          %w[curl php5-tidy php-xml-parser].each do |package|
+          %w(curl php-tidy php-xml-parser).each do |package|
             it "installs #{package}" do
               expect(chef_run).to install_package package
             end

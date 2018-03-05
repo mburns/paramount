@@ -1,4 +1,3 @@
-require 'rubocop/rake_task'
 require 'jsonlint/rake_task'
 require 'yamllint/rake_task'
 require 'foodcritic'
@@ -10,26 +9,26 @@ namespace :style do
   task :erblint do
     puts 'Syntax checking ERB templates...'
     Dir.glob('**/*.erb').each do |f|
-      next if f.start_with?('cookbooks/', 'vendor/') # skip vendored things
+      next if f.start_with?('berks-cookbooks/', 'cookbooks/', 'vendor/') # skip vendored things
       abort_on_failure("erb -x -T '-' #{f} | ruby -c", "** Failed: #{f}")
     end
   end
 
   YamlLint::RakeTask.new do |t|
-    t.paths = %w[
+    t.paths = %w(
       **/.*.{yml,yaml}
       **/*.{yml,yaml}
-    ]
-    t.exclude_paths = %w[
+    )
+    t.exclude_paths = %w(
       vendor/**/.*.{yml,yaml}
       vendor/**/*.{yml,yaml}
-    ]
+    )
   end
 
   JsonLint::RakeTask.new do |t|
-    t.paths = %w[
+    t.paths = %w(
       test/fixtures/**/*.json
-    ]
+    )
   end
 
   FoodCritic::Rake::LintTask.new do |t|
@@ -42,12 +41,16 @@ namespace :style do
         '~FC023', # Don't prefer conditional attributes.
         '~FC048', # Don't prefer Mixlib::ShellOut.
         '~FC075'  # Don't avoid node.save
-      ]
+      ],
     }
   end
 
-  RuboCop::RakeTask.new
+  require 'cookstyle'
+  require 'rubocop/rake_task'
+  RuboCop::RakeTask.new do |task|
+    task.options << '--display-cop-names'
+  end
 
   desc 'Run all style checks'
-  task all: %i[rubocop foodcritic erblint jsonlint yamllint]
+  task all: %i(rubocop foodcritic erblint jsonlint yamllint)
 end

@@ -14,7 +14,7 @@ default['fail2ban']['services'] = {
     'port' => 'ssh',
     'filter' => 'sshd',
     'logpath' => node['fail2ban']['auth_log'],
-    'maxretry' => '6'
+    'maxretry' => '6',
   },
   # 'nginx-request-limit' => {
   #   "enabled" => "true",
@@ -27,6 +27,6 @@ default['fail2ban']['services'] = {
     'port' => 'smtp',
     'filter' => 'smtp',
     'logpath' => node['fail2ban']['auth_log'],
-    'maxretry' => '6'
-  }
+    'maxretry' => '6',
+  },
 }

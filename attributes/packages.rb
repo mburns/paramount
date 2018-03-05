@@ -6,11 +6,11 @@
 # License:: Apache License, Version 2.0
 #
 
-default['packages'] = %w[
+default['packages'] = %w(
   vim
   htop
   nmap
   unzip
   zip
   dos2unix
-]
+)

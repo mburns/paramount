@@ -16,5 +16,5 @@ template '/etc/default/postgrey' do
 end
 
 service 'postgrey' do
-  action %i[enable start]
+  action %i(enable start)
 end

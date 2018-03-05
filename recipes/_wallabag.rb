@@ -8,23 +8,29 @@
 
 Chef::Log.info("[CLOUD] :: #{recipe_name}")
 
-%w[
+%w(
   curl
-  php5-tidy
+  php-tidy
   php-xml-parser
+  rsync
   unzip
-].each do |pkg|
+).each do |pkg|
   package pkg
 end
 
 include_recipe 'php-fpm'
 
-version = '1.9'
-
 ark 'wallabag' do
-  url "https://github.com/wallabag/wallabag/archive/#{version}.zip"
+  url "https://github.com/wallabag/wallabag/archive/#{node['wallabag']['version']}.zip"
   path '/var/www/html/wallabag'
   owner 'www-data'
+  action :install
+end
+
+composer_project '/var/www/html/wallabag' do
+  dev false
+  quiet true
+  prefer_dist false
   action :install
 end
 
@@ -33,5 +39,3 @@ nginx_site 'Enable wallabag' do
   name 'wallabag'
   action :enable
 end
-
-# TODO : db

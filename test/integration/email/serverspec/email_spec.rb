@@ -3,11 +3,11 @@
 
 require_relative 'spec_helper'
 
-%w[
+%w(
   amavisd
   dspam
   dovecot
-].each do |s|
+).each do |s|
   describe service(s) do
     it { should be_running }
   end

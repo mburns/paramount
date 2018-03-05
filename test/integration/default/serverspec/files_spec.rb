@@ -8,11 +8,11 @@ require_relative 'spec_helper'
 # /etc/sudoers
 # /etc/ntp.conf
 
-%w[
+%w(
   /etc/ssh/sshd_config
   /etc/ssh/ssh_config
   /etc/apt/sources.list
-].each do |f|
+).each do |f|
   describe file(f) do
     it { should be_file }
     it { should be_mode 644 }

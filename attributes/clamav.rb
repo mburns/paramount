@@ -6,7 +6,10 @@
 # License:: Apache License, Version 2.0
 #
 
-default['clamav']['clamd']['enabled'] = true
-default['clamav']['freshclam']['enabled'] = true
+default['clamav']['clamd']['version'] = 'latest'
+default['clamav']['clamd']['enabled'] = false
+
+default['clamav']['freshclam']['enabled'] = false
+
 default['clamav']['scan']['script']['enable'] = true
 default['clamav']['scan']['minimal']['enable'] = true

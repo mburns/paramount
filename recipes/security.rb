@@ -15,7 +15,7 @@ include_recipe 'rkhunter'
 include_recipe 'openssl'
 
 node.normal['aide']['paths'] = {
-  '/data/.*' => '!'
+  '/data/.*' => '!',
 }
 
 include_recipe 'aide'

@@ -23,7 +23,7 @@ default['dovecot']['conf']['syslog_facility'] = 'mail'
 default['dovecot']['conf_files_group'] = 'vmail'
 default['dovecot']['conf_files_mode'] = '00640'
 
-default['dovecot']['protocols']['lda']['mail_plugins'] = %w[imap sieve]
+default['dovecot']['protocols']['lda']['mail_plugins'] = %w(imap sieve)
 
 # https://github.com/onddo/dovecot-cookbook#namespaces-example
 default['dovecot']['namespaces'] = [
@@ -33,11 +33,11 @@ default['dovecot']['namespaces'] = [
     'location' => 'mbox:~/mail:INBOX=/var/mail/%u',
     'inbox' => true,
     'hidden' => true,
-    'list' => false
+    'list' => false,
   }, {
     'separator' => '/',
     'prefix' => '',
-    'location' => 'maildir:~/Maildir'
+    'location' => 'maildir:~/Maildir',
   }, { # this requires Dovecot >= 2.1
     'name' => 'inbox',
     'separator' => '/',
@@ -45,27 +45,27 @@ default['dovecot']['namespaces'] = [
     'inbox' => true,
     'mailboxes' => {
       'Drafts' => {
-        'special_use' => '\Drafts'
+        'special_use' => '\Drafts',
       },
       'Junk' => {
-        'special_use' => '\Junk'
+        'special_use' => '\Junk',
       },
       'Trash' => {
-        'special_use' => '\Trash'
+        'special_use' => '\Trash',
       },
       'Sent' => {
-        'special_use' => '\Sent'
+        'special_use' => '\Sent',
       },
       'Sent Messages' => {
-        'special_use' => '\Sent'
+        'special_use' => '\Sent',
       },
       'virtual/All' => {
-        'special_use' => '\All'
+        'special_use' => '\All',
       },
       'virtual/Flagged' => {
-        'special_use' => '\All'
-      }
-    }
+        'special_use' => '\All',
+      },
+    },
   }
 ]
 
@@ -79,17 +79,17 @@ default['dovecot']['services']['auth']['listeners'] = [
     'unix:auth-userdb' => {
       'mode' => '0600',
       'user' => 'vmail',
-      'group' => 'vmail'
-    }
+      'group' => 'vmail',
+    },
   },
   # Postfix smtp-auth
   {
     'unix:/var/spool/postfix/private/auth' => {
       'mode' => '0666',
       'user' => 'postfix',
-      'group' => 'postfix'
-    }
-  }
+      'group' => 'postfix',
+    },
+  },
 ]
 
 # 20-imap.conf
@@ -109,12 +109,12 @@ default['dovecot']['auth']['sql']['passdb']['args'] = '/etc/dovecot/dovecot-sql.
 default['dovecot']['auth']['sql']['userdb']['args'] = '/etc/dovecot/dovecot-sql.conf.ext'
 
 # auth-static.conf.ext
-default['dovecot']['auth']['static']['userdb']['args'] = %w[
+default['dovecot']['auth']['static']['userdb']['args'] = %w(
   uid=vmail
   gid=vmail
   home=/var/vmail/%d/%n
   allow_all_users=yes
-]
+)
 
 # auth-system.conf.ext
 default['dovecot']['auth']['system'] = {}
@@ -123,19 +123,19 @@ default['dovecot']['auth']['system'] = {}
 # We want to enable MySQL driver
 default['dovecot']['conf']['sql']['driver'] = 'pgsql'
 
-default['dovecot']['conf']['sql']['connect'] = %w[
+default['dovecot']['conf']['sql']['connect'] = %w(
   host=localhost
   dbname=postfix
   user=postfix
   password=#{}
-]
+)
 
 # md5crypt encryption method
 default['dovecot']['conf']['sql']['default_pass_scheme'] = 'MD5-CRYPT'
 default['dovecot']['conf']['sql']['password_query'] = [
   'SELECT username AS user, password',
   'FROM mailbox',
-  "WHERE username = '%u' AND active = '1'"
+  "WHERE username = '%u' AND active = '1'",
 ]
 
 default['dovecot']['conf']['sql']['user_query'] = [
@@ -147,10 +147,10 @@ default['dovecot']['conf']['sql']['user_query'] = [
   "  concat('/var/vmail/', maildir) AS home,",
   "  concat('maildir:/var/vmail/', maildir) AS mail",
   'FROM mailbox',
-  "WHERE username = '%u' AND active = '1'"
+  "WHERE username = '%u' AND active = '1'",
 ]
 
 default['dovecot']['conf']['sql']['iterate_query'] = [
   'SELECT username AS user',
-  "FROM mailbox WHERE active = '1'"
+  "FROM mailbox WHERE active = '1'",
 ]

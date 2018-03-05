@@ -2,3 +2,7 @@
 #
 
 require_relative 'spec_helper'
+
+describe file('/opt/automx') do
+  it { should be_directory }
+end

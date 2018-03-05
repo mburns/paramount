@@ -10,7 +10,8 @@ Chef::Log.info('[SYSTEM]')
 
 include_recipe 'ntp'
 
-include_recipe 'apt::unattended-upgrades'
+include_recipe 'apt::unattended-upgrades' if node['platform_family'] == 'debian'
+include_recipe 'yum-epel' if platform_family?('rhel')
 
 include_recipe 'build-essential'
 include_recipe 'packages'

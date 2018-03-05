@@ -3,7 +3,7 @@
 
 source 'https://rubygems.org'
 
-ruby '2.3.6'
+ruby '2.4.2'
 
 gem 'berkshelf', '~> 6.3'
 gem 'chef', '~> 12.15.19'
@@ -16,7 +16,7 @@ group :plugins do
 end
 
 group :maintain do
-  gem 'rake', '~> 11'
+  gem 'rake'
   gem 'stove'
 end
 
@@ -35,6 +35,7 @@ group :test do
   gem 'chef-encrypted-attributes'
   gem 'chef-sugar'
   gem 'codecov'
+  gem 'cookstyle'
   gem 'coveralls', require: false
   gem 'fog'
   gem 'mime-types'
@@ -56,6 +57,6 @@ group :unit do
 end
 
 group :integration do
-  gem 'kitchen-docker', '~> 2.6'
-  gem 'test-kitchen', '~> 1.20'
+  gem 'kitchen-docker'
+  gem 'test-kitchen'
 end

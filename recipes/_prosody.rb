@@ -12,7 +12,7 @@ include_recipe 'prosody'
 
 prosody_vhost node['paramount']['domain'] do
   admins [node['paramount']['user']]
-  modules_enabled %w[roster saslauth]
+  modules_enabled %w(roster saslauth)
   # muc 'conference.redneck.im'
   enabled true
 end
@@ -30,9 +30,9 @@ prosody_user node['paramount']['user'] do
 end
 
 prosody_module 'roster' do
-  action %i[install enable]
+  action %i(install enable)
 end
 
 prosody_module 'saslauth' do
-  action %i[install enable]
+  action %i(install enable)
 end

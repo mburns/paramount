@@ -1,0 +1,93 @@
+---
+driver:
+  name: dokken
+  privileged: true
+  hostname: paramount.local
+
+transport:
+  name: dokken
+
+provisioner:
+  name: dokken
+  product_name: chef
+  product_version: <%= ENV['CHEF_VERSION'] || 'latest' %>
+  install_strategy: once
+
+platforms:
+- name: amazonlinux
+  driver:
+    image: dokken/amazonlinux
+    pid_one_command: /sbin/init
+
+- name: centos-6
+  driver:
+    image: dokken/centos-6
+    platform: rhel
+    pid_one_command: /sbin/init
+
+- name: centos-7
+  driver:
+    image: dokken/centos-7
+    platform: rhel
+    pid_one_command: /usr/lib/systemd/systemd
+
+- name: debian-8
+  driver:
+    image: dokken/debian-8
+    pid_one_command: /bin/systemd
+    intermediate_instructions:
+      - RUN /usr/bin/apt-get update
+
+- name: debian-9
+  driver:
+    image: dokken/debian-9
+    pid_one_command: /bin/systemd
+    intermediate_instructions:
+      - RUN /usr/bin/apt-get update
+
+- name: fedora-latest
+  driver:
+    image: dokken/fedora-latest
+    pid_one_command: /usr/lib/systemd/systemd
+
+- name: opensuse-leap
+  driver:
+    image: dokken/opensuse-leap
+    pid_one_command: /bin/systemd
+
+- name: ubuntu-14.04
+  driver:
+    image: dokken/ubuntu-14.04
+    pid_one_command: /sbin/init
+    intermediate_instructions:
+      - RUN /usr/bin/apt-get update
+
+- name: ubuntu-16.04
+  driver:
+    image: dokken/ubuntu-16.04
+    pid_one_command: /bin/systemd
+    intermediate_instructions:
+      - RUN /usr/bin/apt-get update
+
+suites:
+  - name: default
+    run_list:
+    - recipe[test::default]
+  - name: system
+    run_list:
+    - recipe[paramount::system]
+  - name: security
+    run_list:
+    - recipe[paramount::security]
+  - name: cloud
+    run_list:
+    - recipe[test::cloud]
+  - name: email
+    run_list:
+    - recipe[test::email]
+  - name: multimedia
+    run_list:
+    - recipe[test::multimedia]
+  - name: web
+    run_list:
+    - recipe[test::web]

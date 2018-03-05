@@ -22,5 +22,3 @@ openssl_x509 "/etc/nginx/ssl/#{node['paramount']['domain']}.pem" do
   org_unit node['paramount']['organization_unit']
   country 'US'
 end
-
-include_recipe 'paramount::_wallabag'

@@ -27,7 +27,7 @@ describe 'paramount::_amavis' do
             expect(chef_run).to render_file '/etc/amavis/conf.d/01-basic'
           end
 
-          %w[
+          %w(
             01-debian
             05-domain_id
             05-node_id
@@ -39,7 +39,7 @@ describe 'paramount::_amavis' do
             30-template_localization
             40-policy_banks
             50-user
-          ].each do |filename|
+          ).each do |filename|
             it "deletes #{filename}" do
               expect(chef_run).to delete_file("/etc/amavis/conf.d/#{filename}")
             end

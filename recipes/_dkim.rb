@@ -46,7 +46,7 @@ end
 # Read DKIM keys from chef-vault
 
 # node#save avoids chef-vault chicken & egg problem (a bit tricky)
-node.save unless Chef::Config[:solo]
+# node.save unless Chef::Config[:solo]
 
 # TODO: - revert hack
 # include_recipe 'chef-vault'

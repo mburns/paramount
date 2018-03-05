@@ -14,4 +14,4 @@ $stderr.sync = true
 
 Dir.glob('lib/tasks/**/*.rb').each { |r| load r }
 
-task default: %w[style:all unit]
+task default: %w(style:all unit)

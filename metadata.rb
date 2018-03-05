@@ -18,10 +18,16 @@ end
 source_url 'https://github.com/mburns/cookbook-paramount' if respond_to?(:source_url)
 issues_url 'https://github.com/mburns/cookbook-paramount/issues' if respond_to?(:issues_url)
 
-supports 'centos', '>= 7'
-supports 'debian', '>= 8'
-supports 'fedora', '>= 27'
-supports 'ubuntu', '>= 14.04'
+supports 'amazon'
+supports 'centos'
+supports 'debian'
+supports 'oracle'
+supports 'redhat'
+supports 'scientific'
+supports 'ubuntu'
+supports 'suse'
+supports 'opensuse'
+supports 'opensuseleap'
 
 recipe 'paramount::default', 'Includes Security and System configuration'
 recipe 'paramount::cloud', 'Various cloud-based tools'
@@ -41,6 +47,7 @@ depends 'chef-sugar'
 # depends 'chef-vault'
 depends 'clamav'
 depends 'collectd'
+depends 'composer'
 depends 'couchpotato'
 depends 'djbdns'
 depends 'dovecot'

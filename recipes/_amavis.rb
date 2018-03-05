@@ -21,7 +21,7 @@ group 'amavis' do
   append true
 end
 
-%w[
+%w(
   01-debian
   05-domain_id
   05-node_id
@@ -33,7 +33,7 @@ end
   30-template_localization
   40-policy_banks
   50-user
-].each do |filename|
+).each do |filename|
   file "/etc/amavis/conf.d/#{filename}" do
     action :delete
     notifies :restart, 'service[amavis]', :delayed
@@ -49,5 +49,5 @@ template '/etc/amavis/conf.d/01-basic' do
 end
 
 service 'amavis' do
-  action %i[enable start]
+  action %i(enable start)
 end
