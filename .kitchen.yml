@@ -59,6 +59,12 @@ suites:
   - name: multimedia
     run_list:
     - recipe[test::multimedia]
+  - name: security
+    run_list:
+    - recipe[test::security]
+  - name: system
+    run_list:
+    - recipe[test::system]
   - name: web
     run_list:
     - recipe[test::web]
