@@ -33,6 +33,7 @@ cookbook 'postfix', '~> 5.2.1'
 # cookbook 'postfixadmin', github: 'mburns/postfixadmin-cookbook', branch: 'mysql2_chef_gem_v2.0'
 # cookbook 'roundcube', github: 'mburns/roundcube', branch: 'chef_nginx'
 cookbook 'solr_app', '~> 0.0'
+cookbook 'rspamd'
 
 ## Monitoring & Logs
 cookbook 'collectd', '~> 2.2.4'

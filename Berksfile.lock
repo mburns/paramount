@@ -63,6 +63,7 @@ DEPENDENCIES
     branch: patch-1
   rackspace_monitoring
   rkhunter (~> 0.2)
+  rspamd
   rsyslog (~> 6.0)
   runit
   sabnzbd
@@ -268,6 +269,7 @@ GRAPH
     postgresql (>= 0.0.0)
     prosody (>= 0.0.0)
     rkhunter (>= 0.0.0)
+    rspamd (>= 0.0.0)
     rsyslog (>= 0.0.0)
     runit (>= 0.0.0)
     sabnzbd (>= 0.0.0)
@@ -317,6 +319,7 @@ GRAPH
     apt (>= 0.0.0)
     postfix (>= 0.0.0)
     yum (>= 0.0.0)
+  rspamd (0.0.1)
   rsyslog (6.0.4)
   runit (4.0.4)
     packagecloud (>= 0.0.0)

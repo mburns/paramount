@@ -21,15 +21,7 @@ Chef::Log.info('[EMAIL]')
 
 Chef::Recipe.send(:include, OpenSSLCookbook::RandomPassword)
 
-# encfs_pass = random_password
-# Chef::Log.info("EncFS password: #{encfs_pass}")
-
 directory '/data'
-
-# encfs '/data/encrypted-mail' do
-#   password encfs_pass
-#   action :mount
-# end
 
 user 'vmail' do
   shell '/bin/false'
@@ -45,7 +37,7 @@ end
 
 apt_update 'update apt' if node['platform_family'] == 'debian'
 
-# include_recipe 'postgresql'
+# include_recipe 'paramount::_postgresql'
 
 include_recipe 'paramount::_postgrey'
 include_recipe 'paramount::_dovecot'
@@ -59,6 +51,7 @@ clamav 'default' do
   enable_freshclam node['clamav']['freshclam']['enabled'] unless node['clamav']['freshclam']['enabled'].nil?
 end
 
+include_recipe 'rspamd'
 include_recipe 'paramount::_spamhaus'
 include_recipe 'paramount::_spamassassin'
 include_recipe 'paramount::_postfix'
