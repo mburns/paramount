@@ -7,3 +7,8 @@
 #
 
 default['postgresql']['email'] = 'admin@example.com'
+default['postgresql']['config']['listen_addresses'] = 'localhost'
+
+default['postgresql']['config']['logging_collector'] = true
+default['postgresql']['config']['datestyle'] = 'iso, mdy'
+default['postgresql']['config']['ident_file'] = nil

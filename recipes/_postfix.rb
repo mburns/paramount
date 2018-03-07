@@ -10,10 +10,6 @@ Chef::Log.info("[EMAIL] :: #{recipe_name}")
 
 Chef::Recipe.send(:include, OpenSSLCookbook::RandomPassword)
 
-postgres_passwd = random_password
-node.default['paramount']['postgres_passwd'] = postgres_passwd
-Chef::Log.info("Postgres password: #{postgres_passwd}")
-
 smtp_sasl_passwd = random_password
 node.default['postfix']['sasl']['smtp_sasl_passwd'] = smtp_sasl_passwd
 Chef::Log.info("SMTP SASL password: #{smtp_sasl_passwd}")
@@ -32,26 +28,6 @@ end
 #   members ['postfix']
 #   system true
 #   append true
-# end
-
-# connection_info = {
-#   host: '127.0.0.1',
-#   port: '5432',
-#   username: 'postgres',
-#   password: postgres_passwd
-# }
-
-# postgresql_database_user 'postfix' do
-#   connection connection_info
-#   password postgres_passwd
-#   action :create
-# end
-
-# postgresql_database 'postfix' do
-#   connection connection_info
-#   owner 'postfix'
-#   # login true
-#   action :create
 # end
 
 # TODO : postscreen
