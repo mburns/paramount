@@ -35,14 +35,7 @@ namespace :style do
     t.options = {
       fail_tags: ['any'],
       cookbook_paths: ['.', 'test/fixtures/cookbooks'],
-      progress: true,
-      tags: [
-        '~FC001', # Don't enforce strings-over-symbols to access node attrs.
-        '~FC005', # Don't care about repetition resource declarations.
-        '~FC023', # Don't prefer conditional attributes.
-        '~FC048', # Don't prefer Mixlib::ShellOut.
-        '~FC075'  # Don't avoid node.save
-      ],
+      progress: true
     }
   end
 
