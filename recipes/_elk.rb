@@ -14,7 +14,6 @@ node.default['java']['install_flavor'] = 'oracle'
 include_recipe 'java'
 
 # elasticsearch
-# node.override['elasticsearch']['discovery']['zen']['ping']['multicast']['enabled'] = false
 # include_recipe 'elasticsearch::search_discovery' unless Chef::Config[:solo]
 
 # include_recipe 'elasticsearch::data'
@@ -51,4 +50,21 @@ nginx_site 'kibana' do
     kibana_port: '5601'
   )
 end
+
 # filebeat
+include_recipe 'filebeat::default'
+
+filebeat_prospector 'messages' do
+  paths ['/var/log/messages']
+  document_type 'apache'
+  ignore_older '24h'
+  scan_frequency '15s'
+  harvester_buffer_size 16384
+  fields 'type' => 'apacheLogs'
+end
+
+filebeat_prospector 'auth_logs' do
+  paths ['/var/log/auth.log']
+  document_type 'auth'
+  harvester_buffer_size 16_384
+end
