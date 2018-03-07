@@ -53,7 +53,9 @@ describe 'paramount::_amavis' do
             expect(chef_run).to create_group('amavis')
           end
 
-          # service[amavis]
+          it 'enables amavis service when specifying the identity attribute' do
+            expect(chef_run).to enable_service('amavis')
+          end
         end
       end
     end

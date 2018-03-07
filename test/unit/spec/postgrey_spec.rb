@@ -22,7 +22,9 @@ describe 'paramount::_postgrey' do
             expect(chef_run).to create_template('/etc/default/postgrey')
           end
 
-          # service[postgrey]
+          it 'enables postgrey service when specifying the identity attribute' do
+            expect(chef_run).to enable_service('postgrey')
+          end
         end
       end
     end
