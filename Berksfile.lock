@@ -31,7 +31,9 @@ DEPENDENCIES
   fail2ban (~> 5.0)
   firewall (~> 2.6)
   grafana (~> 2.2)
-  graphite (~> 1.0.4)
+  graphite
+    git: https://github.com/sous-chefs/graphite.git
+    revision: 3dc60b2eeebd0417b6c175141c696328f3617cef
   hostname (~> 0.4)
   hostsfile (~> 3.0)
   java
@@ -173,11 +175,8 @@ GRAPH
     apt (>= 0.0.0)
     chef_nginx (>= 0.0.0)
     yum (>= 0.0.0)
-  graphite (1.0.4)
-    build-essential (>= 0.0.0)
-    python (>= 0.0.0)
-    runit (~> 1.0)
-    yum-epel (>= 0.0.0)
+  graphite (1.0.5)
+    poise-python (>= 1.5.0)
   homebrew (5.0.4)
   hostname (0.4.2)
     hostsfile (>= 0.0.0)
@@ -369,7 +368,7 @@ GRAPH
     yum (>= 0.0.0)
   rspamd (0.0.1)
   rsyslog (6.0.4)
-  runit (1.8.0)
+  runit (4.0.4)
     packagecloud (>= 0.0.0)
     yum-epel (>= 0.0.0)
   sabnzbd (1.1.1)
