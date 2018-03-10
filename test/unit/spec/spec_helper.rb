@@ -37,6 +37,8 @@ RSpec.configure do |config|
 end
 
 def stub_resources
+  stub_command('sestatus | grep enabled').and_return true
+
   stub_command('which sudo').and_return '/usr/bin/sudo'
   stub_command('which nginx').and_return '/usr/sbin/nginx'
 
