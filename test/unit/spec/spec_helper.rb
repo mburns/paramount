@@ -39,6 +39,9 @@ end
 def stub_resources
   stub_command('sestatus | grep enabled').and_return true
 
+  stub_command("dpkg -l | grep '^ii' | grep grafana | grep 4.6.1").and_return false
+  stub_command('yum list installed | grep grafana | grep 4.6.1').and_return false
+
   stub_command('which sudo').and_return '/usr/bin/sudo'
   stub_command('which nginx').and_return '/usr/sbin/nginx'
 
