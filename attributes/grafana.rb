@@ -6,7 +6,9 @@
 # License:: Apache License, Version 2.0
 #
 
-node.default['grafana']['install_type'] = 'package'
+# node.default['grafana']['webserver'] = ''
+
+# node.default['grafana']['install_type'] = 'package'
 # node.default['grafana']['version'] = 'latest'
 
 node.default['grafana']['nginx']['template_cookbook'] = 'paramount'
