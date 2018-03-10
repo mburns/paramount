@@ -37,6 +37,7 @@ cookbook 'rspamd'
 ## Monitoring & Logs
 cookbook 'collectd', '~> 2.2.4'
 cookbook 'grafana', '~> 2.2'
+cookbook 'graphite', '~> 1.0.4'
 cookbook 'kibana_lwrp', github: 'lusis/chef-kibana'
 cookbook 'logrotate', '~> 2.2'
 cookbook 'logstash', '~> 1.0'
