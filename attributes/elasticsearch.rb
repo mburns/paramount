@@ -6,5 +6,4 @@
 # License:: Apache License, Version 2.0
 #
 
-
 # default['elasticsearch']['plugin']['x-pack']['action'] = 'install'
