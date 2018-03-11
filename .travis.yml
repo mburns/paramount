@@ -35,11 +35,9 @@ env:
   - TEST=multimedia-ubuntu-1404
   - TEST=web-ubuntu-1404
 
-  # - TEST=default-centos-7
   - TEST=default-debian-8
-  # - TEST=default-ubuntu-1604
-  # - TEST=email-ubuntu-1604
-  # - TEST=web-ubuntu-1604
+
+  - TEST=logs-ubuntu-1604
 
 before_script:
   - sudo iptables -L DOCKER || ( echo 'DOCKER iptables chain missing' ; sudo iptables -N DOCKER )
@@ -90,6 +88,17 @@ matrix:
     - TEST=email-freebsd-10
     - TEST=email-freebsd-11
     - TEST=email-ubuntu-1604
+    - TEST=logs-amazonlinux
+    - TEST=logs-centos-6
+    - TEST=logs-centos-7
+    - TEST=logs-debian-8
+    - TEST=logs-debian-9
+    - TEST=logs-opensuse-leap-42
+    - TEST=logs-fedora-27
+    - TEST=logs-freebsd-10
+    - TEST=logs-freebsd-11
+    - TEST=logs-ubuntu-1404
+    - TEST=logs-ubuntu-1604
     - TEST=multimedia-amazonlinux
     - TEST=multimedia-centos-6
     - TEST=multimedia-centos-7
