@@ -5,8 +5,10 @@ source 'https://rubygems.org'
 
 ruby '2.4.2'
 
-gem 'berkshelf', '~> 6.3'
-gem 'chef', '~> 12.15.19'
+gem 'berkshelf'
+gem 'chef', '~> 12.22.1'
+
+gem 'net-ssh', '>= 4.0'
 
 group :plugins do
   gem 'kitchen-vagrant'
