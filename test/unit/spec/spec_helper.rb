@@ -37,8 +37,9 @@ RSpec.configure do |config|
 end
 
 def stub_resources
-  stub_command('which sudo').and_return '/usr/bin/sudo'
   stub_command('which nginx').and_return '/usr/sbin/nginx'
+  stub_command('which sudo').and_return '/usr/bin/sudo'
+  stub_command('which update-ca-certificates').and_return '/usr/sbin/update-ca-certificates'
 
   stub_command('test -d /etc/php/7.0/fpm/pool.d || mkdir -p /etc/php/7.0/fpm/pool.d').and_return true
   stub_command('test -d /etc/php5/fpm/pool.d || mkdir -p /etc/php5/fpm/pool.d').and_return true
