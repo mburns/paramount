@@ -8,23 +8,17 @@
 
 Chef::Log.info("[SYSTEM] :: #{recipe_name}")
 
-node.default['java']['oracle']['accept_oracle_download_terms'] = true
-node.default['java']['jdk_version'] = 8
-node.default['java']['install_flavor'] = 'oracle'
 include_recipe 'java'
 
 # elasticsearch
-# include_recipe 'elasticsearch::search_discovery' unless Chef::Config[:solo]
-
-# include_recipe 'elasticsearch::data'
-# include_recipe 'elasticsearch::default'
-# include_recipe 'elasticsearch::plugins'
+include_recipe 'elasticsearch::search_discovery' unless Chef::Config[:solo]
 
 elasticsearch_user 'elasticsearch'
 
 elasticsearch_install 'elasticsearch' do
-  type 'package'
-  version node['kibana5']['version']
+  # type 'package'
+  # version node['kibana5']['version']
+  action :install
 end
 
 elasticsearch_configure 'elasticsearch'
