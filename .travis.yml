@@ -7,12 +7,9 @@ rvm: 2.4.2
 addons:
   apt:
     sources:
-      - chef-stable-trusty
+      - chef-current-trusty
     packages:
       - chefdk
-
-# before_install:
-#   - /opt/chefdk/bin/chef exec gem install bundler
 
 # Don't `bundle install` which takes about 1.5 mins
 install: echo "skip bundle install"
@@ -33,12 +30,9 @@ env:
   - TEST=cloud-ubuntu-1404
   - TEST=multimedia-ubuntu-1404
   - TEST=web-ubuntu-1404
-  #
-  # - TEST=default-centos-7
+
   - TEST=default-debian-8
-  # - TEST=default-ubuntu-1604
-  # - TEST=email-ubuntu-1604
-  # - TEST=web-ubuntu-1604
+  - TEST=default-ubuntu-1604
 
 before_script:
   - sudo iptables -L DOCKER || ( echo 'DOCKER iptables chain missing' ; sudo iptables -N DOCKER )
