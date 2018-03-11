@@ -106,10 +106,10 @@ from django.contrib.auth.models import User
 username = "#{node['graphite']['user']}"
 password = "#{node['graphite']['password']}"
 try:
-    u = User.objects.create_user(username, password=password)
+    u = User.objects.create_user(#{node['graphite']['user']}, password=graphite_passwd)
     u.save()
 except Exception,err:
-    print "could not create %s" % username
+    print "could not create %s" % #{node['graphite']['user']}
     print "died with error: %s" % str(err)
   PYTHON
 end
