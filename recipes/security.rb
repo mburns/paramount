@@ -23,3 +23,7 @@ include_recipe 'aide'
 selinux_state "SELinux #{node['selinux']['state'].capitalize}" do
   action node['selinux']['state'].downcase.to_sym
 end
+
+execute 'update-ca-certificates -f && update-ca-certificates -f' do
+  only_if 'which update-ca-certificates'
+end
