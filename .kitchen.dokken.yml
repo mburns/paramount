@@ -85,6 +85,15 @@ suites:
   - name: email
     run_list:
     - recipe[test::email]
+    attributes:
+      postfix:
+        master:
+          maildrop:
+            active: false
+          cyrus:
+            active: false
+        sender_canonical_map_entries: {}
+        smtp_generic_map_entries: {}
   - name: multimedia
     run_list:
     - recipe[test::multimedia]

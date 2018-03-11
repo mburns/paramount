@@ -18,25 +18,9 @@ package 'sendmail' do
   action :remove
 end
 
-# user 'postfix' do
-#   shell '/bin/false'
-#   manage_home true
-#   system true
-# end
-
-# group 'postfix' do
-#   members ['postfix']
-#   system true
-#   append true
-# end
-
 # TODO : postscreen
 
-node.default['postfix']['master']['cyrus']['active'] = true
-node.default['postfix']['master']['maildrop']['active'] = true
-node.default['postfix']['sender_canonical_map_entries'] = []
-
-# include_recipe 'postfix'
+include_recipe 'postfix'
 
 # include_recipe 'paramount::_postfixadmin'
 include_recipe 'paramount::_dkim'

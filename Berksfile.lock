@@ -13,8 +13,9 @@ DEPENDENCIES
   chef-sugar (~> 4.0)
   chef_client_updater (~> 3.2)
   clamav
-    git: https://github.com/RoboticCheese/clamav-chef.git
-    revision: 640894fb7b65c172cc5d9f10a85c58916e003644
+    git: https://github.com/mburns/clamav-chef.git
+    revision: 0d6a847c4cb67a3b2a54db24799e34aeb9733675
+    branch: patch-1
   collectd (~> 2.2.4)
   composer (~> 2.6.1)
   couchpotato
@@ -55,7 +56,7 @@ DEPENDENCIES
   php-fpm
   plexapp (~> 1.0.0)
   poise-service (~> 1.5)
-  postfix (~> 5.2.1)
+  postfix (~> 5.2)
   postgresql (~> 6.1.1)
   prosody
     git: https://github.com/mburns/chef-prosody.git
@@ -143,7 +144,7 @@ GRAPH
     build-essential (>= 0.0.0)
     runit (>= 1.6.0)
     ucspi-tcp (>= 0.0.0)
-  docker (4.0.1)
+  docker (4.0.2)
   dovecot (3.2.1)
     ohai (~> 4.0)
   dpkg_autostart (0.2.0)
