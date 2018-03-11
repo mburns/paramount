@@ -98,7 +98,6 @@ matrix:
     - TEST=logs-freebsd-10
     - TEST=logs-freebsd-11
     - TEST=logs-ubuntu-1404
-    - TEST=logs-ubuntu-1604
     - TEST=multimedia-amazonlinux
     - TEST=multimedia-centos-6
     - TEST=multimedia-centos-7
