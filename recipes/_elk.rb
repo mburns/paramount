@@ -10,9 +10,6 @@ Chef::Log.info("[SYSTEM] :: #{recipe_name}")
 
 include_recipe 'java'
 
-# elasticsearch
-include_recipe 'elasticsearch::search_discovery' unless Chef::Config[:solo]
-
 elasticsearch_user 'elasticsearch'
 
 elasticsearch_install 'elasticsearch' do
