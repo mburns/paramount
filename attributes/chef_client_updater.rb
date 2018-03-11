@@ -6,4 +6,4 @@
 # License:: Apache License, Version 2.0
 #
 
-default['chef_client_updater']['version'] = '12.15.19'
+default['chef_client_updater']['version'] = '12.22.1'
