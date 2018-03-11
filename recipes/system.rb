@@ -40,5 +40,3 @@ end
 include_recipe 'djbdns::cache'
 
 include_recipe 'openssh'
-
-include_recipe 'paramount::_elk'

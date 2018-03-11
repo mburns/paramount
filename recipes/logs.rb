@@ -1,31 +1,14 @@
 #
 # Cookbook Name:: paramount
-# Recipe:: _elk
+# Recipe:: logs
 #
 # Copyright (C) 2018 Michael Burns
 # License:: Apache License, Version 2.0
 #
 
-Chef::Log.info("[SYSTEM] :: #{recipe_name}")
+Chef::Log.info('[LOGS]')
 
-include_recipe 'java'
-
-elasticsearch_user 'elasticsearch'
-
-elasticsearch_install 'elasticsearch' do
-  # type 'package'
-  # version node['kibana5']['version']
-  action :install
-end
-
-elasticsearch_configure 'elasticsearch'
-
-elasticsearch_service 'elasticsearch'
-
-service 'elasticsearch' do
-  supports status: true, restart: true, reload: true
-  action [:start]
-end
+include_recipe 'paramount::_elasticsearch'
 
 # logstash
 
@@ -33,12 +16,12 @@ end
 include_recipe 'kibana5'
 
 nginx_site 'kibana' do
-  template 'nginx-site.conf.erb'
+  template 'nginx-kibana.conf.erb'
   variables(
     listen_address: '0.0.0.0',
     listen_port: '80',
-    server_name: 'kibana.test',
-    kibana_port: '5601'
+    server_name: node['hostname'],
+    kibana_port: node['kibana5']['config']['server.port']
   )
 end
 

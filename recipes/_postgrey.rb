@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: paramount
-# Recipe:: _postgrey
+# Recipe:: postgrey
 #
 # Copyright (C) 2017 Michael Burns
 # License:: Apache License, Version 2.0
