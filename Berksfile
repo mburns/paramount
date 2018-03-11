@@ -5,7 +5,7 @@ source 'https://supermarket.chef.io'
 
 metadata
 
-cookbook 'ark', '~> 3.1'
+cookbook 'ark', '>= 2.2'
 cookbook 'build-essential'
 cookbook 'chef-sugar', '~> 4.0'
 # cookbook 'chef-vault', '~> 3.0'
@@ -30,8 +30,7 @@ cookbook 'dspam', github: 'mburns/chef-dspam'
 cookbook 'opendkim', '~> 2.0'
 cookbook 'onddo-spamassassin', '~> 2.0'
 cookbook 'postfix', '~> 5.2'
-# cookbook 'postfixadmin', github: 'mburns/postfixadmin-cookbook', branch: 'mysql2_chef_gem_v2.0'
-# cookbook 'roundcube', github: 'mburns/roundcube', branch: 'chef_nginx'
+cookbook 'postfixadmin', github: 'mburns/postfixadmin-cookbook', branch: 'relax-perms'
 cookbook 'solr_app', '~> 0.0'
 cookbook 'rspamd'
 
@@ -55,7 +54,7 @@ cookbook 'nginx', '~> 7.0'
 cookbook 'php-fpm'
 
 ## Security
-cookbook 'aide', github: 'mburns/chef-aide', branch: 'remove-duplicates'
+cookbook 'aide', github: 'mburns/chef-aide', tag: 'v0.2.1'
 cookbook 'automatic_updates', github: 'rackspace-cookbooks/automatic_updates'
 # cookbook 'encfs', '~> 0.2.0', github: 'mburns/encfs'
 cookbook 'encrypted_attributes', '~> 0.6.0'

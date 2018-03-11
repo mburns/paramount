@@ -1,10 +1,10 @@
 DEPENDENCIES
   aide
     git: https://github.com/mburns/chef-aide.git
-    revision: 7e7d902bea5765175df7bb9da25012b7c88f3aa2
-    branch: remove-duplicates
+    revision: fa9aefd0471be733bbd7dfd330c7d2c805f4c8b9
+    tag: v0.2.1
   apt
-  ark (~> 3.1)
+  ark (>= 2.2.0)
   automatic_updates
     git: https://github.com/rackspace-cookbooks/automatic_updates.git
     revision: 752542f90c8c7df43856ff05e79d0de916ed99a8
@@ -57,6 +57,10 @@ DEPENDENCIES
   plexapp (~> 1.0.0)
   poise-service (~> 1.5)
   postfix (~> 5.2)
+  postfixadmin
+    git: https://github.com/mburns/postfixadmin-cookbook.git
+    revision: 2ff9025f97ee73d66ffaa78c169debd17b23ea13
+    branch: relax-perms
   postgresql (~> 6.1.1)
   prosody
     git: https://github.com/mburns/chef-prosody.git
@@ -89,7 +93,7 @@ DEPENDENCIES
   znc (~> 0.0.1)
 
 GRAPH
-  aide (0.1.6)
+  aide (0.2.1)
     cron (>= 0.0.0)
   ant (1.0.4)
     ark (>= 0.0.0)
@@ -140,11 +144,13 @@ GRAPH
   couchpotato (0.1.0)
   cron (5.0.1)
   curl (2.0.4)
+  database (6.1.1)
+    postgresql (>= 1.0.0)
   djbdns (5.0.1)
     build-essential (>= 0.0.0)
     runit (>= 1.6.0)
     ucspi-tcp (>= 0.0.0)
-  docker (4.0.2)
+  docker (4.1.0)
   dovecot (3.2.1)
     ohai (~> 4.0)
   dpkg_autostart (0.2.0)
@@ -160,13 +166,14 @@ GRAPH
     yum-epel (>= 0.0.0)
   firewall (2.6.3)
     chef-sugar (>= 0.0.0)
-  git (8.0.1)
-    build-essential (>= 0.0.0)
-    homebrew (>= 0.0.0)
-  homebrew (4.3.0)
+  git (9.0.0)
+    build-essential (>= 5.0.0)
+  homebrew (5.0.3)
   hostname (0.4.2)
     hostsfile (>= 0.0.0)
   hostsfile (3.0.1)
+  inifile_chef_gem (0.1.0)
+    build-essential (>= 0.0.0)
   iptables (4.3.4)
   java (1.50.0)
     apt (>= 0.0.0)
@@ -195,6 +202,13 @@ GRAPH
     logrotate (>= 0.0.0)
     poise-python (>= 0.0.0)
     runit (>= 0.0.0)
+  mariadb (1.5.3)
+    apt (>= 0.0.0)
+    build-essential (>= 0.0.0)
+    selinux_policy (~> 2.0)
+    yum (>= 0.0.0)
+    yum-epel (>= 0.0.0)
+    yum-scl (>= 0.0.0)
   mercurial (2.0.4)
     build-essential (>= 0.0.0)
     python (>= 0.0.0)
@@ -205,6 +219,11 @@ GRAPH
     apt (>= 0.0.0)
     yum (>= 0.0.0)
     yum-epel (>= 0.0.0)
+  mysql (8.5.1)
+  mysql2_chef_gem (2.1.0)
+    build-essential (>= 2.4.0)
+    mariadb (>= 0.0.0)
+    mysql (>= 8.2.0)
   nginx (7.0.2)
     build-essential (>= 0.0.0)
     compat_resource (>= 12.16.3)
@@ -267,6 +286,7 @@ GRAPH
     plexapp (>= 0.0.0)
     poise-service (>= 0.0.0)
     postfix (>= 0.0.0)
+    postfixadmin (>= 0.0.0)
     postgresql (>= 0.0.0)
     prosody (>= 0.0.0)
     rkhunter (>= 0.0.0)
@@ -300,6 +320,21 @@ GRAPH
   poise-service (1.5.2)
     poise (~> 2.0)
   postfix (5.2.1)
+  postfixadmin (3.1.0)
+    apache2 (>= 3.0.0)
+    ark (>= 2.2.0)
+    chef_nginx (>= 5.0.0)
+    compat_resource (>= 12.5.0)
+    database (>= 6.0.0)
+    encrypted_attributes (>= 0.2.0)
+    mysql (>= 8.0.0)
+    mysql2_chef_gem (>= 1.0.0)
+    openssl (>= 6.0.0)
+    php (>= 2.0.0)
+    php-fpm (>= 0.7.0)
+    postgresql (>= 6.0.0)
+    ssl_certificate (>= 2.0.0)
+    yum-epel (>= 0.5.0)
   postgresql (6.1.1)
     build-essential (>= 2.0.0)
     compat_resource (>= 12.16.3)
@@ -329,6 +364,8 @@ GRAPH
     bluepill (>= 0.0.0)
     git (>= 0.0.0)
   selinux (2.1.0)
+  selinux_policy (2.0.1)
+    compat_resource (>= 12.16.3)
   seven_zip (2.0.2)
     windows (>= 1.2.2)
   sickbeard (1.0.0)
@@ -352,13 +389,15 @@ GRAPH
     build-essential (>= 0.0.0)
     pacman (>= 0.0.0)
   users (5.3.1)
-  windows (3.5.2)
-    ohai (>= 4.0.0)
+  windows (4.0.1)
   xml (3.1.2)
     build-essential (>= 0.0.0)
   yum (5.1.0)
   yum-epel (0.7.1)
     yum (>= 3.6.3)
+  yum-scl (0.2.0)
+    inifile_chef_gem (>= 0.0.0)
+    yum (>= 0.0.0)
   znc (0.0.1)
     build-essential (>= 0.0.0)
   zypper (0.4.0)
