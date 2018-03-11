@@ -19,6 +19,14 @@ describe 'paramount::_automx' do
             @chef_run.converge(described_recipe)
           end
 
+          # yum_package[git]
+          # git[/opt/automx]
+          # template[/etc/automx.conf]
+          # cookbook_file[/etc/automx.py]
+          # directory[/var/log/automx]
+          # file[/var/log/automx/automx.log]
+          # apt_package[git]
+
           it 'converges successfully' do
             expect { :chef_run }.to_not raise_error
           end

@@ -19,6 +19,8 @@ describe 'paramount::_spamhaus' do
             @chef_run.converge(described_recipe)
           end
 
+          # cookbook_file[/etc/cron.daily/spamhaus]
+
           it 'converges successfully' do
             expect { :chef_run }.to_not raise_error
           end

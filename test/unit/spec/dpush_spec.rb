@@ -19,6 +19,13 @@ describe 'paramount::_dpush' do
             @chef_run.converge(described_recipe)
           end
 
+          # yum_package[d-push]
+          # yum_package[php5-imap]
+          # nginx_site[d-push]
+          # cookbook_file[/etc/d-push/config.php]
+          # apt_package[d-push]
+          # apt_package[php5-imap]
+
           it 'converges successfully' do
             expect { :chef_run }.to_not raise_error
           end

@@ -25,7 +25,12 @@ describe 'paramount::_wallabag' do
             end
           end
 
+          # yum_package[rsync]
+          # yum_package[unzip]
           # ark[wallabag]
+          # nginx_site[wallabag]
+          # apt_package[rsync]
+          # apt_package[unzip]
         end
       end
     end
