@@ -33,6 +33,9 @@ suites:
   - name: email
     run_list:
     - recipe[test::email]
+  - name: logs
+    run_list:
+    - recipe[test::logs]
   - name: multimedia
     run_list:
     - recipe[test::multimedia]

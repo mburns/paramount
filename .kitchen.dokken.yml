@@ -94,6 +94,9 @@ suites:
             active: false
         sender_canonical_map_entries: {}
         smtp_generic_map_entries: {}
+  - name: logs
+    run_list:
+    - recipe[test::logs]
   - name: multimedia
     run_list:
     - recipe[test::multimedia]
