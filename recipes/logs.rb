@@ -15,6 +15,8 @@ include_recipe 'paramount::_elasticsearch'
 # kibana5
 include_recipe 'kibana5'
 
+include_recipe 'nginx'
+
 nginx_site 'kibana' do
   template 'nginx-kibana.conf.erb'
   variables(
