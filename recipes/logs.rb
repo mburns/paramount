@@ -11,6 +11,7 @@ Chef::Log.info('[LOGS]')
 include_recipe 'paramount::_elasticsearch'
 
 # logstash
+include_recipe 'paramount::_logstash'
 
 include_recipe 'rsyslog::client'
 
