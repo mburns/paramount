@@ -13,12 +13,6 @@ if node['platform_family'] == 'debian'
   package 'postgresql-contrib-9.6'
 end
 
-# Install adminpack extension
-postgresql_extension 'postgres adminpack' do
-  database 'postgres'
-  extension 'adminpack'
-end
-
 Chef::Recipe.send(:include, OpenSSLCookbook::RandomPassword)
 
 node.normal['postgresql']['password']['postgres'] = random_password
@@ -30,6 +24,13 @@ postgresql_user node['paramount']['user'] do
   createrole true
   # valid_until '2038-01-19'
 end
+
+# Install adminpack extension
+postgresql_extension 'postgres adminpack' do
+  database 'postgres'
+  extension 'adminpack'
+end
+
 postgresql_server_install 'My Postgresql Server install' do
   # password node['postgresql']['password']['postgres']
   action :install
