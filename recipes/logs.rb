@@ -12,6 +12,8 @@ include_recipe 'paramount::_elasticsearch'
 
 # logstash
 
+include_recipe 'rsyslog::client'
+
 # kibana
 include_recipe 'kibana'
 
