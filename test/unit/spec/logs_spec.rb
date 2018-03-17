@@ -3,7 +3,7 @@
 
 require_relative 'spec_helper'
 
-describe 'paramount::_elasticsearch' do
+describe 'paramount::logs' do
   supported_platforms.each do |platform, versions|
     versions.each do |version|
       context "on #{platform.capitalize} #{version}" do
