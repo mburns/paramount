@@ -12,8 +12,8 @@ include_recipe 'paramount::_elasticsearch'
 
 # logstash
 
-# kibana5
-include_recipe 'kibana5'
+# kibana
+include_recipe 'kibana'
 
 include_recipe 'nginx'
 
@@ -23,7 +23,7 @@ nginx_site 'kibana' do
     listen_address: '0.0.0.0',
     listen_port: '80',
     server_name: node['hostname'],
-    kibana_port: node['kibana5']['config']['server.port']
+    kibana_port: node['kibana']['port']
   )
 end
 

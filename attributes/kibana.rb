@@ -7,3 +7,5 @@
 #
 
 # default['kibana']['port'] = '5601'
+
+normal['kibana']['version'] = 5

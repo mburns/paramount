@@ -14,7 +14,7 @@ elasticsearch_user 'elasticsearch'
 
 elasticsearch_install 'elasticsearch' do
   type 'tarball'
-  version node['kibana5']['version']
+  version node['kibana']['version']
 end
 
 elasticsearch_configure 'elasticsearch' do
