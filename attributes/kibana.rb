@@ -9,3 +9,7 @@
 # default['kibana']['port'] = '5601'
 
 normal['kibana']['version'] = 5
+
+default['kibana']['install_method'] = 'package'
+
+default['kibana']['base_dir'] = '/opt/kibana'
