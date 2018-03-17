@@ -50,4 +50,6 @@ def stub_resources
   stub_command('ls /var/lib/postgresql/9.3/main/recovery.conf').and_return true
 
   stub_command("psql -c 'SELECT lanname FROM pg_catalog.pg_language' postfix | grep '^ plpgsql$'").and_return true
+
+  stub_search('node', 'role:loghost').and_return(['127.0.0.1'])
 end
