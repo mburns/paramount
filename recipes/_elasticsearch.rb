@@ -13,8 +13,7 @@ include_recipe 'java'
 elasticsearch_user 'elasticsearch'
 
 elasticsearch_install 'elasticsearch' do
-  type 'tarball'
-  version node['kibana']['version']
+  type 'package'
 end
 
 elasticsearch_configure 'elasticsearch' do
