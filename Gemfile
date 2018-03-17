@@ -51,6 +51,7 @@ end
 
 group :unit do
   gem 'chefspec', '~> 7.1'
+  gem 'docker-api', '= 1.34.0'
   gem 'fauxhai'
   gem 'rspec'
   gem 'rspec-json_expectations'
