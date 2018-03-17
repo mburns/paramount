@@ -9,6 +9,7 @@
 Chef::Log.info("[EMAIL] :: #{recipe_name}")
 
 include_recipe 'paramount::_postfix'
+include_recipe 'paramount::_postgresql'
 
 node.default['postfixadmin']['web_server'] = 'nginx'
 node.default['postfixadmin']['database']['type'] = 'postgresql'

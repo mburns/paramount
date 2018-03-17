@@ -31,6 +31,10 @@ postgresql_extension 'postgres adminpack' do
   extension 'adminpack'
 end
 
+postgresql_client_install 'Postgresql Client' do
+  setup_repo false
+end
+
 postgresql_server_install 'My Postgresql Server install' do
   # password node['postgresql']['password']['postgres']
   action :install
