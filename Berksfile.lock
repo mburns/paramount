@@ -37,7 +37,7 @@ DEPENDENCIES
   java
   kibana
     git: https://github.com/realityforge/chef-kibana.git
-    revision: 9856809678cbd719e9871998debac17153a36b96
+    revision: d333995706e435f134c145072624f1c717349bde
   logrotate (~> 2.2)
   logstash (~> 1.0)
   mosh (~> 0.4.0)
@@ -62,7 +62,7 @@ DEPENDENCIES
   postfixadmin
     git: https://github.com/mburns/postfixadmin-cookbook.git
     revision: 1c4d6cb59a23de77ea1c8dcc7c7d4e078a3aa762
-  postgresql (~> 6.1.1)
+  postgresql (~> 6.1)
   prosody
     git: https://github.com/mburns/chef-prosody.git
     revision: 60588cdb5277552b90e7324ba5c93ee7c122a425
@@ -183,10 +183,11 @@ GRAPH
     apt (>= 0.0.0)
     homebrew (>= 0.0.0)
     windows (>= 0.0.0)
-  kibana (0.2.2)
+  kibana (0.2.3)
     apt (>= 0.0.0)
     ark (>= 0.0.0)
     build-essential (>= 0.0.0)
+    compat_resource (>= 0.0.0)
   locales (0.3.1)
   logrotate (2.2.0)
   logstash (1.0.0)

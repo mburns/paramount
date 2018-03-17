@@ -14,7 +14,7 @@ cookbook 'hostsfile', '~> 3.0'
 cookbook 'packages', '~> 1.1'
 cookbook 'partial_search'
 cookbook 'ohai', '~> 4'
-cookbook 'postgresql', '~> 6.1.1'
+cookbook 'postgresql', '~> 6.1'
 
 ## Cloud
 cookbook 'djbdns', '~> 5.0'
