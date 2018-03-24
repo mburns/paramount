@@ -32,24 +32,36 @@ provisioner:
 
 platforms:
   - name: amazonlinux
+    run_list: yum-epel::default
     driver_config:
       box: mvbcoding/awslinux
   - name: centos-6
+    run_list: yum-epel::default
   - name: centos-7
+    run_list: yum-epel::default
   - name: debian-8
+    run_list: apt::default
   - name: debian-9
-  - name: opensuse-leap-42
+    run_list: apt::default
   - name: fedora-27
   - name: freebsd-10
   - name: freebsd-11
+  - name: opensuse-leap-42
   - name: ubuntu-14.04
+    run_list: apt::default
   - name: ubuntu-16.04
+    run_list: apt::default
 
 suites:
   - name: default
     run_list:
-    - recipe[test::system]
-    - recipe[test::security]
+    - recipe[test::default]
+    attributes:
+      paramount:
+      - disable_cloud: true
+      - disable_email: true
+      - disable_multimedia: true
+      - disable_web: true
   - name: cloud
     run_list:
     - recipe[test::cloud]
