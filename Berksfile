@@ -30,7 +30,7 @@ cookbook 'dspam', github: 'mburns/chef-dspam'
 cookbook 'opendkim', '~> 2.0'
 cookbook 'onddo-spamassassin', '~> 2.0'
 cookbook 'postfix', '~> 5.2'
-cookbook 'postfixadmin', github: 'mburns/postfixadmin-cookbook', branch: 'relax-perms'
+cookbook 'postfixadmin', github: 'mburns/postfixadmin-cookbook'
 cookbook 'solr_app', '~> 0.0'
 cookbook 'rspamd'
 

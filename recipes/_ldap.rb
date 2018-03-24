@@ -8,7 +8,7 @@
 
 Chef::Log.info("[PARAMOUNT] :: #{recipe_name}")
 
-include_recipe 'openldap::auth'
+include_recipe 'openldap'
 
 # Use https://github.com/atomic-penguin/cookbook-certificate cookbook for advanced certificate deployment
 # or use wrapper cookbook to source ssl files from the wrapper cookbook folder structure:

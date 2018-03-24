@@ -21,18 +21,17 @@ end
 
 Chef::Recipe.send(:include, OpenSSLCookbook::RandomPassword)
 
-postgres_passwd = random_password
-node.default['paramount']['postgres_passwd'] = postgres_passwd
-Chef::Log.info("Postgres password: #{postgres_passwd}")
+node.normal['postgresql']['password']['postgres'] = random_password
+Chef::Log.info("Postgres password: #{node['postgresql']['password']['postgres']}")
 
 postgresql_user node['paramount']['user'] do
-  password postgres_passwd
+  password node['postgresql']['password']['postgres']
   createdb true
   createrole true
   # valid_until '2038-01-19'
 end
 postgresql_server_install 'My Postgresql Server install' do
-  # password postgres_passwd
+  # password node['postgresql']['password']['postgres']
   action :install
 end
 

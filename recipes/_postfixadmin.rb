@@ -16,6 +16,8 @@ node.default['postfixadmin']['database']['type'] = 'postgresql'
 node.default['postfixadmin']['server_name'] = node['paramount']['hostname']
 node.default['postfixadmin']['common_name'] = node['paramount']['hostname']
 
+include_recipe 'paramount::_postgresql'
+
 include_recipe 'postfixadmin::default'
 include_recipe 'postfixadmin::map_files'
 
