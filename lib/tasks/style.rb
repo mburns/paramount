@@ -35,7 +35,7 @@ namespace :style do
     t.options = {
       fail_tags: ['any'],
       cookbook_paths: ['.', 'test/fixtures/cookbooks'],
-      progress: true
+      progress: true,
     }
   end
 
