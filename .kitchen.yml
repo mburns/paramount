@@ -9,6 +9,9 @@ driver:
   customize:
     memory: 4096
 
+verifier:
+  name: inspec
+
 provisioner:
   name: chef_zero
   product_name: chef

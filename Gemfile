@@ -38,6 +38,7 @@ group :test do
   gem 'cookstyle'
   gem 'coveralls', require: false
   gem 'fog'
+  gem 'kitchen-inspec'
   gem 'mime-types'
   gem 'pry'
 end
