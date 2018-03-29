@@ -27,6 +27,11 @@ branches:
 #     - cookbooks/
 #     - berks-cookbooks/
 
+stages:
+  - unit
+  - danger
+  - test
+
 env:
   - TEST=default-ubuntu-1404
   - TEST=email-ubuntu-1404
@@ -54,11 +59,11 @@ matrix:
   fast_finish: true
   include:
     - script:
-      # - /opt/chefdk/bin/chef exec delivery local all
       - sudo /opt/chefdk/bin/chef exec rspec test/unit/spec/
       - /opt/chefdk/bin/chef exec cookstyle --display-cop-names --extra-details
       - /opt/chefdk/bin/chef exec foodcritic .
-      env: UNIT_AND_LINT=1
+    - script:
+      env: DANGER
   allow_failures:
     env:
     - TEST=default-amazonlinux
@@ -108,6 +113,13 @@ matrix:
     - TEST=web-freebsd-10
     - TEST=web-freebsd-11
     - TEST=web-ubuntu-1604
-    
+
+jobs:
+  include:
+    - stage: unit
+      env: UNIT_AND_LINT=1
+    - stage: danger
+      script: chef exec danger
+      env: DANGER
 after_failure:
   - cat docker_daemon.log

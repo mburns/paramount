@@ -37,6 +37,7 @@ group :test do
   gem 'codecov'
   gem 'cookstyle'
   gem 'coveralls', require: false
+  gem 'danger'
   gem 'fog'
   gem 'mime-types'
   gem 'pry'
