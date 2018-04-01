@@ -16,17 +16,4 @@ default['fail2ban']['services'] = {
     'logpath' => node['fail2ban']['auth_log'],
     'maxretry' => '6',
   },
-  # 'nginx-request-limit' => {
-  #   "enabled" => "true",
-  #   "port" => "http",
-  #   'failregex' => ["limiting requests, excess:.* by zone.*client: <HOST>"],
-  #   "ignoreregex" => []
-  # },
-  'smtp' => {
-    'enabled' => 'true',
-    'port' => 'smtp',
-    'filter' => 'smtp',
-    'logpath' => node['fail2ban']['auth_log'],
-    'maxretry' => '6',
-  },
 }
