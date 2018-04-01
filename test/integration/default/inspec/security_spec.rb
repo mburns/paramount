@@ -3,9 +3,9 @@
 
 require_relative '../../spec_helper'
 
-describe selinux do
-  it { should be_permissive }
-end
+# describe selinux if: os[:family] == 'redhat' do
+#   it { should be_permissive }
+# end
 
 describe service('fail2ban') do
   it { should be_installed }

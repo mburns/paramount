@@ -8,7 +8,7 @@
 
 Chef::Log.info('[SECURITY]')
 
-include_recipe 'selinux'
+include_recipe 'selinux' if rhel?
 include_recipe 'firewall'
 include_recipe 'fail2ban'
 include_recipe 'rkhunter'
@@ -20,6 +20,8 @@ node.normal['aide']['paths'] = {
 
 include_recipe 'aide'
 
-selinux_state "SELinux #{node['selinux']['state'].capitalize}" do
-  action node['selinux']['state'].downcase.to_sym
+if rhel?
+  selinux_state "SELinux #{node['selinux']['state'].capitalize}" do
+    action node['selinux']['state'].downcase.to_sym
+  end
 end
