@@ -35,7 +35,6 @@ group :test do
   gem 'chef-encrypted-attributes'
   gem 'chef-sugar'
   gem 'codecov'
-  gem 'cookstyle'
   gem 'coveralls', require: false
   gem 'fog'
   gem 'kitchen-inspec'
@@ -44,6 +43,7 @@ group :test do
 end
 
 group :style do
+  gem 'cookstyle'
   gem 'foodcritic'
   gem 'jsonlint'
   gem 'rubocop'
