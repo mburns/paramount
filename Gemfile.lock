@@ -122,7 +122,7 @@ GEM
       faraday (~> 0.8)
     fauxhai (5.6.0)
       net-ssh
-    ffi (1.9.23)
+    ffi (1.11.1)
     ffi-yajl (2.3.1)
       libyajl2 (~> 1.2)
     fission (0.5.0)
