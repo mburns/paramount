@@ -336,7 +336,7 @@ GEM
     inflecto (0.0.2)
     iniparse (1.4.4)
     ipaddress (0.8.3)
-    json (2.1.0)
+    json (2.3.1)
     jsonlint (0.2.0)
       oj (~> 2)
       trollop (~> 2)
